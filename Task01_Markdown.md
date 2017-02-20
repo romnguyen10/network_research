@@ -1,4 +1,4 @@
-#**Markdown**
+##Markdown
 
 > Tài liệu: Markdown
 
@@ -6,7 +6,7 @@
 > 
 > Cập nhật lần cuối: **20/02/2017**
 
-## Mục lục
+### Mục lục
 
 [1. Tìm hiểu về Markdown](#timhieu)
 
@@ -46,7 +46,7 @@
 
 
 <a name="timhieu"></a>
-### **1. Tìm hiểu về Markdown**
+### 1. Tìm hiểu về Markdown
 
 <a name="gt"></a>
 #### 1.1. Markdown là gì?
@@ -73,7 +73,7 @@ ngắn thời gian thành thạo nó vì cú pháp HTML không đơn giản. Đ�
 công việc ngta chọn Markdown ngày một nhiều hơn. markdown cũng ngày càng được cải tiến.
 
 <a name="cuphap"></a>
-### **2. Các cú pháp thường sử dụng**
+### 2. Các cú pháp thường sử dụng
 
 <a name="Header"></a>
 #### 2.1. Header
@@ -178,7 +178,7 @@ Nếu đường link quá dài bạn có thể rút ngắn bằng cách:
    `trích dẫn `
 
 <a name="congcu"></a>
-### **3.Các công cụ viết Markdown**
+### 3.Các công cụ viết Markdown
 
 bạn có thể viết markdown online qua các trang web:
 
@@ -196,7 +196,7 @@ bạn có thể viết markdown online qua các trang web:
 Bên cạnh đó bạn cũng có thể viết trên **notepad**, **vi**, **sublime**,...
 
 <a name="tongket"></a>
-### **5.Tổng kết**
+### 5.Tổng kết
 
 ##### Ưu điểm.
 
@@ -213,7 +213,7 @@ bài blog và tất nhiên những dự án lớn hay những quyển sách cầ
 mà Markdown hỗ trợ.
 
 <a name="thamkhao"></a>
-### **5.Tài liệu tham khảo**
+### 5.Tài liệu tham khảo
 
 [1] https://nguyenthethang.com/2013/08/16/keyword-ngon-ngu-markdown-la-gi-what-is-markdown/
 
