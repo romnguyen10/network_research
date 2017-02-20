@@ -150,13 +150,13 @@ hiển thị:
 #### 2.5. Image
 
 Để chèn link ảnh có 3 cách:
-
+```
 c1 <img src="link_ảnh" >
 
 c2 ![chú_thích](link_ảnh)
 
 c3 ![chú_thích](/đường_dẫn_tới_vị_trí_lưu_ảnh)
-
+```
 <a name="Link"></a>
 #### 2.6. Link
 
