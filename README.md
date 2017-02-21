@@ -96,11 +96,11 @@ Tiếp theo gõ:
 
 Truy cập đường dẫn sau https://github.com/settings/ssh (đảm bảo bạn đã đăng nhập vào github), chọn Add SSH key, đặt tên cho key này tại Title và paste nội dung vừa copy vào ô Key.
 
-<img src="http://imgur.com/a41Bzfh" >
+<img src="http://i.imgur.com/a41Bzfh.png" >
 
 Kết quả ta được:
 
-<img src="http://imgur.com/kI2jNS9" >
+<img src="http://i.imgur.com/kI2jNS9.png" >
 <a name="caching"></a>
 #### 2.4. Caching your Github password:
 
