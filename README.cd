@@ -1,0 +1,149 @@
+## COM320 Computer Network
+
+> Tài liệu: COM320 Computer Networks and Operating Systems
+>
+> Thực hiện: **Nguyễn Tấn Phát**
+> 
+> Cập nhật lần cuối: **23/02/2017**
+
+### Mục lục
+
+[1. Sử dụng mạng máy tính](#uses)
+
+- [1.1. Thương mại ứng dụng](#thuongmai)
+
+- [1.2. Nhà ứng dụng](#home)
+
+- [1.3. Người dùng di động](#mobile)
+
+- [1.4. Các vần đề mạng xã hội](#social)
+
+- [1.5. Mạng trug lập](#neutrality)
+
+[2. Mạng phần cứng](#hardware)
+
+- [2.1. Mạng PAN](#pan)
+
+- [2.1. Mạng LAN](#lan)
+
+- [2.3. Mạng MAN](#man)
+
+- [2.4. Mạng WAN](#wan)
+
+[3. Mạng phần mềm ](#software)
+
+[4. Mô hình mạng](#models)
+
+[5. Ví dụ về mạng](#example)
+
+[6. Mạng tiêu chuẩn](#standardization)
+
+[7. Đơn vị Metric](#metric)
+
+<a name="uses"></a>
+### 1. Sử dụng mạng máy tính
+<a name="thuongmai"></a>
+#### 1.1. Thương mại ứng dụng:
+- Các công ty sử dụng mạng và máy tính để *chia sẻ tài nguyên* với các *client-server*.
+- ngoài ra cò sử dụng trong thông tin liên lạc như: mail, voiIP, thương mại điện tử.
+
+<a name="home"></a>
+#### 1.2 Nhà ứng dụng:
+- Nhà chứa nhiều các thiết bị mạng. Ví dụ: máy tính, TV, kết nối với Internet bằng cáp, DSL, không dây,...
+- Trang chủ người sử dụng giao tiếp. Ví dụ như các trang mạng xã hội: zalo, facebook, viber,...; các giao dịch như mua bán, đấu giá,...
+- Một số ứng dụng sử dụng các mô hình peer-to-peer, trong đó không có khách hàng cố định và máy chủ.
+<a name="mobile"></a>
+#### 1.3. Người dùng di động:
+- Máy tính bảng, laptop và điện thoại là những thiết bị phổ biến; WiFi và 3G di động cung cấp kết nối không dây. 
+- Người dùng sử di động trong giao tiếp, xem video,giải trí, truy cập Web và sử dụng để định vị-GPS,...
+- Mạng không dây (wireless) và điện thoại có sự liên quan nhưng khác nhau:
+- 
+| Wireless | mobile  | ứng dụng tiêu biểu |
+| :------: |:-------:| :-----:|
+| no       | no		 | Máy tính để bàn sử dụng cho văn phòng |
+| no       | yes     | Máy tính xách tay sử dụng trong phòng khách sạn |
+| yes	   | no      | Mạng không dây ở các tòa nhà |
+| yes	   | yes     |   Cửa hàng Máy tính cầm tay tồn kho|
+
+<a name="social"></a>
+#### 1.4. Các vần đề mạng xã hội:
+- Trung lập mạng - không hạn chế mạng
+- Quyền sở hữu nội dung, chỉ gỡ xuống theo DMCA (DMCA là chữ viết tắt của Digital Millennium Copyright Act hay chúng ta thường gọi là Luật bảo vệ bản quyền tác giả).
+- Sự nặc danh và kiểm duyệt
+- Bảo mật. ví dụ: theo dõi Web và profiling
+- Trộm cắp. ví dụ: botnet và phishing
+
+<a name="neutrality"></a>
+#### 1.5. Mạng trug lập:
+- Net neutrality là hình thức tự do internet, rất bình đẳng, với mục tiêu giúp người sử dụng truy cập mạng không bị các nhà cung cấp dịch vụ (ISP) mạng làm khó.
+- Nếu không có Net neutrality, khách muốn truy cập thông tin với vận tốc nhanh phải trả thêm tiền cho ISP để các ISP tăng tốc độ cho chúng ta.
+ 
+<a name="hardware"></a>
+### 2. Mạng phần cứng:
+- Mạng có thể được phân loại theo quy mô sau:
+ 
+| quy mô  | kiểu mạng  | 
+| :------: |:-------:| 
+| lân cận      | PAN	 | 
+| tòa nhà      | LAN     | 
+| thành phố	   | MAN      | 
+| nước   | WAN     | 
+| thế giới   | The Internet     | 
+
+
+
+<a name="pan"></a>
+#### 2.1. Mạng PAN (Personnal Area Network):
+- Mạng Pan là mạng cá nhân được sử dụng trong phạm vi nhỏ hẹp, 1 người 
+- Pan có dây phổ biến nhất là USB. Ngoài ra không dây công nghệ mạng là Bluetooth,...
+
+![](http://i.imgur.com/GnChhDU.png)
+    
+
+<a name="pan"></a>
+#### 2.2. Mạng LAN (Local Area Network):
+
+- Kết nối các thiết bị trong nhà hay văn phòng.
+- Có thể là mạng doanh nghiệp trong một công ty
+- Hầu hết sử dụng dây đồng nhưng có 1 số trường hợp sử dụng cáp quang.
+
+![](http://i.imgur.com/vcxY4NS.png)
+
+<a name="man"></a>
+#### 2.3. Mạng MAN (Metropolitan Area Network):
+
+- Kết nối các thiết bị trong khu vực đô thị. Ví dụ MAN dựa trên truyền hình cáp.
+
+
+![](http://i.imgur.com/3ASp8D4.png)
+
+<a name="wan"></a>
+#### 2.4. Mạng WAN (Wide Area Network):
+
+- Kết nối các thiết bị trong khu vực, trong nước,...Ví dụ WAN kết nối ba văn phòng chi nhánh
+
+![](http://i.imgur.com/ZMHjopz.png)
+
+- Một ISP (Internet Service Provider) mạng cũng là một WAN. Khách hàng mua kết nối từ ISP để sử dụng.
+
+![](http://i.imgur.com/gO4yyXi.png)
+
+- VPN (Virtual Private Network) là một mạng WAN được xây dựng từ các liên kết ảo chạy trên Internet.
+
+![](http://i.imgur.com/WKqY315.png)
+
+<a name="software"></a>
+### 2.Mạng phần mềm:
+- Các lớp mạng
+- Thiết kế các lớp mạng
+- Kết nối với phi kết nối
+- Nguồn gốc dịch vụ
+- Quan hệ giữa dịch vụ với giao thức.
+
+
+
+
+
+
+
+
