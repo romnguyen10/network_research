@@ -52,10 +52,17 @@
 - [5.2. 3G mobile phone networks](#3g)
 - [5.3. Wireless LANs](#wifi)
 - [5.4. RFID and sensor networks](#RFID)
+- [5.5. Peer to peer](#peer)
 
 [6. Mạng tiêu chuẩn](#standardization)
 
-[7. Đơn vị Metric](#metric)
+[7. sercurity](#sercurity)
+
+[8. An ninh Mạng](#anninh)
+
+[9. Đơn vị Metric](#metric)
+
+[10. Tài liệu dịch](#tailieu)
 
 <a name="uses"></a>
 ### 1. Sử dụng mạng máy tính
@@ -393,3 +400,157 @@ Nút là IMP, hoặc router đầu, liên kết với các host,56 kbps liên k�
 <a name="3g"></a>
 #### 5.2. 3G mobile phone networks:
 
+- Mạng 3G dựa trên các tế bào sóng trong không gian; mỗi tế bào cung cấp dịch vụ không dây cho điện thoại di động bên trong nó thông qua một trạm gốc.
+
+![](http://i.imgur.com/hB9xp1B.png)
+
+- Trạm cơ sở kết nối với mạng lõi để tìm điện thoại di động khác và gửi dữ liệu đến các mạng điện thoại và Internet.
+
+![](http://i.imgur.com/LJPTlAh.png)
+
+- Khi điện thoại di động di chuyển, trạm cơ sở sẽ giao cho một tế bào tiếp theo, và mạng lưới theo dõi vị trí của họ.
+
+![](http://i.imgur.com/TW21Ixy.png)
+    
+<a name="wifi"></a>
+#### 5.3. Wireless LAN
+
+- Trong 802.11, khách hàng giao tiếp thông qua một AP (Access Point) có dây nối với phần còn lại của mạng.
+
+![](http://i.imgur.com/kAwiwkH.png)
+
+- Tín hiệu trong băng tần 2.4GHz ISM khác nhau về sức mạnh do nhiều tác dụng, chẳng hạn như do phản xạ - 
+đòi hỏi các chương trình truyền phức tạp. ví dụ như OFDM.
+
+![](http://i.imgur.com/n2QHNq9.png)
+
+- Chương trình phát thanh can thiệp với nhau, và phạm vi radio có thể không đủ, chồng chéo lên nhau - CSMA (Carrier Sense Multiple Access) thiết kế được sử dụng.
+
+![](http://i.imgur.com/9wEeOoz.png)
+
+<a name="RFID"></a>
+#### 5.4. RFID and sensor network:
+- Đối tượng mạng thụ động UHF RFID hàng ngày:
+
+	- Tags(dán không phải là một pin) được đặt trên các đối tượng.
+	- Độc giả gửi tín hiệu rằng các thẻ phản ánh để giao tiếp.
+
+![](http://i.imgur.com/mb5uFLv.png)
+
+- Mạng cảm biến truyền cho các thiết bị nhỏ hơn diện tích:
+Thiết bị gửi dữ liệu cảm nhận để thu thông qua bước nhảy dây.
+
+![](http://i.imgur.com/VD2boeF.png)
+
+<a name="peer"></a>
+#### 5.5. Peer to peer:
+- Một peer-to-peer (viết tắt là P2P) là một mạng máy tính trong đó mỗi máy tính trong mạng có thể hoạt động như một máy khách hoặc máy chủ cho các máy tính khác trong mạng, cho phép truy cập chia sẻ các nguồn tài nguyên khác nhau như các tập tin, thiết bị ngoại vi, và cảm biến mà không cần một máy chủ trung tâm.
+- Mạng P2P được sử dụng để chia sẻ âm thanh, video, dữ liệu, hoặc bất cứ điều gì ở định dạng kỹ thuật số.
+- Nhiều P2P hệ thống, chẳng hạn như BitTorrent, không có bất kỳ cơ sở dữ liệu trung tâm của nội dung. Thay vào đó, mỗi người dùng tự duy trì cơ sở dữ liệu riêng của mình tại địa phương và cung cấp một danh sách những người lân cận khác là thành viên của hệ thống.
+- Nhung nguoi ngang hàng là những người tham gia đều có đặc quyền trong ứng dụng. Mỗi máy tính trong mạng được gọi là một nút.
+- Chủ sở hữu của mỗi máy tính trên một mạng P2P sẽ dành riêng một phần của tài nguyên, chẳng hạn của nó như là sức mạnh xử lý, lưu trữ đĩa, hoặc mạng băng thông được thực hiện trực tiếp có sẵn để tham gia mạng lưới khác, không có nhu cầu phối hợp trung tâm bởi các máy chủ hoặc ổn định host.
+- Với mô hình này, người tham gia là nhà cung cấp và người tiêu dùng là các nguồn lực. Ngược lại với mô hình client-server chỉ cung cấp máy chủ (gửi), và khách hàng tiêu thụ (nhận được).
+
+<a name="standardization"></a>
+### 6. Mạng tiêu chuẩn: 
+- Tiêu chuẩn xác định những gì là cần thiết cho khả năng tương tác.Một số trong rất nhiều hệ thống tiêu chuẩn:
+
+| Kiêu | khu vực  | kiểu mạng  | 
+| :------:| :------: |:-------:| 
+| ITU | Viễn thông      | G.992, ADSL; H264, MPEG4	 | 
+| IEEE | truyền thông      | 802.3 Internet; 8.2.11 wifi    | 
+| IETF | internet	   | RFC 2616, HTTP/1.1; RFC 1034/1035, DNS      | 
+| W3C | web   | WAN     | HTML 5 standard ; CSS standard |
+
+<a name="security"></a>
+### 7. Security:
+
+- Chúng ta bắt đầu từ đâu?
+
+ví dụ. phising:
+Giả mạo tin nhắn xuất xứ từ một bên đáng tin cậy. ví dụ như ngân hàng của bạn, để cố gắng lừa bạn tiết lộ thông tin nhạy cảm như số thẻ tín dụng,...
+
+Công cụ sử dụng : Hacking, DDoS, Passwords, băm, PGP, Mật mã, chữ kí, tất cả bảo hiểm của bạn sau này.
+
+<a name="anninh"></a>
+### 8. An ninh Mạng:
+
+- lĩnh vực an ninh mạng:
+	- Rất nhiều kẻ xấu có thể tấn công mạng máy tính.
+	- Làm thế nào chúng ta có thể bảo vệ mạng, chống lại các cuộc tấn công
+	- làm thế nào thiết kế cấu trúc để được miễn dịch tấn công
+
+
+- Trong suy nghĩ thì Internet không được thiết kế kết hợp với an ninh:
+
+	- Tầm nhìn ban đầu: "một nhóm người dùng tin tưởng lẫn nhau gắn liền với một mạng lưới trong suốt".
+	- Thiết kế giao thức Internet chơi "bắt kịp".
+	- Cân nhắc an ninh trong tất cả các lớp.
+
+**Kẻ xấu: đặt phần mềm độc hại vào máy chủ thông qua Internet:**
+- phần mềm độc hại có thể có được trong máy chủ từ một loại virus, worm hoặc Trojan horse
+- Phần mềm gián điệp, phần mềm độc hại có thể ghi lại thao tác bàn phím, trang web truy cập, tải lên thông tin của bộ sưu tập cho trang web.
+- máy chủ bị nhiễm có thể được ghi danh vào mạng botnet, sử dụng cho các thư rác và tấn công DDoS.
+- Phần mềm độc hại thường tự sao chép: từ một máy chủ bị nhiễm bệnh, tìm cách nhập vào máy chủ khác.
+
+**Trojan horse**
+- ẩn của một số phần mềm khác hữu ích.
+- ngày nay thường chứa trong trang Web (Active-X, plugin)
+
+**Virus:**
+- Lây nhiễm bằng cách tiếp nhận đối tượng (ví dụ, tập tin đính kèm e-mail), tích cực thực hiện
+- tự sao chép: tuyên truyền chính nó tới máy chủ khác, người sử dụng.
+
+**Worm:**
+- Lây nhiễm bằng cách thụ động tiếp nhận đối tượng mà được tự thực hiện.
+- tự sao chép: tuyên truyền đến máy chủ khác, người sử dụng.
+
+![](http://i.imgur.com/vbf4WkW.png)
+
+**kẻ xấu: máy chủ bị tấn công, cơ sở hạ tầng mạng:
+- Tấn công từ chối dịch vụ (DoS): kẻ tấn công làm cho tài nguyên (máy chủ, băng thông) không có sẵn để Truyen hợp pháp của nguồn áp đảo với Truyển không có thật.
+	- 1. chọn mục tiêu
+	- 2. đột nhập vào host trên mạng (xem botnet)
+	- 3. gửi các gói tin để nhắm mục tiêu xâm nhập
+
+![](http://i.imgur.com/xQV4oCP.png)
+
+**Những kẻ xấu có thể tắt nghẽn gói tin**:
+- sniffing gói:
+	- phát sóng truyền thông (chia sẻ Ethernet, không dây)
+	- giao diện mạng xáo trộn lần đọc / ghi lại tất cả các gói dữ liệu (ví dụ, bao gồm cả mật khẩu!) đi qua.
+	
+![](http://i.imgur.com/Wk4rFSW.png)
+
+> phần mềm Wireshark sử dụng cho end-of-chapter các phòng thí nghiệm là một gói sniffer.
+
+**Những kẻ xấu có thể giả mạo địa chỉ nguồn**
+
+IP spoofing: gửi gói tin với địa chỉ nguồn giả:
+
+![](http://i.imgur.com/LVmrx7H.png)
+
+**Những kẻ xấu có thể ghi âm và phát lại**
+
+- Ghi âm và phát lại: sniff thông tin nhạy cảm (ví dụ, mật khẩu), và sử dụng sau này.
+	- người giữ mật khẩu là người dùng từ hệ thống tầm nhìn nhiều hơn nữa về an ninh sau của khoá học...
+
+![](http://i.imgur.com/GDVrTYp.png)
+
+<a name="metric"></a>
+### 9. Đơn vị Metric:
+
+ ![](http://i.imgur.com/QSmj72K.png)
+
+Sử dụng quyền hạn của 10 cho giá trị, quyền hạn của 2 cho lưu trữ
+Ví dụ: 1 Mbps = 1.000.000 bps, 1 KB = 1024 byte
+"B" là dành cho byte, "b" là cho bit
+
+**Sơ đồ hệ thống cáp internet biển trên thế giới**:
+
+![Imgur](http://i.imgur.com/4A21qvN.png)
+
+<a name="tailieu"></a>
+### 10. Tài liệu dịch:
+
+Lecrure 1: http://scisweb.ulster.ac.uk/~kevin/com320/notes.htm 
