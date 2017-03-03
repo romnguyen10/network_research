@@ -1,5 +1,4 @@
-﻿
-## COM320 Computer Network
+﻿## COM320 Computer Network
 
 > Tài liệu: COM320 Computer Networks and Operating Systems
 >
