@@ -331,7 +331,7 @@ Lệnh pathping gửi các gói tin đến mỗi router trên đường đến �
 
 khi lệnh cho thấy mức độ mất gói ở bất kỳ router hoặc liên kết nào, bạn sẽ dễ dàng xác định được các bộ định tuyến hoặc các liên kết có thể gây ra lỗi mạng. Số mặc định của bước nhảy là 30 và thời gian đợi mặc định trước khi thời gian chờ là 3 giây. Khoảng thời gian mặc định là 250 mili giây và số truy vấn mặc định cho mỗi router trên đường là 100.
 
-- 1. Trong ** command prompt**
+- 1. Trong **command prompt**
 - 2. nhập `pathping www.ulster.ac.uk`
 - 3. Bạn sẽ thấy những điều sau:
 ![Imgur](http://i.imgur.com/REoOnDI.png)
