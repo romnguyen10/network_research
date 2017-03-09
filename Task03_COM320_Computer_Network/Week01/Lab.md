@@ -4,7 +4,7 @@
 >
 > Thực hiện: **Nguyễn Tấn Phát**
 > 
-> Cập nhật lần cuối: **06/03/2017**
+> Cập nhật lần cuối: **08/03/2017**
 
 ### Mục lục
 [I. Protocol layer](#p1)
@@ -24,6 +24,16 @@
 	- [2.9. Step 5: Demultiplexing Keys](#step5)
 	
 [II.Command Line Tools](#p2)
+- [1. IPconfig](#ipconfig)
+- [2. Tracert](#tracert)
+- [3. ns lookup](#lookup)
+- [4. ARP](#arp)
+- [5. Ping](#ping)
+- [6. net Sessions](#net)
+- [7. openfiles](#openfiles)
+- [8. Fc](#fc)
+- [9. Pathping - To try outside the lab](#pathping)
+
 
 [III. Tài liệu dịch](#tailieu)
 
@@ -170,9 +180,7 @@ Bây giờ quaylại với Wireshark của bạn để bắt đầu. Chúng tôi
 
 - Kiểm tra một gói GET HTTP cho thấy vị trí và kích thước  byte của TCP, IP và các tiêu đề giao thức Ethernet. Lưu ý khoảng cách Ethernet Header và payload Ethernet IP qua Ethernet để gửi qua mạng. Cũng Lưu ý phạm vi của tiêu đề IP và payload IP.
 - Để làm việc với kích cỡ, quan sát rằng khi bạn click vào một khối giao thức trong bảng điều khiển (khối chính nó, không phải là "+" giãn nở) thì Wireshark sẽ làm nổi bật các byte tương ứng với nó trong các gói dữ liệu trong bảng dưới và hiển thị chiều dài ở dưới cùng của cửa sổ. Ví dụ, nhấp vào IP phiên bản 4 tiêu đề của một gói tin trong trace của chúng tôi cho chúng ta thấy rằng chiều dài là 20 byte. (Dấu vết của bạn sẽ khác nhau nếu nó là IPv6, và có thể khác nhau ngay cả với IPv4 tùy thuộc vào tùy chọn khác nhau.) Bạn cũng có thể sử dụng các gói kích thước tổng thể, thể hiện trong khối chi tiết cột, chiều dài hoặc Frame
-
 ![Imgur](http://i.imgur.com/VATkgz1.png)
-
 
 ![Imgur](http://i.imgur.com/Weil1HC.png)
 
@@ -198,6 +206,144 @@ Bây giờ quaylại với Wireshark của bạn để bắt đầu. Chúng tôi
             
 <a name="p2"></a>            
 ### II.Command Line Tools
+
+<a name="ipconfig"></a> 
+#### 1. IPconfig
+
+**IPConfig** cho phép một Network Manager xem các thiết lập TCP / IP của hệ thống và cấu hình lại nếu cần. Đây là một công cụ tiêu chuẩn đi kèm với tất cả các phiên bản của Windows. Nó có thể được sử dụng để sửa lỗi network.
+- 1. Mở **Command prompt**. Một cách để làm điều này là nhấn phím **Windows** và **X** và gõ **cmd**. (Chú ý phím **Windows** nằm giữa **CTRL** và **ALT** ở bên trái bàn phím.) Do những hạn chế trong bai Lab, trước khi bạn nhấn **Command Prompt** trong kết quả, lick chuột phải vào biểu tượng Command Prompt và chọn **"Run as Administrator"** từ dưới cùng màn hình. Đây là cách bạn có thể làm bài hướng dẫn ARP đầy đủ .
+
+![Imgur](http://i.imgur.com/5zsEE0J.png)
+
+- 2. Tại **command prompt** bạn gõ `ipconfig`.
+![Imgur](http://i.imgur.com/Hm8LPPN.png)
+
+- 3. Lưu ý về IP address, default gateway and subnet mask máy tính của bạn.
+![Imgur](http://i.imgur.com/dM5P5iO.png)
+
+- Sử dụng `-?` trên lệnh IPConfig để tìm ra các tùy chọn khác mà bạn với các lệnh này. Bạn sẽ nhận thấy một số tùy chọn, bao gồm / tất cả, / renew, và những thứ khác.
+![Imgur](http://i.imgur.com/oBHzFdt.png)
+
+- 4. Bây giờ thử `ipconfig / all`. Bạn thấy những gì bây giờ mà bạn đã không nhìn thấy trước đó?
+![Imgur](http://i.imgur.com/XKWAWCL.png)
+
+<a name="tracert"></a> 
+#### 2. Tracert
+**Tracert** xác định tuyến đường đến đích bằng cách gửi gói tin phản hồi ICMP (Internet Control Message Protocol) với các giá trị IP TTL (Time-to-Live)  khác nhau đến đích. Mỗi router trên đường đi rất cần thiết để giảm TTL trên một gói tin đi ít nhất là 1 trước khi chuyển tiếp nó. Khi TTL trên một gói tin đạt đến 0, router sẽ gửi thông báo **"ICMP Time Exceeded"** cho máy tính nguồn.
+
+Tracert xác định tuyến đường bằng cách gửi gói tin echo đầu tiên với TTL là 1 và tăng TTL bằng 1 mỗi lần tiếp theo truyền cho đến khi đáp ứng mục tiêu hoặc TTL tối đa đạt được. Tuyến được xác định bằng cách kiểm tra các tin nhắn **"ICMP Time Exceeded"** được gửi lại bởi các bộ định tuyến trung gian. Một số bộ định tuyến âm thầm gửi các gói với các TTL hết hạn và không nhìn thấy được với Tracert. Lệnh tracert in ra một danh sách được sắp xếp của giao diện gần của các bộ định tuyến trong đường dẫn trả lại thông báo **"ICMP Time Exceeded"**. Nếu tùy chọn `-d` được sử dụng, tiện ích Tracert không thực hiện tra cứu DNS trên mỗi địa chỉ IP.
+
+- 1. Mở **command prompt**
+- 2. Bây giờ, tôi sẽ yêu cầu bạn nhập `tracert www.ulster.ac.uk`.Tuy nhiên điều này bị chặn trong trường đại học, vì vậy hãy truy cập `tools.pingdom.com`
+- 3. Nhập vào www.ulster.ac.uk trong hộp ping và cũng chọn tracert bên phải trong lựa chọn selction.
+- 4. Điều này sẽ phác hoạ  thử nghiệm tracert tương tự cho bạn. Bạn sẽ thấy một màn hình tương tự như sau:
+![Imgur](http://i.imgur.com/AAKRY7d.png)
+
+- 5. Lưu ý các hops máy tính của bạn để có thể đi được  www.ulster.ac.uk.
+
+- 6. Sau đó, tương tự thử với các trang web khác
+
+- 7. Bạn có nhận thấy rằng các hops đầu tiên là giống nhau? Ghi lại những hops được thực hiện để tiếp cận từng đích đến, và hops như nhau. Tại sao bạn nghĩ một số bước trung gian giống nhau cho các điểm đến khác nhau?
+
+<a name="lookup"></a> 
+#### 3. ns lookup
+
+**Nslookup** là một công cụ dòng lệnh quản trị mạng có sẵn cho nhiều hệ điều hành máy tính để truy vấn Domain Name System (DNS),để lấy tên miền hoặc bản đồ địa chỉ IP hoặc cho bất kỳ DNS record nào.
+- 1.  Mở **command prompt**
+- 2. nhập  `nslookup www.ulster.ac.uk`
+- 3. Bạn sẽ thấy những điều sau:
+![Imgur](http://i.imgur.com/5ymWvah.png)
+
+- 4. Lưu ý rằng lệnh này cung cấp cho bạn tên thực tế của máy chủ, theo công ước đặt tên của công ty lưu trữ; Địa chỉ IP; Và bất kỳ bí danh nào theo đó máy chủ đó hoạt động.
+
+<a name="arp"></a> 
+#### 4. ARP
+Tiếp theo, bạn sẽ sử dụng lệnh **ARP** để xem và sau đó xóa bộ nhớ **cache ARP**, và bạn sử dụng lệnh `ping` để tạo ra các mục **cache ARP**.
+*Address Resolution Protocol (ARP) là một giao thức viễn thông được sử dụng để giải quyết các địa chỉ lớp nnetwork vào các địa chỉ lớp data link , Một chức năng quan trọng sử dụng nhiều trong các mạng . ARP được định nghĩa bởi RFC 826 và cũng là tên của chương trình để sử dụng  trong hầu hết các hệ điều hành. Hãy chắc chắn rằng bạn đã chọn **"Run as Administrator"** khi khởi chạy ứng dụng Command Prompt.
+
+- 1. Mở **command prompt**
+- 2. Gõ `arp -a`. Hãy nhớ rằng, trước đây máy tính đã phát hiện địa chỉ MAC của máy tính của bạn bằng cách sử dụng giao thức tìm địa chỉ (ARP). Bây giờ bạn đã tìm thấy địa chỉ MAC duy nhất trên toàn cầu của thiết bị của bạn.
+![Imgur](http://i.imgur.com/M74BHxU.png)
+- 3. Một danh sách các cặp địa chỉ IP / MAC address được hiển thị. Type (cột thứ ba) cho biết mục nhập là tĩnh hoặc động. Windows 7 tạo các mục tĩnh tự động, nhưng các mục động được tạo ra bởi mạng truyền thông . Nếu bạn không có bất kỳ mục nào, thông báo **"No ARP Entries Found"** sẽ hiển thị.
+- 4. Để xóa bộ nhớ **cache ARP**, gõ `arp -d` và nhấn `Enter`.
+![Imgur](http://i.imgur.com/w46C7QK.png)
+
+- 5. Để xác minh rằng các mục đã bị xóa, gõ `arp -a` và nhấn `Enter` một lần nữa.
+![Imgur](http://i.imgur.com/wqkosEc.png)
+
+- 6 .Yêu cầu một người nào đó trong bài lab tìm địa chỉ IP của họ. Họ có thể nhận được rằng bằng cách gõ `ipconfig`
+
+- 7. Nhập `ping 193.61.191.XX` (thay thế XX bằng địa chỉ IP của máy tính khác trong mạng của bạn) ví dụ: 193.61.191.71 và nhấn `Enter`.
+- 8. bấm `arp -a` để hiển thị bộ nhớ cache ARP của bạn một lần nữa. Bạn sẽ thấy địa chỉ IP bạn đã ping cùng với địa chỉ MAC của nó.
+- 9. Nhập `arp -d` để xóa bộ nhớ cache ARP một lần nữa.
+- 10. Nhập `ping 193.61.191.XX` và nhấn `Enter`. (Nhớ thay XX bằng số bạn bè của bạn)
+- 11. Loại `arp -a` để hiển thị bộ nhớ cache ARP của bạn một lần nữa. Có thể bạn sẽ thấy hai mục nhập mới trong bộ nhớ cache ARP của mình.
+
+<a name="ping"></a> 
+#### 5. Ping
+Ping là một chương trình Internet cơ bản cho phép bạn xác minh rằng một địa chỉ Internet cụ thể tồn tại và có thể thực hiện các yêu cầu . Động từ ping nghĩa là hành động sử dụng ping hay lệnh ping. Ping được sử dụng chẩn đoán để đảm bảo rằng một máy tính chủ mà bạn đang cố gắng truy cập thực sự hoạt động.Ví dụ, nếu người dùng không thể ping tới một máy chủ, người dùng sẽ không thể sử dụng File Transfer Protocol (FTP) để gửi các tập tin đến máy chủ đó. Ping cũng có thể được sử dụng với một máy chủ đang hoạt động để xem phải mất bao lâu để có được một phản hồi trở lại. Sử dụng lệnh ping, bạn có thể tìm hiểu dạng số của địa chỉ IP từ tên miền biểu tượng. Ping có nghĩa là "to get the attention of" hoặc "to check for the presence of" bên thứ ba trực tuyến. Ping hoạt động bằng cách gửi một gói tin đến một địa chỉ được chỉ định và chờ đợi phản hồi.
+
+- 1. trong command prompt hay DOS prompt
+- 2. Sử dụng `-?` trên lệnh `ping` và tìm ra những lựa chọn khác mà bạn có thể dùng với các lệnh này. Bạn nên chú ý một số tùy chọn bổ sung, chẳng hạn như **-w, -t, -n, -i**.
+- 3. Yêu cầu một sinh viên khác cung cấp cho bạn địa chỉ IP của họ. Cần tương tự như 193.61.191.72.
+- 4. Bây giờ hãy thử một lệnh ping đơn giản tới máy của họ bằng cách sử dụng ví dụ: **Ping 193.61.191.72**. Hãy nhớ sử dụng địa chỉ IP của họ (không phải ví dụ này).
+- 5. Hãy thử tùy chọn ping **-n 2 IP ADDRESS**, sau đó thử ping **-n 7 IP ADDRESS**. Bạn nhận thấy sự khác biệt nào?
+![Imgur](http://i.imgur.com/zFA7Njt.png)
+- 6. Lưu ý rằng các cuộc tấn công DoS (DoS) đơn giản có thể được thực hiện bằng lệnh ping -l 65000 -w0 -t.
+
+<a name="net"></a> 
+#### 6. Net Sessions
+Phiên Internet là một công cụ để quản lý kết nối máy chủ. Được sử dụng mà không có tham số, *Net Sessions* hiển thị thông tin về tất cả các sesions với máy tính cục bộ.
+
+- 1. Trong **command prompt**
+- 2. Nhập các Net Sessions đến nếu có bất kỳ hoạt động nào được kết nối với máy tính của bạn.
+- 3. Nhiềukhả năngnó sẽ không có các phiên trong danh sách. "
+- 4. Bạn có thể thử truy cập từ xa vào máy tính của mình và sau đó thực hiện lại thao tác này.
+
+<a name="openfiles"></a> 
+#### 7.Openfiles
+Openfiles truy vấn hoặc hiển thị các tệp mở. Nó cũng truy vấn, hiển thị, hoặc ngắt kết nối các tập tin được mở bởi người dùng mạng.
+
+- 1. Trong **command prompt**
+- 2. Nhập openfiles vào nếu có bất kỳ tệp tin chia sẻ nào hiện đang mở. Có ích cho việc tìm kiếm các cuộc tấn công trực tiếp.
+- 3. Nó sẽ nhiều hơn khả năng nhà nước INFO: Không chia sẻ các tập tin mở được tìm thấy. 
+- 4. Bạn có thể thử truy cập từ xa vào máy tính của mình và sau đó thực hiện lại lệnh này sau khi mở tệp.
+
+![Imgur](http://i.imgur.com/DIxpqQh.png)
+
+<a name="fc"></a> 
+#### 7.Fc
+Fc là một lệnh bạn có thể sử dụng với một bản sao của máy tính. Nó so sánh hai tập tin và cho thấy sự khác biệt. Nếu bạn nghĩ rằng một tập tin cấu hình đã được thay đổi, bạn có thể so sánh nó với một bản sao lưu tốt được biết đến.
+
+- 1. Trong **command prompt**, di chuyển đến một thư mục với một số tệp bạn có thể so sánh. ví dụ. C: \ Windows.
+- 2. Tìm tệp và sao chép nó (bạn có thể làm phần này bên ngoài dòng lệnh trong Windows), thay đổi tệp và sau đó so sánh nó với phiên bản không thay đổi.
+Bạn có thể tải xuống các tệp này **setupact.log** và **setupact.loc** bằng cách nhấp chuột phải và **"save as"**.
+- 3. Nhập `fc setupact.log setupact1.log`
+- 4. Bạn sẽ thấy những thay đổi được liệt kê.
+
+<a name="pathping"></a>
+#### 8. Pathping - To try outside the lab
+Xin lưu ý rằng Đường dẫn có thể không hoạt động trong lab MF124 / 125 vì  đây là dành cho những ai đang thực hiện lab ở nhà hoặc lab ở nơi khác.
+
+Lệnh pathping là một công cụ tra cứu đường đi kết hợp các tính năng của lệnh **ping** và **tracert** với các thông tin bổ sung mà cả hai công cụ này đều cung cấp.
+
+Lệnh pathping gửi các gói tin đến mỗi router trên đường đến đích cùng trong một khoảng thời gian, và sau đó tính toán các kết quả dựa trên các gói dữ liệu được trả về từ mỗi hops. 
+
+khi lệnh cho thấy mức độ mất gói ở bất kỳ router hoặc liên kết nào, bạn sẽ dễ dàng xác định được các bộ định tuyến hoặc các liên kết có thể gây ra lỗi mạng. Số mặc định của bước nhảy là 30 và thời gian đợi mặc định trước khi thời gian chờ là 3 giây. Khoảng thời gian mặc định là 250 mili giây và số truy vấn mặc định cho mỗi router trên đường là 100.
+
+- 1. Trong ** command prompt**
+- 2. nhập `pathping www.ulster.ac.uk`
+- 3. Bạn sẽ thấy những điều sau:
+![Imgur](http://i.imgur.com/REoOnDI.png)
+- 4. Khi pathping đang chạy, trước tiên bạn sẽ thấy các kết quả cho tuyến đường, nó được quyền kiểm tra các vấn đề. Đây là cùng một đường dẫn được hiển thị bởi lệnh tracert. Lệnh pathping sẽ hiển thị một thông báo bận trong một vài phút (thời gian này thay đổi theo số hop). Trong thời gian này, pathping thu thập thông tin từ tất cả các bộ định tuyến được liệt kê từ trước và từ các liên kết giữa chúng. Vào cuối giai đoạn này, nó sẽ hiển thị kết quả kiểm tra.
+![Imgur](http://i.imgur.com/kDMvERx.png)
+
+*Lưu ý hai cột bên phải nhất:*
+This Node/Link Lost/Sent=Pct and Address - Chứa các thông tin hữu ích nhất.
+Hãy tìm các liên kết có thể thấy tỷ lệ phần trăm các gói. Tỷ lệ tổn thất hiển thị cho các liên kết (được đánh dấu như một `|` trong cột bên phải) cho biết thiệt hại của các gói được chuyển tiếp dọc theo con đường. Sự mất mát này cho thấy sự nghẽn liên kết.
+Tỷ lệ tổn thất hiển thị cho các bộ định tuyến (chỉ ra bởi địa chỉ IP của chúng trong cột bên phải) cho thấy rằng các CPU của bộ định tuyến có thể bị quá tải. Các bộ định tuyến tắc nghẽn này cũng có thể là một nhân tố trong các vấn đề về end-to-end, đặc biệt là nếu các gói được chuyển tiếp bởi các bộ định tuyến phần mềm.
+
+
 
 <a name="tailieu"></a>
 ### III. Tài liệu dịch
