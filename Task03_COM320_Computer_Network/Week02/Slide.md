@@ -4,7 +4,7 @@
 >
 > Thực hiện: **Nguyễn Tấn Phát**
 > 
-> Cập nhật lần cuối: **11/03/2017**
+> Cập nhật lần cuối: **12/03/2017**
 
 ### Mục lục
 
@@ -146,3 +146,142 @@ Phương pháp đại diện cho các bit được gọi là **Signaling Methods
 <a name="2.6"></a>
 #### 2.6. Characteristics & Uses of Network Media (đặc điểm và Sử dụng Mạng Truyền thông):
 ![Imgur](http://i.imgur.com/P8eoPcL.png)
+
+<a name="3"></a>
+### 3. Copper Media – UTP, STP, Coaxial:
+- Các sóng vô tuyến điện và các thiết bị điện từ là thiết bị tiềm ẩn nguy cơ gây nhiễu.
+- Loại cáp được thiết kế để giảm thiểu sự xuống cấp của tín hiệu do tiếng nhiễu điện.
+ 
+![Imgur](http://i.imgur.com/W0ZY2e4.png)
+
+<a name="3.1"></a>
+#### 3.1. Unshielded Twisted-Pair (UTP):
+
+- Đây là phương tiện phổ biến nhất được sử dụng cho mạng LAN.
+- Tương đối dễ cài đặt
+![Imgur](http://i.imgur.com/w27zcVS.png)
+![Imgur](http://i.imgur.com/FxwnIm8.png)
+
+<a name="3.2"></a>
+#### 3.2. UTP Standards 
+- TIA / EIA-568A quy định các tiêu chuẩn, cáp thương mại cho việc lắp đặt mạng LAN
+- Chuẩn IEEE của Cáp UTP, Loại 5 (Cat5), Loại 5e (Cat5e), Loại 6 (Cat6).
+- Nhiễu xuyên âm là nhiễu do từ trường xung quanh các cặp dây liền nhau trong cáp.
+- Các cặp xoắn của dây dẫn giúp ngăn ngừa nhiễu xuyên âm
+- Tiêu chuẩn xác định số vòng xoắn trên mét
+- Sử dụng đầu RJ45 và đầu nối .
+
+<a name="3.3"></a>
+#### 3.3. UTP Cable Types
+- Cáp thẳng:
+	- Kết nối thiết bị với thiết bị chuyển mạch và hub
+- Cáp chéo:  
+	- Kết nối PC với PC,
+	- Kết nối Switch với Switch
+	- Kết nối PC với  Router
+- Cáp console
+	- Quyền sở hữu của Cisco - Đối với quản lý thiết bị
+
+![Imgur](http://i.imgur.com/ZY4Gx9E.png)
+![Imgur](http://i.imgur.com/gWOYppf.png)
+
+<a name="3.4"></a>
+#### 3.4. UTP Connectors 
+- Đầu nối có kết nối kém là một nguyên nhân nghiêm trọng của lỗi mạng
+![Imgur](http://i.imgur.com/4mYNXLA.png)
+
+<a name="3.5"></a>
+#### 3.5. Shielded Twisted-Pair (STP) Cable 
+- Sử dụng trong cài đặt mạng Token Ring.
+- Chuẩn 10 GB mới cho Ethernet có một điều khoản cho việc sử dụng cáp STP.
+- Đắt hơn UTP, khó khăn hơn trong việc lắp đặt
+![Imgur](http://i.imgur.com/AKNI229.png)
+
+<a name="3.6"></a>
+#### 3.6. Coaxial Cable 
+- Cáp đồng trục được sử dụng để gắn ăng-ten với các thiết bị không dây
+- Ban đầu được sử dụng bởi các mạng truyền hình cáp, bây giờ sử dụng sợi và lõi đưa tín hiệu từ đường vào nhà ở.
+- Kết hợp sử dụng sợi và lõi được gọi là Hybrid Fiber Coax (HFC).
+- Được thay thế bằng UTP và cáp quang trong các thiết bị Ethernet. dây dày, dây mỏng
+- Đầu nối BNC
+![Imgur](http://i.imgur.com/UJB7gGY.png)
+
+<a name="3.7"></a>
+#### 3.7. Safety issues when working with copper (vấn đề an toàn khi làm việc với cáp đồng):
+- Nguy hiểm điện - nối đất.
+- Nguy hiểm với Lửa - cáp dễ cháy, sản sinh ra hơi độc
+
+	- việc tách dữ liệu và cáp phải tuân theo mã an toàn
+	- Cáp phải được kết nối 1 cách chính xác
+	- Việc lắp đặt phải được kiễm tra, tránh gây thiệt hại
+	- thiết bị phải được nối đất đúng cách
+	![Imgur](http://i.imgur.com/qtgwT2l.png)
+
+<a name="3.8"></a>
+#### 3.8. Fiber-optic Cabling
+- Sử dụng sợi thủy tinh hoặc sợi nhựa để hướng các xung ánh sáng từ nguồn đến đích.
+- Tỷ lệ khả năng  băng thông dữ liệu thô rất lớn.
+- Miễn dịch với sự Nhiễu từ sóng điện từ và các vấn đề nối đất.
+- Giảm tín hiệu thấp, hoạt động ở độ dài lớn hơn nhiều.
+- Đắt hơn cáp đồng
+- Các kỹ năng và thiết bị khác nhau cần thiết để ngắt và nối kết cơ sở hạ tầng cáp
+- Cần xử lý cẩn thận hơn đối với cáp đồng
+
+<a name="3.9"></a>
+#### 3.9. Two Types of Fiber Cable
+- Sợi được sử dụng chủ yếu cho
+	- Đường trục cáp cho điểm lưu lượng truy cập cao điểm
+	- Kết nối các tòa nhà trong tòa nhà nhiều tầng trường. (Không có vấn đề nối đất)
+- Hai loại sợi: 
+
+	- Multimode    50/125, 62.5/125
+		- Rẻ hơn, sử dụng nguồn ánh sáng LED
+		- Lõi lớn hơn, 50 micron hoặc hơn
+		- Phân tán nhiều hơn và do đó gây mất tín hiệu
+		- Được sử dụng cho khoảng cách dài ứng dụng lên đến khoảng 2 km
+		- Sử dụng đèn LED làm ánh sáng nguồn
+
+	- Singlemode 8/125, 10/125
+		- Sử dụng laser, hoạt động trên khoảng cách dài hơn.
+		- Lõi nhỏ
+		- Ít phân tán
+		- Thích hợp cho đường dài
+		- Sử dụng (lên đến 100 km, 62 dặm)
+		- Sử dụng laser làm  ánh sáng nguồn
+	![Imgur](http://i.imgur.com/33ly9d6.png)
+
+<a name="4"></a>
+### 4. Wireless
+<a name="4.1"></a>
+#### 4.1. Wireless Media
+- Cung cấp cho thiết bị di động cho người dùng
+- Nhạy cảm với nhiễu
+- Vấn đề an ninh
+![Imgur](http://i.imgur.com/glLNcwo.png)
+
+<a name="4.2"></a>
+#### 4.2. Wireless Standards
+-IEEE 802.11 - Wi-Fi: là một mạng LAN không dây (WLAN)
+	- Công nghệ sử dụng là contention hoặc non-deterministic hệ thống với một Carrier Sense Multiple Access / Collision Avoidance (CSMA/CA) quá trình truy cập phương tiện truyền thông.
+- IEEE 802.15 - Bluetooth, sử dụng quá trình ghép nối thiết bị để giao tiếp trên khoảng cách từ 1 đến 100 mét.
+- IEEE 802.16 - WiMAX (Khả năng tương tác trên toàn thế giới (Microwave access), sử dụng một topo point-to-multipoint để cung cấp truy cập băng thông rộng không dây.
+- Hệ thống toàn cầu cho truyền thông di động (GSM) - cung cấp truyền dữ liệu qua  điện thoại di động, mạng di động 
+- Truyền thông vệ tinh.
+
+<a name="4.3"></a>
+#### 4.3. Wireless LANs (WLAN, Wi-fi)
+- Mạng LAN không dây yêu cầu các thiết bị mạng sau:
+	- Wireless Access Point (AP) - Tập trung các tín hiệu không dây từ người dùng và kết nối, thường là thông qua cáp đồng, với cơ sở hạ tầng mạng đồng sẵn có như Ethernet.
+	- Wireless NIC adapters - Cung cấp khả năng truyền tín hiêu không dây cho từng máy chủ lưu trữ mạng.
+
+<a name="4.4"></a>
+#### 4.4. WLAN Standards
+- IEEE 802.11a - Dãy tần số 5 GHz - lên đến 54 Mbps.
+- IEEE 802.11b - Hoạt động ở băng tần 2,4 GHz và cung cấp tốc độ lên đến 11 Mbps. Đây là tiêu chuẩn được sử dụng phổ biến nhất
+- IEEE 802.11g - Hoạt động ở băng tần 2,4 GHz và cung cấp tốc độ lên đến 54 Mbps.
+- Chuẩn IEEE 802.11n hiện đang ở dạng dự thảo. 2,4 Ghz hoặc 5 GHz, tốc độ dữ liệu 100 Mbps đến 210 Mbps với khoảng cách khoảng 70 mét.
+	
+
+<a name="5"></a>
+### 5. Tài liệu dịch
+Slide http://www.scit.wlv.ac.uk/~in8297/cisco/expl1/lectures/Expl08.pdf
