@@ -25,7 +25,7 @@
 
 [III. NetInfo](#III)
 
-[IV. Tài liệu dịch[](#IV)
+[IV. Tài liệu dịch](#IV)
 
 ------------------ 
 
