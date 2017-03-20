@@ -103,7 +103,7 @@ Trong hình, chúng ta đã chọn gói đầu tiên trong dấu vết. Lưu ý 
 - Cố gắng hiểu định dạng khung Ethernet. Lưu ý phạm vi của Ethernet header và Ethernet payload. Xem cấu trúc khung bên dưới trong Hình 5.
 *Để làm việc với kích thước, hãy quan sát rằng khi bạn nhấp vào khối giao thức trong bảng điều khiển trung tâm (chính khối đó, không phải trình mở rộng "+") thì Wireshark sẽ làm nổi bật các byte nó tương ứng trong gói tin ở bảng dưới và hiển thị chiều dài Ở cuối cửa sổ. Bạn cũng có thể sử dụng kích thước gói tổng thể được hiển thị trong ngăn Chiều dài hoặc Khối chi tiết khung*
 
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/image/Ethernet/8.png"></p>
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Ethernet/8.png"></p>
 
 Có một số tính năng cần lưu ý:
 - Địa chỉ đích đến trước địa chỉ nguồn.
@@ -124,7 +124,7 @@ Có một số tính năng cần lưu ý:
 ##### 2.5. Step 4: Scope of Ethernet Addresses
 Mỗi khung Ethernet mang một địa chỉ nguồn và đích. Một trong những địa chỉ này là địa chỉ PC của bạn. Nó là nguồn cho các khung được gửi, và đích đến cho các khung nhận được. Nhưng địa chỉ khác là gì? Giả sử bạn PING một máy chủ Internet từ xa, nó không thể là địa chỉ Ethernet của máy chủ từ xa bởi vì một khung Ethernet chỉ được gửi đến để đi trong một mạng LAN. Thay vào đó, nó sẽ là địa chỉ Ethernet của router hoặc default gateway, chẳng hạn như AP của bạn trong trường hợp của 802.11. Đây là thiết bị kết nối mạng LAN của bạn với phần còn lại của Internet. Ngược lại, các địa chỉ IP trong khối IP trong mỗi gói tin cho biết các điểm cuối nguồn và đích tổng thể. Đó là máy tính của bạn và máy chủ từ xa.
 
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/image/Ethernet/1.png"></p>
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Ethernet/1.png"></p>
 
 - 1. Mở Wireshark và bắt đầu bắt mới. Bạn có thể muốn xóa bộ lọc hiện tại hoặc chỉ cần đóng và khởi động lại Wireshark để đảm bảo bắt lại.
 - 2. Trong hộp bộ lọc, gõ ip.src sau đây == youripaddress ví dụ: Ip.src == 193.61.191.71 (Lưu ý .... Bạn có thể xem địa chỉ IP của bạn bằng cách chạy cmd 
@@ -134,9 +134,9 @@ Mỗi khung Ethernet mang một địa chỉ nguồn và đích. Một trong nh�
 - 5. Gõ ping youripaddress ví dụ: Ping 193.61.191.71
 - 6. Trở lại Wireshark và dừng chụp bằng cách chọn dừng trong trình đơn Capture hoặc biểu tượng dừng chụp bên dưới nhãn của trình đơn chính
 
-	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/image/Ethernet/2.png"></p>
-    <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/image/Ethernet/3.png"></p>
-    <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/image/Ethernet/4.png"></p>
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Ethernet/2.png"></p>
+    <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Ethernet/3.png"></p>
+    <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Ethernet/4.png"></p>
 
 Có một số tính năng cần lưu ý:
 - Địa chỉ Ethernet và địa chỉ IP sẽ thay đổi cho truy tìm của bạn vì có nhiều máy tính khác nhau tham gia, nhưng chúng sẽ có cùng một dạng, ví dụ: 6 byte theo định dạng thập lục phân hoặc 4 byte "dotted".
@@ -148,16 +148,16 @@ Có một số tính năng cần lưu ý:
 
 - 1. Việc truy tìm của bạn thu thập được ở trên lưu lượng truy cập Ethernet unicast được gửi giữa một nguồn  và đích đến cụ thể, ví dụ: máy tính của bạn với bộ định tuyến. Cũng có thể gửi lưu lượng Ethernet multicast hoặc broadcast, tương ứng cho một nhóm máy tính hoặc tất cả các máy tính trên mạng Ethernet. Chúng ta có thể nói địa chỉ đó là unicast, multicast, hay broadcast. Broadcast traffic được gửi đến một địa chỉ Ethernet dành riêng có tất cả các bit bằng "1". Lưu lượng multicast được gửi đến các địa chỉ có bit đầu tiên bằng "1"  được gửi trên dây; broadcast là một trường hợp đặc biệt của multicast. Lưu lượng Broadcast và multicast được sử dụng rộng rãi cho các giao thức discovery, ví dụ: một gói tin được gửi tới tất cả mọi người trong nỗ lực tìm kiếm máy in cục bộ.- 1. Bắt đầu chụp cho khung Ethernet phát và multicast với một bộ lọc **"ether multicast"**. Bạn thực hiện việc này bằng cách chọn Capture trong menu chính và sau đó chọn Options. Không được nhầm lẫn với hộp lọc trên trang chụp trực tiếp sẽ không chấp nhận biểu thức lọc ở trên.
 
-	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/image/Ethernet/5.png"></p>
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Ethernet/5.png"></p>
 
 - 2. Chờ đến 30 giây để ghi lại lưu lượng truy cập nền và sau đó dừng chụp. Nếu bạn không bắt được bất kỳ gói nào với bộ lọc này thì hãy sử dụng dấu vết chúng tôi cung cấp 
 	*Trên hầu hết các Ethernets, có một cuộc trò chuyện thẳng thắn về lưu lượng truy cập nền khi các máy tính trao đổi thông điệp để duy trì trạng thái mạng, đó là lý do tại sao chúng tôi cố gắng nắm bắt lưu lượng truy cập mà không chạy bất kỳ chương trình nào khác. Bộ lọc chụp của **"ether multicast"** sẽ nắm bắt cả hai khung multicast và broadcast Ethernet, nhưng không phải là các khung unicast thường xuyên. Bạn có thể phải đợi một lúc để bắt các gói tin, nhưng trên hầu hết các mạng LAN có nhiều máy tính bạn sẽ thấy ít nhất một gói tin mỗi vài giây
 
-		<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/image/Ethernet/6.png"></p>
+		<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Ethernet/6.png"></p>
 
 - 3. Kiểm tra các gói tin multicast và broadcast mà bạn đã capture, xem xét các chi tiết của địa chỉ nguồn và đích. Hầu hết người ta có địa chỉ Ethernet broadcast, vì các Broadcast frame có xu hướng phổ biến hơn các Multicast frame. nhìn broadcast frame để xem địa chỉ nào được sử dụng để broadcast bằng Ethernet. Mở rộng các trường địa chỉ Ethernet broadcast hoặc multicast frames để xem bit nào được đặt để phân biệt lưu broadcast/multicast hoặc nhóm từ lưu lượng truy cập Unicast. Màn hình của bạn có thể trông như thế này.
 
-	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/image/Ethernet/7.png"></p>
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Ethernet/7.png"></p>
 
 **NOTE**: Trước khi tiếp tục, bạn nên xóa các bộ lọc chụp của **"ether multicast"** bằng cách chọn Stop từ Capture và sau đó  trên Capture menu, chọn options và delete the terms trong hộp lọc.
 
@@ -176,7 +176,7 @@ Http://scisweb.ulster.ac.uk/~kevin/com320/labs/wireshark/trace-ethernet.pcap
 Bạn có thể mở lại tệp truy tìm này từ vị trí bạn đã tải xuống ví dụ: ví dụ: Local Disk (C):\downloads hoặc chọn *File menu* and *Open Recent*. Các tập tin tìm thấy được liệt kê ở đó.
 Có một IEEE 802.3 frame trong các dấu vết cung cấp. Để tìm các gói tin IEEE 802.3, hãy nhập một bộ lọc hiển thị (phía trên bảng trên cùng của cửa sổ Wireshark) của "llc" (chữ thường là "LLC") vì định dạng IEEE 802.3 có giao thức LLC trên đó (và không làm được hãy nhấp vào Apply) để áp dụng bộ lọc. LLC cũng hiện diện trên wireless IEEE 802.11, nhưng nó không có trên DIX Ethernet. Bây giờ bạn sẽ thấy ba gói như trong hình bên dưới.
 
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/image/Ethernet/9.png"></p>
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Ethernet/9.png"></p>
 
 **Hãy xem các chi tiết của khung IEEE 802.3, bao gồm tiêu đề LLC chẳng hạn như 20 trong dấu vết được cung cấp.**
 - Hình này cho thấy các chi tiết cho dấu vết của chúng tôi. Quan sát trường Type hiện nay là trường Length. Trong ví dụ của chúng tôi, khung này đủ ngắn để còn có thêm số không được xác định là một đoạn Trailer hoặc Padding.
