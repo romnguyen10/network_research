@@ -4,7 +4,7 @@
 >
 > Thực hiện: **Nguyễn Tấn Phát**
 > 
-> Cập nhật lần cuối: **19/03/2017**
+> Cập nhật lần cuối: **20/03/2017**
 
 ### Mục lục
 [I. Ethernet](#I)
@@ -165,7 +165,7 @@ Có một số tính năng cần lưu ý:
 	- A. Địa chỉ Ethernet phát sóng, được viết bằng dạng chuẩn như Wireshark hiển thị nó?
 	- B. Bit của địa chỉ Ethernet được sử dụng để xác định xem nó là unicast hoặc multicast / phát sóng?
 
-**Trả lời**:
+	 **Trả lời**:
 	- 1. Địa chỉ broadcast là ff: ff: ff: ff: ff: ff. Đây là 48 bit "tất cả 1" được viết bằng dạng chuẩn.
 	- 2. Chuỗi broadcast/multicast hoặc "group" được Wireshark hiển thị là **".... ...1 .... .... .... ...."** hoặc low-order Bit của byte địa chỉ đầu tiên. Chúng tôi cũng có thể viết như thế này 01: 00: 00: 00: 00: 00. Bit này thực sự là bit đầu tiên được truyền trên dây bởi vì Ethernet xác định thứ tự truyền là bit quan trọng nhất của mỗi byte đầu tiên.
 
@@ -193,8 +193,94 @@ Có một IEEE 802.3 frame trong các dấu vết cung cấp. Để tìm các g�
 <a name="II"></a>
 ### II. Netstat
 
+ Lệnh netstat có sẵn trong Command Prompt trong hầu hết các phiên bản của Windows bao gồm Windows 8, Windows 7, Windows Vista, Windows XP, Windows Server và một số phiên bản Windows cũ.
+ Netstat cho phép bạn hiển thị số liệu thống kê về giao diện Ethernet. Nếu có bất kỳ lỗi nào được chỉ ra trong màn hình, có thể bạn gặp sự cố với kết nối mạng đang làm chậm mạng của bạn xuống. Nếu các gói tin lỗi tiếp cận 1% tổng số các gói dữ liệu, cái gì đó có thể là sai với NIC hoặc giao diện physical của bạn.
+- 1. Trong **command promt** hoặc **DOS prompt**
+- 2. Nhập `netstat` để liệt kê tất cả các kết nối mạng hiện tại, không chỉ trong nước mà còn gửi ra nước ngoài.
+- 3. Bạn sẽ thấy một danh sách các kết nối được liệt kê. Có ích cho việc tìm kiếm các cuộc tấn công trực tiếp.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/1.png"></p>
+
+- 4. Nhập `netstat -?` Để xem các tùy chọn với lệnh này. Bạn sẽ thấy `-a`, `-e` và những lệnh khác.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/2.png"></p>
+
+- 5. Bây giờ gõ `netstat -a`
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/3.png"></p>
+
+- 6. Nhập `netstat -e`. Các thống kê này bao gồm số byte và gói tin nhận được và được gửi qua giao diện Ethernet.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/4.png"></p>
+
+- 7. Nhập netstat -f. Thống kê này hiển thị cho tất cả các kết nối hoạt động.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/5.png"></p>
+
+- 8. Để xem số liệu thống kê cho tất cả các giao thức, gõ `netstat -s` và nhấn `Enter`.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/6.png"></p>
+
+- 9. Để giới hạn hiển thị chỉ các thống kê IP, gõ `netstat -ps` IP và nhấn `Enter`.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/7.png"></p>
+
+- 10. Để xem thống kê mạng đang hoạt động cập nhật 5 giây một lần, gõ `netstat -e -t 5` và nhấn `Enter`. Nhấn `Ctrl + C` để dừng chương trình.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/8.png"></p>
+
+- 11. Gõ `netstat -o`. Điều này cho thấy các kết nối TCP hoạt động, nhưng nó cũng hiển thị mã nhận dạng quá trình tương ứng [-o] cho mỗi kết nối để bạn có thể xác định chương trình nào trên máy tính của bạn đã khởi tạo.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/9.png"></p>
+
+- 12. Chú ý đến cột PID. Trong một số trường hợp, PID đều giống nhau, có nghĩa là cùng một chương trình trên máy tính của bạn đã mở các kết nối này. Tuy nhiên, để xác định chương trình nào được đại diện bởi PID của năm 2948 trên máy tính của bạn, tất cả những gì bạn phải làm là mở Task Manager, nhấp vào tab Processes và lưu ý tên hình ảnh được liệt kê bên cạnh PID bạn đang tìm kiếm trong Cột PID. Hãy tiếp tục và thử điều này .... Ngoài ra, hãy lưu ý rằng việc sử dụng lệnh netstat với tùy chọn -o có thể rất hữu ích khi theo dõi chương trình nào đang sử dụng phần lớn băng thông của bạn. Nó cũng có thể giúp xác định vị trí nơi mà một số loại phần mềm độc hại, hoặc thậm chí một phần mềm hợp pháp khác, có thể gửi thông tin mà không có sự cho phép của bạn.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/10.png"></p>
+
+Lưu ý: Mặc dù ví dụ này và ví dụ trước đây đã được chạy trên cùng một máy tính và chỉ trong vòng một phút của nhau, bạn có thể thấy rằng danh sách các kết nối TCP hoạt động khác biệt đáng kể. Điều này là bởi vì máy tính của bạn liên tục kết nối và ngắt kết nối, các thiết bị khác trong mạng của bạn và qua Internet.
+
+- 13. Để hiển thị thông tin **ICMP**, gõ `netstat -ps ICMP` và nhấn `Enter`. Một loạt các loại tin nhắn ICMP được hiển thị cùng với số lượng mỗi loại tin nhắn đã được nhận và gửi đi. Hầu hết, nếu không phải tất cả, sẽ là Echo và Echo Reply messages.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/11.png"></p>
+
+- 14. Yêu cầu một sinh viên làm với địa chỉ IP của họ. Sau đó sử dụng ví dụ đó Nhập `ping 193.61.191.71` và nhấn `Enter`. Lệnh này sẽ tạo ra các tin nhắn `ICMP Destination Unreachable`.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/12.png"></p>
+
+- 15. Để xem liệu số lượng các thông báo Destination Unreachable đã tăng lên, gõ netstat -ps ICMP và nhấn Enter. Thông báo ICMP TTL-Expired được sử dụng trong Tracert được gọi là Thông báo Thời gian Đã Xóa trong Netstat.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/13.png"></p>
+
+- 16. Gõ `tracert www.ulster.ac.uk` và nhấn `Enter`.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/14.png"></p>
+
+- 17. Để xem liệu số lượng thông báo Time Exceeded đã tăng lên, gõ `netstat -ps ICMP` và nhấn `Enter`.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/15.png"></p>
+
+- 18. Để hiển thị bảng định tuyến của máy tính, gõ `netstat -r` và nhấn `Enter`. Mỗi máy tính đều có một bảng định tuyến mà nó sử dụng để quyết định giao diện nào để gửi các gói tin đến. Mục nhập đầu tiên liệt kê đích mạng là 0.0.0.0, đây là mục nhập cho cổng mặc định của bạn.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/16.png"></p>
+
+- 19. Cuối cùng, gõ `netstat -s -p tcp -f`. Ở đây chúng ta muốn xem số liệu thống kê cụ thể của giao thức **[-s]** nhưng không phải tất cả chúng, chỉ số thống kê TCP **[-p tcp]**. Chúng tôi cũng muốn các địa chỉ nước ngoài được hiển thị ở định dạng FQDN **[-f]**. kéo lên trn6 trong cửa sổ lệnh để xem các thống kê TCP được hiển thị trước khi tạo danh sách kết nối đang hoạt động.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netstat/17.png"></p>
+
 <a name="III"></a>
 ### III. NetInfo
+Sử dụng Netinfo để Thu thập Thông tin Máy tính và Mạng:
+ping 1 đống gói là chính xác những gì có thể tả nó. Một chương trình gửi một số lượng lớn các gói tin ping đến một máy chủ. nó làm cho các máy chủ phải trả lời, có liên quan đến chu kỳ CPU và băng thông. Một biến thể là tấn công smurf, trong đó ping được gửi đến một địa chỉ broadcast. Tất cả yêu cầu chứa địa chỉ nguồn giả mạo của máy chủ được smurf. Khi các máy tính trả lời ping broadcast, họ gửi trả lời cho máy chủ có địa chỉ giả mạo. Máy chủ sẽ bị lũ lụt ping, làm chậm hoặc thậm chí đóng băng trong khi xử lý tất cả các gói dữ liệu.Distributed denial-of-service (DDoS) sử dụng nhiều hệ thống để tấn công một tài nguyên mạng đơn lẻ. Thường thì các hệ thống tấn công không biết họ đang tham gia vì phần mềm tấn công được cài đặt như là phần mềm độc hại và thiết lập để kích hoạt vào một ngày và thời gian nhất định.
+Trong dự án này, bạn tải về và cài đặt một phiên bản đánh giá của Netlnfo. NetInfo là một bộ sưu tập của 15 công cụ mạng state-of-the-art khác nhau trên một giao diện duy nhất, dễ sử dụng. Tệp tải xuống là một tệp cài đặt Microsoft (.msi) cần phải được trích xuất để chạy nó.
+- 1. mở trình duyệt Web và [dowload](http://scisweb.ulster.ac.uk/~kevin/com320/labs/netinfo.msi) netinfo.msi
+- 2. Làm theo hướng dẫn để tải về và cài đặt Netlnfo.
+- 3. Yêu cầu một trong những bạn cùng lớp của bạn cho địa chỉ IP của họ, ví dụ: 193.61.191.72
+- 4. Gõ `ping "computername"` (thay thế computername bằng tên của máy tính bạn chọn ví dụ 193.61.191.72) và nhấn `Enter`.
+- 5. Để bắt đầu `Netlnfo`, nhấp đúp vào phím tắt trên màn hình `Netlnfo` hoặc nhấp vào `Start`, trỏ đến `All Programs`, trỏ đến `Netlnfo`, và nhấn `Netlnfo`. Nhấp vào `No` trong hộp thông báo cho biết bạn có thể thử Netlnfo trong 30 ngày, sau đó nhấp vào `I agree`. Nếu hộp thoại Mẹo của Ngày xuất hiện, bấm để bỏ chọn hộp kiểm Show tips at startup, sau đó kích `Close`.
+- 6. Nhấp vào tab Services. Trong hộp văn bản Máy chủ lưu trữ, nhập địa chỉ IP của máy tính bạn bè bạn bè và nhấp vào Xác minh. (Nếu bạn đang làm dự án này cho mình, bạn có thể gõ 127.0.0.1 trong hộp văn bản Host để quét máy tính của riêng bạn).
+- 7. Màn hình của bạn trông như sau.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netinfo/1.png"></p>
+
+- 8. Tìm các cổng hiển thị trạng thái Open. Các cổng mở đại diện cho các dịch vụ mạng mà máy tính cung cấp nhưng cũng có thể biểu thị các lỗ hổng mà kẻ tấn công có thể khai thác. Viết tên và số của các cổng này: 135 139 443 445
+- 9. Xóa đầu ra từ lệnh cuối cùng bằng cách kích chuột phải vào `Netlnfo`, trỏ vào `Clear`, và nhấn `All`.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netinfo/2.png"></p>
+
+- 10. Tiếp theo, bạn sẽ quét một phạm vi nếu địa chỉ IP để xem máy tính nào có sẵn trên mạng. Bạn thực hiện việc này bằng cách nhấp vào tab máy quét.
+- 11. Trong hộp văn bản Địa chỉ, nhập ba octet đầu tiên của địa chỉ IP mà bạn đã sử dụng trước đó theo sau là 0 cho octet cuối. Ví dụ: nếu địa chỉ bạn sử dụng là 193.61.191.71, gõ 193.61.191.0. Cài đặt này quét tất cả các địa chỉ từ 193.61.191.0 đến 193.61.191.255.
+- 12. Màn hình của bạn trông như sau.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netinfo/3.png"></p>
+
+- 13. Nhấp vào Start. Viết ra tên và địa chỉ của ba máy tính đầu tiên mà Netlnfo đã chỉ ra trạng thái "Host is alive." (Bạn có thể sắp xếp kết quả bằng cách nhấp vào Status column.)
+- 14. Trong cột Name, nhấn chuột phải vào một trong các máy tính, trỏ đến Send To, và nhấn Services. Trong tab Services, hãy nhấp vào Verify để xem danh sách các dịch vụ mà máy tính này cung cấp.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netinfo/4.png"></p>
+
+- 15. Màn hình của bạn trông giống như sau.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week02/Lab/Image/Netinfo/5.png"></p>
+
+- 16. Bây giờ hãy thử trở lại danh sách các máy chủ trước đó đang hoạt động và thử 'sent to' với các dịch vụ khác.
 
 <a name="IV"></a>
 ### IV. Tài liệu dịch
