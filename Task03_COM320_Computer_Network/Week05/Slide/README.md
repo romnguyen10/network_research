@@ -4,7 +4,7 @@
 >
 > Thực hiện: **Nguyễn Tấn Phát**
 > 
-> Cập nhật lần cuối: **26/04/2017**
+> Cập nhật lần cuối: **30/04/2017**
 
 ### Mục lục
 
@@ -55,7 +55,23 @@
 
 - [5. Internetworking](#5)
 
+	- [5.1. How Networks Differ](#5.1)
+	- [5.2. How Networks Can Be Connected](#5.2)
+	- [5.3. Tunneling](#5.3)
+	- [5.4. Packet Fragmentation](#5.4)
+
 - [6. Network Layer of the Internet](#6)
+
+	- [6.1. IP Version 4 Protocol](#6.1)
+	- [6.2. IP Addresses](#6.2)
+	- [6.3. IP Version 6](#6.3)
+	- [6.4. Internet Control Protocols](#6.4)
+	- [6.5. Label Switching and MPLS](#6.5)
+	- [6.6. OSPF— Interior Routing Protocol](#6.6)
+	- [6.7. BGP— Exterior Routing Protocol](#6.7) 
+	- [6.8. Internet Multicasting](#6.8)
+	- [6.9. Mobile IP](#6.9)
+	- [6.10. Mobile IP Recap](#6.10)
 
 [II. Tài liệu dịch](#II)
 
@@ -172,7 +188,7 @@ Network và năm bước đầu tiên trong việc tính các con đường ng�
 <a name="2.5"></a>
 ###### 2.5 Distance Vector Routing 
 
-**Distance vector ** là một thuật toán định tuyến phân tán
+**Distance vector** là một thuật toán định tuyến phân tán
 - Tính toán đường đi ngắn nhất được phân chia qua các nút
 
 **Thuật toán**:
@@ -264,19 +280,25 @@ Cấu trúc liên kết mạng thay đổi khi các nút không dây di chuyển
 ###### 2.15. First Class Test 
 
 1. Định nghĩa chính xác nhất của wget là ....
+ 
 **A. Wget là một chương trình dòng lệnh cho phép bạn tìm nạp một URL.**
+
 B. Wget là một chương trình để hiển thị địa chỉ IP của bạn.
+
 C. Wget là một giao thức http an toàn cho ngân hàng trực tuyến
+
 D. Tất cả những điều trên.
 
 2. Distributed denial-of-service (DDoS) attacks là nơi mà một máy tính rogue tấn công một tài nguyên mạng duy nhất (về cơ bản đưa nó đến đầu gối của nó với một loạt các gói tin).
 
 a. True
+
 **b. False**
 
 3. Một gói sniffer là thụ động. Nó quan sát các tin nhắn đang được gửi và nhận được bởi các ứng dụng và các giao thức chạy trên máy tính của bạn, nhưng không bao giờ gửi các gói tin chính nó.
 
 **a. True**
+
 b. False
 
 
@@ -286,7 +308,7 @@ Handling congestion  là trách nhiệm của các lớp network và Transport l
 - Chúng ta nhìn vào phần Network ở đây
 	- Traffic-aware routing
 	- Admission control
-	- Traffic throttling
+	- Traffic throttlinga
 	- Load shedding
 
 Congestion results khi có quá nhiều giao thông được cung cấp; Hiệu suất làm giảm do loss/retransmissions
@@ -348,29 +370,302 @@ Link-by-link (bên phải) tạo ra sự cứu trợ nhanh chóng
 <a name="4.1"></a>
 ##### 4.1 Application requirements
 
+Các ứng dụng khác nhau quan tâm đến các thuộc tính khác nhau
+- Chúng tôi muốn tất cả các ứng dụng có được những gì họ cần:
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/30.png"></p>
+
+Mạng cung cấp dịch vụ với các loại QoS (Quality of Service) khác nhau để đáp ứng yêu cầu ứng dụng
+
+| Network Service  | Application | 
+| :-------: | :----: | 
+| các bit cố định | Telephony |  
+| tốc độ bit biến đổi theo tg thực   | chương trình truyền hình  |  
+| tốc độ bit không biến đổi theo tg thực    | Truyền hình trực tuyến phim   |
+| Tốc độ bit khả dụng | chuyển tập tin |
+
+Ví dụ về các loại QoS từ mạng lưới ATM
+
 <a name="4.2"></a>
 ##### 4.2. Traffic shaping
+
+Traffic shaping điều chỉnh tốc độ trung bình và sự bùng nổ của dữ liệu vào mạng
+- Cho phép chúng tôi đảm bảo
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/31.png"></p>
+
+Chuôi Token/Leaky giới hạn cả tốc độ trung bình (R) và ngắn (B) của lưu lượng truy cập
+- Đối với token, kích thước thùng là B, nước đi vào tốc độ R và được lấy đi để gửi; Đối diện với sự rò rỉ.
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/32.png"></p>
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/33.png"></p>
+Kích thước xô nhỏ hơn làm chậm trễ lưu lượng truy cập và giảm bớt sự xáo trộn
 
 <a name="4.3"></a>
 ##### 4.3. Packet scheduling
 
+Packet scheduling chia các tài nguyên router/link giữa lưu lượng giao thông với các lựa chọn thay thế cho FIFO (First In First Out)
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/34.png"></p>
+
+Fair Queuing xấp xỉ mức độ công bằng bit với các kích thước gói tin khác nhau; Trọng lượng thay đổi mức mục tiêu
+- Kết quả là WFQ (Weighted Fair Queuing)
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/35.png"></p>
+
 <a name="4.4"></a>
 ##### 4.4. Admission control
+
+Admission control có đặc điểm lưu lượng lưu lượng truy cập và quyết định liệu mạng có thể mang nó
+- Thiết lập  kế hoạch gói tin để đáp ứng QoS
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/36.png"></p>
+
+Xây dựng để đảm bảo băng thông B và sự chậm trễ D:
+- Định dạnglưu lượng nguồn truy cập vào xô token (R, B)
+- Chạy WFQ có trọng lượng W / tất cả trọng lượng> R / capacity
+- Giữ cho tất cả các lưu lượng truy cập, tất cả các cấu trúc liên kết
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/37.png"></p>
 
 <a name="4.5"></a>
 ##### 4.5. Integrated services
 
+Design với QoS cho mỗi luồng; Xử lý lưu lượng multicast.
+
+Nhập học với RSVP (Resource ReSerVation Protocol):
+- Người nhận gửi yêu cầu trở lại người gửi
+- Mỗi router định tuyến các nguồn
+- Bộ định tuyến kết hợp nhiều yêu cầu cho cùng một luồng
+- Toàn bộ đường dẫn đã được thiết lập hoặc không thiết lập
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/38.png"></p>
+
 <a name="4.6"></a>
 ##### 4.6. Differentiated services
 
+Thiết kế với các lớp học của QoS; Khách hàng mua những gì họ muốn
+- Lớp học cấp tốc được gửi đến lớp thường xuyên
+- lưu thông nhanh ít  hơn nhưng chất lượng tốt hơn cho các ứng dụng
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/39.png"></p>
+
+Thực hiện DiffServ:
+- Khách hàng đánh dấu lớp học mong muốn trên gói
+- ISP hình thành duong đi để đảm bảo đánh dấu được thanh toán
+- Các router sử dụng WFQ để cung cấp các mức dịch vụ khác nhau
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/40.png"></p>
 
 <a name="5"></a>
 ##### 5. Internetworking
 
+<a name="5.1"></a>
+##### 5.1. How Networks Differ
+
+Sự khác biệt có thể lớn; Làm phức tạp mạng internetworking
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/41.png"></p>
+
+<a name="5.2"></a>
+##### 5.2. How Networks Can Be Connected
+
+Internetworking dựa trên một lớp mạng chung - IP
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/42.png"></p>
+
+<a name="5.3"></a>
+##### 5.3. Tunneling
+
+Kết nối hai mạng thông qua một mạng giữa
+- Các gói được gói gọn ở giữa
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/43.png"></p>
+
+Tunneling tương tự:
+Đường hầm là một liên kết; Gói tin chỉ có thể vào / thoát ra ở cuối
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/44.png"></p>
+
+<a name="5.4"></a>
+##### 5.4. Packet Fragmentation 
+
+Mạng có giới hạn kích thước gói tin khác nhau vì nhiều lý do
+- Các gói tin lớn được gửi đi với sự phân mảnh & reassembly
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/45.png"></p>
+
+Ví dụ về phân mảnh kiểu IP:
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/46.png"></p>
+
+Path MTU Discovery tránh sự phân mảnh mạng
+- Router trả lại MTU (Max Transmission Unit) tới nguồn và loại bỏ các gói tin lớn
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/47.png"></p>
 
 <a name="6"></a>
 ##### 6. Network Layer of the Internet
 
+IP đã được định hình theo các nguyên tắc hướng dẫn:
+- Đảm bảo hoạt động
+- Giữ nó đơn giản
+- Lựa chọn rõ ràng
+- Khai thác mô đun
+-  Các mong muốn không đồng nhất
+- Tránh các tùy chọn và tham số tĩnh
+- Tìm kiếm thiết kế tốt (không hoàn hảo)
+- Gửi và tiếp nhận khoan dung
+- khả năng mở rộng
+- Xem xét hiệu suất và chi phí
+
+Internet là một bộ sưu tập kết nối của nhiều mạng được tổ chức cùng nhau bởi giao thức IP
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/48.png"></p>
+
+<a name="6.1"></a>
+##### 6.1. IP Version 4 Protocol 
+
+IPv4 (Internet Protocol) header được thực hiện trên tất cả các gói và có các trường cho các phần chính của giao thức:
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/49.png"></p>
+
+<a name="6.2"></a>
+##### 6.2. IP Addresses 
+
+**Prefixes**:
+
+Địa chỉ được phân bổ trong các khối được gọi làPrefix
+- Prefix được xác định bởi phần mạng
+- Có địa chỉ 2L nằm trên ranh giới 2L
+- Địa chỉ / chiều dài của văn bản, ví dụ: 18.0.31.0/24
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/50.png"></p>
+
+**Subnets**:
+
+Subnetting chia tách tiền tố IP để giúp quản lý
+- Hình như một tiền tố duy nhất bên ngoài mạng
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/51.png"></p>
+
+**Aggregation**:
+
+Tập hợp kết hợp nhiều tiền tố IP vào một tiền tố lớn duy nhất để giảm kích thước bảng định tuyến
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/52.png"></p>
+
+**Longest Matching Prefix**:
+
+Các gói tin được chuyển tiếp tới mục nhập với longest matching prefix hoặc khối địa chỉ nhỏ nhất
+- Soạn thảo chuyển tiếp nhưng thêm tính linh hoạt
+c
+**Classful Addresing**:
+
+Địa chỉ cũ có các khối có kích thước cố định (A, B, C)
+- Có kích thước như một phần của địa chỉ, nhưng thiếu linh hoạt
+- Được gọi là địa chỉ xếp hạng (so với không có lớp)
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/53.png"></p>
+
+**NAT**:
+
+NAT (Network Address Translation) ánh xạ một địa chỉ IP bên ngoài với nhiều địa chỉ IP nội bộ
+- Sử dụng cổng TCP / UDP để chia sẻ các kết nối
+- Vi phạm lớp; Rất phổ biến ở nhà, vv
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/54.png"></p>
+
+<a name="6.3"></a>
+##### 6.3. IP Version 6
+
+Nâng cấp lớn trong những năm 1990 do kiệt sức địa chỉ gần đây, với nhiều mục đích khác:
+- Hỗ trợ hàng tỷ máy chủ
+- Giảm kích thước bảng định tuyến
+- Đơn giản hóa giao thức
+- An ninh tốt hơn
+- Chú ý đến loại dịch vụ
+- Viện trợ đa nhiệm
+- Roaming host mà không thay đổi địa chỉ
+- Cho phép tiến hóa trong tương lai
+- Cho phép sự tồn tại của các giao thức cũ, mới,...
+
+Triển khai đã chậm và khó khăn, nhưng có thể tăng tốc ngay bây giờ mà các địa chỉ là tất cả nhưng mệt mỏi
+
+IPv6 protocol header có nhiều địa chỉ dài hơn (128 so với 32 bit) và đơn giản hơn (bằng cách sử dụng tiêu đề mở rộng)
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/55.png"></p>
+
+Tiêu đề mở rộng IPv6 xử lý các chức năng khác
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/56.png"></p>
+
+
+<a name="6.4"></a>
+##### 6.4. Internet Control Protocols 
+
+
+IP hoạt động với sự trợ giúp của một số giao thức điều khiển:
+- ICMP là người bạn đồng hành với IP trả về thông tin lỗi
+	- Bắt buộc và được sử dụng theo nhiều cách, ví dụ: đối với traceroute
+- ARP tìm địa chỉ Ethernet của địa chỉ IP cục bộ
+	- Glue là cần thiết để gửi bất kỳ gói tin IP
+	- Máy chủ lưu trữ truy vấn một địa chỉ và chủ sở hữu trả lời
+- DHCP gán một địa chỉ IP cục bộ cho máy chủ lưu trữ
+	- Bắt đầu máy chủ bắt đầu bằng cách tự động cấu hình nó
+	- Máy chủ gửi yêu cầu tới máy chủ, cho phép thuê
+
+Các loại  ICMP (Internet Control Message Protocol) chính
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/57.png"></p>
+ARP (Address Resolution Protocol) cho phép các nút tìm địa chỉ đích của địa chỉ Ethernet [màu hồng] từ địa chỉ IP của chúng
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/58.png"></p>
+
+<a name="6.5"></a>
+##### 6.5. Label Switching and MPLS  
+
+MPLS (Multi-Protocol Label Switching) gửi gói dữ liệu theo các đường dẫn đã được thiết lập; ISP có thể sử dụng cho QoS
+- Đường dẫn được chỉ ra với nhãn bên dưới lớp IP
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/59.png"></p>
+
+Nhãn được thêm vào dựa trên địa chỉ IP khi nhập mạng MPLS (ví dụ: ISP) và đã xoá khi rời khỏi mạng
+- Chuyển tiếp chỉ sử dụng nhãn bên trong mạng MPLS
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/60.png"></p>
+
+<a name="6.6"></a>
+##### 6.6. OSPF— Interior Routing Protocol 
+
+OSPF tính các tuyến đường cho một mạng đơn (ví dụ, ISP)
+- Mô hình mạng như một đồ thị của các cạnh mạng
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/61.png"></p>
+
+OSPF chia một mạng lớn (Hệ thống Tự trị) thành các khu vực kết nối với một khu vực xương sống
+- Giúp quy mô; Tóm tắt đi qua biên giới khu vực
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/62.png"></p>
+
+OSPF (Open Shortest Path First) là định tuyến trạng thái liên kết:
+- Sử dụng các thông báo dưới đây để liên kết mô hình flood đáng tin cậy
+- Sau đó chạy Dijkstra để tính toán các tuyến đường
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/63.png"></p>
+
+<a name="6.7"></a>
+##### 6.7. BGP— Exterior Routing Protocol 
+
+BGP (Border Gateway Protocol) tính toán các tuyến đường thông qua các mạng lưới tự trị kết nối.
+- Vai trò chính là tôn trọng những ràng buộc chính sách của mạng lưới
+- ví dụ Các ràng buộc chính sách :
+	- Không có lưu lượng truy cập thương mại cho mạng lưới giáo dục
+	- Không bao giờ đặt Iraq trên tuyến đường bắt đầu từ Lầu Năm Góc
+	- Chọn mạng rẻ hơn
+	- Chọn mạng hoạt động tốt hơn
+	- Không đi từ Apple đến Google với Apple
+
+Sự khác biệt chính sách chung là chuyển đổi sang so sánh:
+- Quá cảnh vận chuyển có trả tiền; peers vì lợi ích chung
+- AS1 mang AS2↔AS4 (Transit) nhưng không AS3 (Peer)
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/64.png"></p>
+
+<a name="6.8"></a>
+##### 6.8. Internet Multicasting 
+
+Các nhóm có dải địa chỉ IP dành riêng (class D)
+- Thành viên trong một nhóm do IGMP quản lý (Internet Group Management Protocol) chạy trên các bộ định tuyến
+Các tuyến được tính bằng các giao thức như PIM:
+- Chế độ Dense sử dụng RPF với pruning
+- Chế độ core-based sử dụng các cây dựa trên lõi
+IP multicasting không được sử dụng rộng rãi ngoại trừ trong một mạng duy nhất, ví dụ: trung tâm dữ liệu, mạng truyền hình cáp.
+
+<a name="6.9"></a>
+##### 6.9. Mobile IP
+
+Máy chủ di động có thể được truy cập tại IP cố định thông qua một đại lý tại nhà
+- Các gói tin nhà khai thác đường hầm để tiếp cận với máy chủ di động; Trả lời có thể tối ưu hóa đường dẫn cho các gói tiếp theo
+- Không có thay đổi đối với bộ định tuyến hoặc máy chủ cố định
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/65.png"></p>
+
+<a name="6.10"></a>
+##### 6.10. Mobile IP Recap 
+
+Máy chủ lưu trữ di động khác với máy chủ lưu trữ không di chuyển.
+
+Ý tưởng cơ bản được sử dụng cho định tuyến di động trong mạng Internet và mạng di động là cho máy chủ lưu trữ di động nói với một máy chủ ở vị trí chính nơi ở hiện tại.
+
+Máy chủ này hoạt động thay mặt cho máy chủ lưu trữ di động được gọi là home agent.
+	<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Slide/Image/66.png"></p>
 
 <a name="II"></a>
 #### II. Tài liệu dịch:
