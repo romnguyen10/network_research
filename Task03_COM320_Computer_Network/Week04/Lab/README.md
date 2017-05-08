@@ -4,7 +4,7 @@
 >
 > Thực hiện: **Nguyễn Tấn Phát**
 > 
-> Cập nhật lần cuối: **24/04/2017**
+> Cập nhật lần cuối: **08/05/2017**
 
 ### Mục lục
 
@@ -19,6 +19,11 @@
 
 [II .ARPattack](#II)
 
+[III. Tấn công ARP bằng Cain & Abel](#III)
+
+- [1. Giới thiệu](#cain)
+- [2. Demo](#demo)
+
 [III. Tài liệu dịch](#III)
 
 ------------------------------------------------------
@@ -29,14 +34,24 @@
 <a name="1"></a>
 ##### 1. Yêu cầu:
 
-**Wireshark**: sử dụng phẩn mềm để bắt và xem lưu lượng gói tin. Một luu luong gói tin là một bản ghi của lưu lượng truy cập tại một vị trí trên mạng, như là bắt tất cả các bit truyền qua một đường dây cụ thể. lưu lượng gói ghi lại thời gian cho mỗi gói tin, cùng với các bit tạo thành gói, từ các tiêu đề lớp thấp đến các nội dung lớp cao hơn. Wireshark chạy trên hầu hết các hệ điều hành, bao gồm Windows, Mac và Linux. . Nó cung cấp một giao diện đồ hoạ cho thấy chuỗi các gói tin và ý nghĩa của các bit khi được giải thích như các Protocol header và data. . Nó mã hóa màu các gói theo loại của họ, và có nhiều cách khác nhau để lọc và phân tích các gói để cho phép bạn điều tra hoạt động của các giao thức mạng. Wireshark được sử dụng rộng rãi để khắc phục sự cố mạng. Bạn có thể tải nó từ www.wireshark.org nếu nó chưa được cài đặt trên máy tính của bạn. Chúng tôi khuyên bạn nên xem đoạn video ngắn 5 phút "Giới thiệu về Wireshark"  trên trang web. 
+**Wireshark**: sử dụng phẩn mềm để bắt và xem lưu lượng gói tin. Một luu luong gói tin là một bản ghi của lưu lượng truy cập tại một vị trí trên mạng, 
+như là bắt tất cả các bit truyền qua một đường dây cụ thể. lưu lượng gói ghi lại thời gian cho mỗi gói tin, cùng với các bit tạo thành gói, từ các tiêu đề 
+lớp thấp đến các nội dung lớp cao hơn. Wireshark chạy trên hầu hết các hệ điều hành, bao gồm Windows, Mac và Linux. . Nó cung cấp một giao diện đồ hoạ cho 
+thấy chuỗi các gói tin và ý nghĩa của các bit khi được giải thích như các Protocol header và data. . Nó mã hóa màu các gói theo loại của họ, và có nhiều cách
+ khác nhau để lọc và phân tích các gói để cho phép bạn điều tra hoạt động của các giao thức mạng. Wireshark được sử dụng rộng rãi để khắc phục sự cố mạng. 
+ Bạn có thể tải nó từ www.wireshark.org nếu nó chưa được cài đặt trên máy tính của bạn. Chúng tôi khuyên bạn nên xem đoạn video ngắn 5 phút
+  "Giới thiệu về Wireshark"  trên trang web. 
 
-**ARP**: Trong bài lab này sử dụng  dòng lệnh `arp` để kiểm tra và xóa bộ nhớ cache được sử dụng bởi giao thức ARP trên máy tính của bạn. *Arp* được cài đặt như một phần của hệ điều hành trên các máy tính Windows, Linux và Mac, nhưng sử dụng các đối số khác nhau. Yêu cầu cần quyền quản trị viên để xóa bộ nhớ cache.
+**ARP**: Trong bài lab này sử dụng  dòng lệnh `arp` để kiểm tra và xóa bộ nhớ cache được sử dụng bởi giao thức ARP trên máy tính của bạn. *Arp* được 
+cài đặt như một phần của hệ điều hành trên các máy tính Windows, Linux và Mac, nhưng sử dụng các đối số khác nhau. Yêu cầu cần quyền quản trị viên để 
+xóa bộ nhớ cache.
 
-**ifconfig / ipconfig**: Lab này sử dụng dòng lệnh `ipconfig` (Windows) để kiểm tra trạng thái của giao diện mạng máy tính của bạn. **Ipconfig** được cài đặt như một phần của hệ điều hành trên máy tính Windows.
+**ifconfig / ipconfig**: Lab này sử dụng dòng lệnh `ipconfig` (Windows) để kiểm tra trạng thái của giao diện mạng máy tính của bạn. **Ipconfig** được 
+cài đặt như một phần của hệ điều hành trên máy tính Windows.
 
 **route / netstat**: Labnày sử dụngh dòng lệnh `route` hoặc `netstat` để kiểm tra các tuyến đường được sử dụng bởi máy tính của bạn. Một tuyến đườn
-g chính là tuyến đường mặc định (hoặc tuyến đường tới tiền tố 0.0.0.0) sử dụng cổng mặc định để truy cap Internet từ xa. Cả hai "route" và "netstat" đều được cài đặt như một phần của hệ điều hành trên Windows và Mac / Linux, nhưng có nhiều biến thể trên các tham số dòng lệnh phải được sử dụng.
+g chính là tuyến đường mặc định (hoặc tuyến đường tới tiền tố 0.0.0.0) sử dụng cổng mặc định để truy cap Internet từ xa. Cả hai "route" và "netstat"
+ đều được cài đặt như một phần của hệ điều hành trên Windows và Mac / Linux, nhưng có nhiều biến thể trên các tham số dòng lệnh phải được sử dụng.
 
 **Browser**: Lab này sử dụng một trình duyệt web để tìm hoặc lấy các trang như là một khối lượng công việc. Bất kỳ trình duyệt web sẽ làm.
 
@@ -44,22 +59,38 @@ g chính là tuyến đường mặc định (hoặc tuyến đường tới ti�
 <a name="2"></a>
 ##### 2. Network setup:
 
-Chúng tôi muốn quan sát giao thức ARP đang hoạt động. Nhớ lại rằng ARP được sử dụng để tìm địa chỉ Ethernet tương ứng với địa chỉ IP cục bộ mà máy tính của bạn muốn gửi một gói tin. Một ví dụ điển hình về địa chỉ IP local là địa chỉ IP  router hoặc defauld gateway kết nối máy tính của bạn với phần của Internet. Máy tính của bạn lưu trữ các bản dịch này trong bộ nhớ cache ARP để giao thức ARP thỉnh thoảng được sử dụng có thể thực hiện việc dịch. Thiết lập từ quan điểm của máy tính bạn được thể hiện trong ví dụ dưới đây:
+Chúng tôi muốn quan sát giao thức ARP đang hoạt động. Nhớ lại rằng ARP được sử dụng để tìm địa chỉ Ethernet tương ứng với địa chỉ IP cục bộ mà máy tính 
+của bạn muốn gửi một gói tin. Một ví dụ điển hình về địa chỉ IP local là địa chỉ IP  router hoặc defauld gateway kết nối máy tính của bạn với phần của Internet. 
+Máy tính của bạn lưu trữ các bản dịch này trong bộ nhớ cache ARP để giao thức ARP thỉnh thoảng được sử dụng có thể thực hiện việc dịch. Thiết lập từ 
+quan điểm của máy tính bạn được thể hiện trong ví dụ dưới đây:
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/1.png"></p>
 
 <a name="3"></a>
 ##### 3. Step 1: Capture a Trace:
 
-*Tiến hành như sau để bắt một lưu lương của gói tin ARP; Cách khác, bạn có thể sử dụng lưu lượng được cung cấp*. Để bắt được các gói tin ARP, chúng tôi sẽ làm cho máy tính của bạn gửi lưu lượng tới router khi không biết địa chỉ Ethernet của router - máy tính của bạn sẽ sử dụng ARP để phát hiện địa chỉ Ethernet.
+*Tiến hành như sau để bắt một lưu lương của gói tin ARP; Cách khác, bạn có thể sử dụng lưu lượng được cung cấp*. Để bắt được các gói tin ARP, chúng tôi sẽ
+ làm cho máy tính của bạn gửi lưu lượng tới router khi không biết địa chỉ Ethernet của router - máy tính của bạn sẽ sử dụng ARP để phát hiện địa chỉ Ethernet.
 
-- 1. *Tìm địa chỉ Ethernet của giao diện mạng chính của máy tính với lệnh `ifconfig / ipconfig`. Bạn muốn biết địa chỉ này để sau đó phân tích* . Trên Windows, đưa lên một dòng lệnh shell và gõ `ipconfig / all`. Trong số các đầu ra sẽ là một phần cho giao diện chính của máy tính (có thể là một giao diện Ethernet) và địa chỉ Ethernet của nó. Tên gọi chung của giao diện là "eth0", "en0", hoặc "Ethernet adapter". Một ví dụ được hiển thị bên dưới trong hình 2, được chung tôi to đậm.
+- 1. *Tìm địa chỉ Ethernet của giao diện mạng chính của máy tính với lệnh `ifconfig / ipconfig`. Bạn muốn biết địa chỉ này để sau đó phân tích* . 
+Trên Windows, đưa lên một dòng lệnh shell và gõ `ipconfig / all`. Trong số các đầu ra sẽ là một phần cho giao diện chính của máy tính 
+(có thể là một giao diện Ethernet) và địa chỉ Ethernet của nó. Tên gọi chung của giao diện là "eth0", "en0", hoặc "Ethernet adapter".
+ Một ví dụ được hiển thị bên dưới trong hình 2, được chung tôi to đậm.
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image2.png"></p>
 
-- 2. *Tìm địa chỉ IP của router hoặc defauld gateway mà máy tính của bạn sử dụng để tiếp cận với  Internet bằng lệnh `netstat / route`*. Bạn có thể sử dụng lệnh netstat (`netstat -r` trên Windows, Mac và Linux, dùng yêu cầu Ctrl-C để dừng lại). Ngoài ra, bạn có thể sử dụng lệnh route (`route print` trên **Windows**, `route` trên **Linux**, `route -n get default` trên **Mac**). Trong cả hai trường hợp, bạn đang tìm kiếm địa chỉ IP gateway tương ứng với đích đến mặc định hoặc 0.0.0.0. ví dụ được hiển thị trong hình 3 cho netstat, được tô đậm.
+- 2. *Tìm địa chỉ IP của router hoặc defauld gateway mà máy tính của bạn sử dụng để tiếp cận với  Internet bằng lệnh `netstat / route`*. 
+Bạn có thể sử dụng lệnh netstat (`netstat -r` trên Windows, Mac và Linux, dùng yêu cầu Ctrl-C để dừng lại). Ngoài ra, bạn có thể sử dụng lệnh route 
+(`route print` trên **Windows**, `route` trên **Linux**, `route -n get default` trên **Mac**). Trong cả hai trường hợp, bạn đang tìm kiếm địa chỉ 
+IP gateway tương ứng với đích đến mặc định hoặc 0.0.0.0. ví dụ được hiển thị trong hình 3 cho netstat, được tô đậm.
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/3.png"></p>
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/4.png"></p>
 
-- 3. *Khởi động Wireshark và bắt đầu bắt với bộ lọc là "arp"*. Cửa sổ chụp của bạn phải giống với hình chụp bên dưới, trừ điểm nhấn của chúng tôi. Chọn giao diện để bắt như giao diện có dây hoặc không dây chính được sử dụng bởi máy tính của bạn để kết nối với Internet. Nếu không chắc chắn, hãy đoán và xem lại bước này sau nếu việc bắt của bạn không thành công. Bỏ chọn "capture packets in promiscuous mode". Chế độ này hữu ích để bắt được các gói tin gửi đến/đi từ các máy tính khác trên mạng . Chúng tôi chỉ muốn ghi lại gói tin được gửi đến/đi từ máy tính của bạn. Để các tùy chọn khác ở các giá trị mặc định của chúng. capture fitter, nếu nó ton tai, nó được sử dụng để ngăn chặn việc chiếm giữ các lưu lượng truy cập khác mà máy tính của bạn có thể gửi hoặc nhận. Trên Wireshark 1.8, hộp bộ lọc bắt xuất hiện trực tiếp trên màn hình tùy chọn, nhưng trên Wireshark 1.9, bạn đã thiết lập một bộ lọc chụp bằng cách nhấp đôi vào giao diện.
+- 3. *Khởi động Wireshark và bắt đầu bắt với bộ lọc là "arp"*. Cửa sổ chụp của bạn phải giống với hình chụp bên dưới, trừ điểm nhấn của chúng tôi. 
+Chọn giao diện để bắt như giao diện có dây hoặc không dây chính được sử dụng bởi máy tính của bạn để kết nối với Internet. Nếu không chắc chắn, 
+hãy đoán và xem lại bước này sau nếu việc bắt của bạn không thành công. Bỏ chọn "capture packets in promiscuous mode". Chế độ này hữu ích để bắt được
+ các gói tin gửi đến/đi từ các máy tính khác trên mạng . Chúng tôi chỉ muốn ghi lại gói tin được gửi đến/đi từ máy tính của bạn. Để các tùy chọn khác
+  ở các giá trị mặc định của chúng. capture fitter, nếu nó ton tai, nó được sử dụng để ngăn chặn việc chiếm giữ các lưu lượng truy cập khác mà máy tính
+   của bạn có thể gửi hoặc nhận. Trên Wireshark 1.8, hộp bộ lọc bắt xuất hiện trực tiếp trên màn hình tùy chọn, nhưng trên Wireshark 1.9, 
+   bạn đã thiết lập một bộ lọc chụp bằng cách nhấp đôi vào giao diện.
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/5.png"></p>
 
 - 4. *Khi capture bắt đầu, sử dụng lệnh `arp` để xóa defauld gateway từ bộ nhớ cache ARP*. Sử dụng lệnh `arp -a` sẽ cho bạn thấy nội dung của bộ nhớ cache ARP như một thao tác kiểm tra để bạn có thể chạy `arp`. Bạn sẽ thấy mục nhập cho địa chỉ IP của defauld gateway. Để xóa mục này, sử dụng lệnh arp với các đối số khác nhau (`arp -d` trên Windows). Việc sử dụng arp này sẽ cần quyền quản trị viên để chạy, vì vậy bạn có thể chạy như một người dùng được đặc quyền trên Windows. . Lưu ý rằng lệnh nên chạy mà không có lỗi nhưng mục ARP có thể không xuất hiện để được xóa nếu bạn kiểm tra với "arp-a". Điều này là do máy tính của bạn sẽ gửi các gói ARP để ghi lại mục nhập này ngay khi bạn cần gửi một gói tin tới một địa chỉ IP từ xa và điều đó có thể xảy ra rất nhanh do hoạt động nền trên máy tính.
@@ -120,7 +151,7 @@ Câu trả lời cho các câu hỏi:
 - 5. Phản hồi ARP thường không được broadcast. Nó được gửi trực tiếp tới đích sử dụng địa chỉ Ethernet của nó.
 
 <a name="II"></a>
-##### II .ARPattack:
+#### II .ARPattack:
 
 - 1. Download Ettercap from http://scisweb.ulster.ac.uk/~kevin/com320/labs/ettercap.exe.
 - 2. Theo sự hướng dẫn tiến hành cài đặt nó. Nhìn vào hình bên dưới.
@@ -144,7 +175,7 @@ Câu trả lời cho các câu hỏi:
 	- 3. Tiếp theo bạn nên chọn **Hosts List**  từ menu Máy chủ. Sau đó, bạn sẽ thấy một màn hình tương tự như hình 7 với một danh sách các máy chủ đã được tìm thấy.
 		<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/16.png"></p>
 
-	- 4. **Hãy yêu cầu sự đồng ý của đồng nghiệp để cho phép bạn chọn máy tính của họ để được quét. Họ nên xác nhận địa chỉ IP của họ cho bạn **. Điều đó có thể được tìm thấy như trong những tuần trước bằng cách gõ lệnh cmd trong trình đơn khởi động của Windows và mở cửa sổ lệnh. Sau đó, trong cửa sổ lệnh, nhập **ipconfig** và lưu ý địa chỉ ipv4 được hiển thị. Bạn có thể cần phải cuộn lên để xem nó trong cửa sổ nhắc lệnh. Ở hình 8, máy chủ lưu trữ 193.61.190.73 đang được chọn để quét.
+	- 4. **Hãy yêu cầu sự đồng ý của đồng nghiệp bạn để cho phép bạn chọn máy tính của họ để được quét. Họ nên xác nhận địa chỉ IP của họ cho bạn **. Điều đó có thể được tìm thấy như trong những tuần trước bằng cách gõ lệnh cmd trong trình đơn khởi động của Windows và mở cửa sổ lệnh. Sau đó, trong cửa sổ lệnh, nhập **ipconfig** và lưu ý địa chỉ ipv4 được hiển thị. Bạn có thể cần phải cuộn lên để xem nó trong cửa sổ nhắc lệnh. Ở hình 8, máy chủ lưu trữ 193.61.190.73 đang được chọn để quét.
 		<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/17.png"></p>
 
 	- 5.  Khi bạn đã chọn mục tiêu bằng chuột, sau đó chọn nút **Add to Target 1**. Xem hình 9.
@@ -192,8 +223,57 @@ Câu trả lời cho các câu hỏi:
 	 - 24. Cuối cùng, bạn có thể thoát khỏi chương trình.
 		<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/32.png"></p>
 
+<a name="III"></a>
+#### III. Tấn công ARP bằng Cain & Abel:
+
+<a name="cain"></a>
+##### 1. Giới thiệu:
+
+Cain & Abel là một công cụ khôi phục mật khẩu được sử dụng nhiều nhất trên hệ điều hành Microsoft. Công cụ này cho phép người dùng rất nhiều cách khôi phục 
+các loại mật khẩu khác nhau thông qua các bắt các gói tin trong mạng , bẻ khóa mật khẩu mã hóa thông qua tấn công từ điển, vét cạn và phân tích mật mã.
+ Cain có thể ghi lại hội thoại VoIP, giải mã mật khẩu, khôi phục khóa mạng không dây. Nó có thể bẻ khóa các mã băm bao gồm NTLM,MD2,MD5,SHA-1,SHA-2 … 
+ Có rất nhiều tính năng khiến Cain and Abel là một trong những công cụ khôi phục mật khẩu hàng đầu.
+
+Cain & Abel này không khai thác những lỗ hổng chưa được vá của bất kỳ phần mềm nào. Nó tập trung vào những khía cạnh/điểm yếu hiện có trong các chuẩn giao thức,
+ các phương pháp đăng nhập và các kỹ thuật đệm; mục đích chính của công cụ này là tìm ra mật khẩu và những thông tin càn thiết từ nhiều nguồn, tuy vậy,
+  nó cũng sử dụng nhiều công cụ “phi chuẩn” đối với người sử dụng Microsoft Windows.
+
+<a name="demo"></a>
+##### 2. Demo:
+
+Bước 1: Download và cài đặt Cain & Abel .Link Download: http://www.oxid.it/cain.html.
+
+Sau khi cài đặt xong ta khởi động và được màn hình như bên dưới:
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/33.png"></p>
+
+Bước 2: Tiếp theo ta vào `configure` chọn `tab `sniffer`. Chọn carb mạng phù hợp sau đó tick vào `Dont use Promiscuous mode` và chọn `OK`. hình minh họa bên dưới
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/34.png"></p>
+
+Bước 3: Tiếp theo bạn lick vào biểu tượng như hình bên dưới và lick `OK`.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/35.png"></p>
+
+Sau khi thực hiện xong ta có được danh sách Ip như hình bên dưới.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/36.png"></p>
+
+bạn muốn biết tên máy tính ứng với IP nào thì chuột phải chọn `Resolve Host name`.
+
+Bước 4: Chọn `ARP` sau đó chọn dấu cộng xanh phía trên ta được bảng bên dưới. Thực hiện chọn từng Ip bảng bên trái cho đến khi hết. khi cho 1 IP bảng bên kia 
+ta cần tô đen hết bảng bên này và chon 'OK'. Mục đích là lấy thông tin 1 đỉa chỉ điền đầy đủ cho tất cả dịa chỉ còn lại và ngược lại.
+
+Sau khi thực hiện ta sẽ có được bảng như hình bên dưới:
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/37.png"></p>
+
+Bước 5: chọn 1 dòng và lick vào biểu tượng `Start/Stop Arp` như hình bên dưới:
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/38.png"></p>
+
+Bước 6: Để show user/password của các người dùng trên máy khác ta chọn `password`.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/39.png"></p>
+
+
 <a name="II"></a>
 #### II. Tài liệu dịch:
+
 
 Lab Week04: http://scisweb.ulster.ac.uk/~kevin/com320/notes.htm
 
