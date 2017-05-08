@@ -258,17 +258,19 @@ Sau khi thực hiện xong ta có được danh sách Ip như hình bên dưới
 
 bạn muốn biết tên máy tính ứng với IP nào thì chuột phải chọn `Resolve Host name`.
 
-Bước 4: Chọn `ARP` sau đó chọn dấu cộng xanh phía trên ta được bảng bên dưới. Thực hiện chọn từng Ip bảng bên trái cho đến khi hết. khi cho 1 IP bảng bên kia 
+Bước 4: Chọn `ARP` sau đó chọn dấu cộng xanh phía trên ta được bảng bên dưới. 
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/37.png"></p>
+Thực hiện chọn từng Ip bảng bên trái cho đến khi hết. khi cho 1 IP bảng bên kia 
 ta cần tô đen hết bảng bên này và chon 'OK'. Mục đích là lấy thông tin 1 đỉa chỉ điền đầy đủ cho tất cả dịa chỉ còn lại và ngược lại.
 
 Sau khi thực hiện ta sẽ có được bảng như hình bên dưới:
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/37.png"></p>
-
-Bước 5: chọn 1 dòng và lick vào biểu tượng `Start/Stop Arp` như hình bên dưới:
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/38.png"></p>
 
-Bước 6: Để show user/password của các người dùng trên máy khác ta chọn `password`.
+Bước 5: chọn 1 dòng và lick vào biểu tượng `Start/Stop Arp` như hình bên dưới:
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/39.png"></p>
+
+Bước 6: Để show user/password của các người dùng trên máy khác ta chọn `password`.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/40.png"></p>
 
 
 <a name="II"></a>
