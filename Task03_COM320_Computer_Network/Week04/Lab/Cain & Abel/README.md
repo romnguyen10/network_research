@@ -8,19 +8,21 @@
 
 ### Mục lục
 
-[I. Tấn công ARP bằng Cain & Abel](#I)
+[1. Tấn công ARP bằng Cain & Abel](#1)
 
-- [1. Giới thiệu](#cain)
-- [2. Chuẩn bị ](#chuanbi)
-- [3. Demo tấn công](#demo)
+- [1.1 Giới thiệu](#gioithieu)
+- [1.2 Chuẩn bị ](#chuanbi)
+- [1.3 Demo tấn công](#demo)
 
-[II. Tài liệu tham khảo](#II)
+[2. Tài liệu tham khảo](#2)
 
-<a name="III"></a>
-#### III. Tấn công ARP bằng Cain & Abel:
+-----------------------------------------
 
-<a name="cain"></a>
-##### 1. Giới thiệu:
+<a name="1"></a>
+### 1. Tấn công ARP bằng Cain & Abel:
+
+<a name="gioithieu"></a>
+#### 1.1. Giới thiệu:
 
 Cain & Abel là một công cụ khôi phục mật khẩu được sử dụng nhiều nhất trên hệ điều hành Microsoft. Công cụ này cho phép người dùng rất nhiều cách khôi phục 
 các loại mật khẩu khác nhau thông qua các bắt các gói tin trong mạng , bẻ khóa mật khẩu mã hóa thông qua tấn công từ điển, vét cạn và phân tích mật mã.
@@ -31,9 +33,10 @@ Cain & Abel này không khai thác những lỗ hổng chưa được vá của 
  các phương pháp đăng nhập và các kỹ thuật đệm; mục đích chính của công cụ này là tìm ra mật khẩu và những thông tin càn thiết từ nhiều nguồn, tuy vậy,
   nó cũng sử dụng nhiều công cụ “phi chuẩn” đối với người sử dụng Microsoft Windows.
 
+Cain & Abel được 1 số trinh duyệt xem như là phần mềm độc hại
 
 <a name="chuanbi"></a>
-##### 3. Chuẩn bị:
+#### 1.2. Chuẩn bị:
 
 - Cần có 2 máy PC:
 	- Máy 1 gán IP là 192.168.1.200, default gateway là 192.168.1.1 như hình bên dưới:
@@ -45,7 +48,7 @@ Cain & Abel này không khai thác những lỗ hổng chưa được vá của 
 - Phần mềm Cain & Abel .Link Download: http://www.oxid.it/cain.html.
 
 <a name="demo"></a>
-##### 3. Demo tấn công:
+#### 1.3. Demo tấn công:
 
 Bước 1: Cài đặt Cain & Abel trên PC2
 
@@ -95,9 +98,12 @@ Khi bạn nhập sai username và password thì PC2 vẩn bắt được thông 
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Cain & Abel/Image/16.png"></p>
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Cain & Abel/Image/17.png"></p>
 
-<a name="II"></a>
-#### II. Tài liệu tham khảo:
+<a name="2"></a>
+### 2. Tài liệu tham khảo:
 
-- https://www.youtube.com/watch?v=m_XW12Ax-lo
-- http://vforum.vn/diendan/showthread.php?47386-Huong-dan-download-va-su-dung-cain-and-Abel-de-hack-trong-mang-LAN
-
+- Các video Tấn công ARP bằng Cain & Abel trên youtube:
+	- https://www.youtube.com/watch?v=m_XW12Ax-lo
+	- https://www.youtube.com/watch?v=SVOXZOi3SBU
+- Các tài liệu đã tham khảo trên google:
+	- https://en.wikipedia.org/wiki/Cain_and_Abel_(software)
+	- http://vforum.vn/diendan/showthread.php?47386-Huong-dan-download-va-su-dung-cain-and-Abel-de-hack-trong-mang-LAN
