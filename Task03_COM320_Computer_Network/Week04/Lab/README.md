@@ -16,13 +16,7 @@
 - [4. Step 2: Inspect the Trace](#4)
 - [5. Step 3: Details of ARP over Ethernet](#5)
 
-
 [II .ARPattack](#II)
-
-[III. Tấn công ARP bằng Cain & Abel](#III)
-
-- [1. Giới thiệu](#cain)
-- [2. Demo](#demo)
 
 [III. Tài liệu dịch](#III)
 
@@ -223,59 +217,8 @@ Câu trả lời cho các câu hỏi:
 	 - 24. Cuối cùng, bạn có thể thoát khỏi chương trình.
 		<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/32.png"></p>
 
-<a name="III"></a>
-#### III. Tấn công ARP bằng Cain & Abel:
-
-<a name="cain"></a>
-##### 1. Giới thiệu:
-
-Cain & Abel là một công cụ khôi phục mật khẩu được sử dụng nhiều nhất trên hệ điều hành Microsoft. Công cụ này cho phép người dùng rất nhiều cách khôi phục 
-các loại mật khẩu khác nhau thông qua các bắt các gói tin trong mạng , bẻ khóa mật khẩu mã hóa thông qua tấn công từ điển, vét cạn và phân tích mật mã.
- Cain có thể ghi lại hội thoại VoIP, giải mã mật khẩu, khôi phục khóa mạng không dây. Nó có thể bẻ khóa các mã băm bao gồm NTLM,MD2,MD5,SHA-1,SHA-2 … 
- Có rất nhiều tính năng khiến Cain and Abel là một trong những công cụ khôi phục mật khẩu hàng đầu.
-
-Cain & Abel này không khai thác những lỗ hổng chưa được vá của bất kỳ phần mềm nào. Nó tập trung vào những khía cạnh/điểm yếu hiện có trong các chuẩn giao thức,
- các phương pháp đăng nhập và các kỹ thuật đệm; mục đích chính của công cụ này là tìm ra mật khẩu và những thông tin càn thiết từ nhiều nguồn, tuy vậy,
-  nó cũng sử dụng nhiều công cụ “phi chuẩn” đối với người sử dụng Microsoft Windows.
-
-<a name="demo"></a>
-##### 2. Demo:
-
-Bước 1: Download và cài đặt Cain & Abel .Link Download: http://www.oxid.it/cain.html.
-
-Sau khi cài đặt xong ta khởi động và được màn hình như bên dưới:
-
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/33.png"></p>
-
-Bước 2: Tiếp theo ta vào `configure` chọn `tab `sniffer`. Chọn carb mạng phù hợp sau đó tick vào `Dont use Promiscuous mode` và chọn `OK`. hình minh họa bên dưới
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/34.png"></p>
-
-Bước 3: Tiếp theo bạn lick vào biểu tượng như hình bên dưới và lick `OK`.
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/35.png"></p>
-
-Sau khi thực hiện xong ta có được danh sách Ip như hình bên dưới.
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/36.png"></p>
-
-bạn muốn biết tên máy tính ứng với IP nào thì chuột phải chọn `Resolve Host name`.
-
-Bước 4: Chọn `ARP` sau đó chọn dấu cộng xanh phía trên ta được bảng bên dưới. 
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/37.png"></p>
-Thực hiện chọn từng Ip bảng bên trái cho đến khi hết. khi cho 1 IP bảng bên kia 
-ta cần tô đen hết bảng bên này và chon 'OK'. Mục đích là lấy thông tin 1 đỉa chỉ điền đầy đủ cho tất cả dịa chỉ còn lại và ngược lại.
-
-Sau khi thực hiện ta sẽ có được bảng như hình bên dưới:
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/38.png"></p>
-
-Bước 5: chọn 1 dòng và lick vào biểu tượng `Start/Stop Arp` như hình bên dưới:
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/39.png"></p>
-
-Bước 6: Để show user/password của các người dùng trên máy khác ta chọn `password`.
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week04/Lab/Image/40.png"></p>
-
-
 <a name="II"></a>
 #### II. Tài liệu dịch:
-
 
 Lab Week04: http://scisweb.ulster.ac.uk/~kevin/com320/notes.htm
 
