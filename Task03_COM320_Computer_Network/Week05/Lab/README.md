@@ -202,11 +202,19 @@ Những điểm cần lưu ý:
 
 
 <a name="1.7"></a>
-#### 1.7. Step 6: FIN/RST Teardown:
+#### 1.7. Step 6: FIN/RST Teardown
 
 
 <a name="1.8"></a>
-#### 1.8. Step 7: TCP Data Transfer:
+#### 1.8. Step 7: TCP Data Transfer
+
+
+ 
+
+ 
+
+
+
 
 
 <a name="2"></a>
@@ -219,7 +227,7 @@ Những điểm cần lưu ý:
 <a name="2.2"></a>
 #### 2.2. Step 2: Inspect the Trace:
 
-
+ 
 <a name="2.3"></a>
 #### 2.3. Step 3: UDP Message Structure:
 
