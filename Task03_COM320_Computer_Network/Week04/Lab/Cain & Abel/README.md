@@ -102,13 +102,13 @@ Khi bạn nhập sai username và password thì PC2 vẩn bắt được thông 
 ### 2. Tài liệu tham khảo:
 
 [1] Demo tấn công ARP bằng Cain			
-https://www.youtube.com/watch?v=m_XW12Ax-lo
+- https://www.youtube.com/watch?v=m_XW12Ax-lo
 
 [2] Trần Hoàng Duy (2014) [Demo] Tấn công mạng Sniffer bằng phần mềm Cain & Abel				
-https://www.youtube.com/watch?v=SVOXZOi3SBU
+- https://www.youtube.com/watch?v=SVOXZOi3SBU
 
 [3] Cain and Abel (software) - Wikipedia 				
-https://en.wikipedia.org/wiki/Cain_and_Abel_(software)
+- https://en.wikipedia.org/wiki/Cain_and_Abel_(software)
 
 [4] Hướng dẫn download và sử dụng cain and Abel để hack trong mạng LAN			
-http://vforum.vn/diendan/showthread.php?47386-Huong-dan-download-va-su-dung-cain-and-Abel-de-hack-trong-mang-LAN
+- http://vforum.vn/diendan/showthread.php?47386-Huong-dan-download-va-su-dung-cain-and-Abel-de-hack-trong-mang-LAN
