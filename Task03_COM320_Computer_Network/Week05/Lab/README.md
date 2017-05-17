@@ -330,9 +330,9 @@ và tải trọng UDP. Trong tiêu đề UDP, hiển thị vị trí và kích t
 có thể hiển thị thông báo dưới dạng một hình chữ nhật dài, mỏng.
 
 Bằng cách nhìn vào các chi tiết của các tin nhắn UDP trong lưu lượng gói tin mà bạn đã bắt được, hãy trả lời những câu hỏi sau:
-- 1. Trường Lenght bao gồm những gì? payload UDP, UDP payload và UDP header, hoặcd UDP payloa, UDP header và header lớp thấp hơn?
-- 2. Số bits chiếm trong UDP checksum ?
-- 3. Số  byte chiếm trong toàn bộ UDP header?
+- a. Trường Lenght bao gồm những gì? payload UDP, UDP payload và UDP header, hoặcd UDP payloa, UDP header và header lớp thấp hơn?
+- b. Số bits chiếm trong UDP checksum ?
+- c. Số  byte chiếm trong toàn bộ UDP header?
 
 **Solutions – Step 3 UDP Message Structure**:
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Lab/Image/14.png"></p>
@@ -341,9 +341,9 @@ Sơ đồ này cho thấy các trường UDP header giống như trong sách nh�
 Nó cũng cho thấy mối quan hệ của  IP header và UDP payload đến UDP header.
  
 Câu trả lời cho các câu hỏi là:
-- 1. Trường Lenght cung cấp chiều dài của UDP payload cộng với UDP header.
-- 2. Checksum là 16 bit.
-- 3. UDP header dài 8 byte.
+- a. Trường Lenght cung cấp chiều dài của UDP payload cộng với UDP header.
+- b. Checksum là 16 bit.
+- c. UDP header dài 8 byte.
 
 <a name="2.4"></a>
 #### 2.4. Step 4: UDP Usage:
@@ -351,7 +351,7 @@ Câu trả lời cho các câu hỏi là:
 Để hoàn thành sự hiểu biết của chúng ta về UDP, chúng ta sẽ xem UDP được sử dụng trong thực tế như thế nào khi vận chuyển bằng các ứng dụng. 
 Bắt đầu với IP, lớp giao thức tiếp theo thấp hơn, có một số vấn đề chúng ta có thể xem xét. vấn đề đầu tiên là làm thế nào IP biết rằng lớp giao thức 
 cao hơn kế tiếp là UDP. Câu trả lời là có một trường Giao thức trong tiêu đề IP có chứa thông tin này.
-- 1. *Cung cấp giá trị của trường IP protocol xác định giao thức lớp trên là UDP*.
+- a. *Cung cấp giá trị của trường IP protocol xác định giao thức lớp trên là UDP*.
 
 Một vấn đề thứ hai là làm thế nào thông điệp UDP thường được giải quyết tại lớp IP. Bạn có thể ngạc nhiên khi tìm thấy các tin nhắn UDP trong lưu lượng các gói
 mà bạn bắt được mà không phải từ máy tính của bạn hoặc chỉ được gửi đến máy tính của bạn. Bạn có thể thấy điều này bằng cách sắp xếp trên các cột Nguồn và đích đến. 
@@ -365,21 +365,21 @@ NBNS (lưu lượng NetBIOS), DHCP (cấp IP động), SSDP (phát hiện dịch
 và nhiều hơn nữa. Lưu lượng  của bạn có thể có các giao thức khác mà bạn chưa nghe ; Nó là chính xác, vì có rất nhiều giao thức trên mạng. Bạn có thể xem chúng trên web 
 để biết nhiều hơn.
 
-- 2. *Kiểm tra các tin nhắn UDP và cung cấp địa chỉ IP đích  được sử dụng khi máy tính của bạn không phải là địa chỉ IP nguồn hay địa chỉ IP đích*. (Nếu bạn chỉ có 
+- b. *Kiểm tra các tin nhắn UDP và cung cấp địa chỉ IP đích  được sử dụng khi máy tính của bạn không phải là địa chỉ IP nguồn hay địa chỉ IP đích*. (Nếu bạn chỉ có 
 	máy tính của bạn là địa chỉ IP nguồn hoặc đích, sau đó bạn có thể sử dụng thông tin được cung cấp.)
 
 Cuối cùng, chúng ta hãy nhìn vào độ dài của các gói UDP điển hình. Chúng ta biết rằng thông điệp UDP có thể lớn đến 64K bytes. Nhưng khi bạn duyệt, 
 bạn sẽ thấy rằng hầu hết các tin nhắn UDP ngắn hơn nhiều so với tối đa này, do 
-- 3. Kích thước điển hình của các tin nhắn UDP trong lưu lượng của bạn là gì?
+- c. Kích thước điển hình của các tin nhắn UDP trong lưu lượng của bạn là gì?
 
 **Solutions to Step 4: UDP Usage**:
 
 Câu trả lời cho các câu hỏi là:
-- 1. Giá trị trường IP protocol là 17 cho biết UDP.
-- 2. Có thể tìm thấy nhiều địa chỉ broadcast và multicast. Chúng bao gồm địa chỉ broadcast Internet 255.255.255.255, địa chỉ broadcast subnet như 
+- a. Giá trị trường IP protocol là 17 cho biết UDP.
+- b. Có thể tìm thấy nhiều địa chỉ broadcast và multicast. Chúng bao gồm địa chỉ broadcast Internet 255.255.255.255, địa chỉ broadcast subnet như 
 192.168.255.255 (nơi phần 192.168 là số subnet và phần .255.255 nghĩa là broadcast), và các địa chỉ IP multicast như 224.0.xx.xx 
 (như vậy Như là 224.0.0.251 cho DNS multicast).
-- 3. Câu trả lời này sẽ thay đổi lưu lương theo dõi của bạn. Thường thì chúng là một vài trăm byte hoặc ít hơn, và thường có thể khoảng 100 byte. 
+- c. Câu trả lời này sẽ thay đổi lưu lương theo dõi của bạn. Thường thì chúng là một vài trăm byte hoặc ít hơn, và thường có thể khoảng 100 byte. 
 Đó là, nhiều tin nhắn là những gói tin tương đối ngắn.
 
 <a name="3"></a>
@@ -387,10 +387,10 @@ Câu trả lời cho các câu hỏi là:
 
 Ở đây, bạn sử dụng lệnh route để xem và thay đổi bảng định tuyến nội bộ máy tính của bạn. Mặc dù máy tính của bạn không phải là bộ định tuyến, 
 nó vẫn duy trì một bảng định tuyến internet với các mục cho mạng giao diện mạng, mạng loopback, và các chi tiết của các mạng nội bộ khác.
-- 1. Mở command prompt bằng cách gõ lệnh `cmd` trong hộp run.
-- 2. Để xem bảng định tuyến của bạn, gõ `route print | more` và nhấn `Enter`. The | more sau khi lệnh *the route print* in kết quả đầu ra sẽ được 
+- a. Mở command prompt bằng cách gõ lệnh `cmd` trong hộp run.
+- b. Để xem bảng định tuyến của bạn, gõ `route print | more` và nhấn `Enter`. The | more sau khi lệnh *the route print* in kết quả đầu ra sẽ được 
 hiển thị một màn hình cùng một lúc.
-- 3. Tiếp theo, kiểm tra đầu ra  của *the route print *. Giao diện mạng máy tính của bạn được liệt kê ở trên cùng, và Bảng Tuyến đường IPv4 
+- c. Tiếp theo, kiểm tra đầu ra  của *the route print *. Giao diện mạng máy tính của bạn được liệt kê ở trên cùng, và Bảng Tuyến đường IPv4 
 liệt kê các mục trong bảng định tuyến, trong đó có năm cột:
 
 	- **Network Destination** - Network Destination máy tính của bạn so sánh với địa chỉ IP đích của các gói tin gửi đi để xác định nơi gửi chúng.
@@ -406,18 +406,18 @@ tuyến đường thủ công và nó là để ở lại trong bảng giữa kh
 Persistent Routes trong phần IPv4 của đầu ra.
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Lab/Image/15.png"></p>
 
-- 4. Để xác minh rằng bạn có thể giao tiếp với Internet, gõ `ping scisweb.ulster.ac.uk` nhấn `Enter`. Nếu ping thành công, mạng mặc định của bạn đang 
+- d. Để xác minh rằng bạn có thể giao tiếp với Internet, gõ `ping scisweb.ulster.ac.uk` nhấn `Enter`. Nếu ping thành công, mạng mặc định của bạn đang 
 hoạt động đúng. Bạn sẽ thấy kết quả sau cho lệnh ping của bạn.
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Lab/Image/16.png"></p>
 
-- 5. Nhập `route delete 0.0.0.0` và nhấn `Enter` để xóa tuyến đường mặc định của bạn. Cố gắng `ping scisweb.ulster.ac.uk` một lần nữa. 
+- e. Nhập `route delete 0.0.0.0` và nhấn `Enter` để xóa tuyến đường mặc định của bạn. Cố gắng `ping scisweb.ulster.ac.uk` một lần nữa. 
 Ping sẽ không thành công (hoặc sẽ sử dụng địa chỉ IP khác với địa chỉ IP scisweb.ulster.ac.uk địa phương)
 Để xem các tuyến đường đã hết, hãy vào trình duyệt của bạn và bạn sẽ thấy rằng bạn đã bị `hỏng` Kết nối Internet của bạn. Tiếp theo, trở lại *Command Prompt* 
 và Type `route print | more` và nhấn `Enter` Bạn sẽ thấy rằng các điểm đến mạng 0.0.0.0 không còn trong bảng. Nhấn *spacebar* nhiều lần để hiển thị phần 
 còn lại của Đầu ra.
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Lab/Image/17.png"></p>
 
-- 6. Để tạo mục nhập tuyến đường mặc định và khôi phục lại bảng định tuyến của bạn, gõ `route add -p 0.0.0.0 mask 0.0.0.0 default gateway` và nhấn `enter` 
+- f. Để tạo mục nhập tuyến đường mặc định và khôi phục lại bảng định tuyến của bạn, gõ `route add -p 0.0.0.0 mask 0.0.0.0 default gateway` và nhấn `enter` 
 (thay thế gateway mặc định bằng địa chỉ bạn đã lưu ý trong Bước 3). ví dụ. `Route add -p 0.0.0.0 mask 0.0.0.0 193.61.191.201` (như được hiển thị bên dưới):
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Lab/Image/18.png"></p>
 
