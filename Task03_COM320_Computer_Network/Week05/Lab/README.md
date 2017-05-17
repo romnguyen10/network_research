@@ -4,7 +4,7 @@
 >
 > Thực hiện: **Nguyễn Tấn Phát**
 > 
-> Cập nhật lần cuối: **15/05/2017**
+> Cập nhật lần cuối: **17/05/2017**
 
 ### Mục lục
 
@@ -283,23 +283,148 @@ các gói tin nhỏ hơn nhiều, khoảng 60 byte.
 <a name="2.1"></a>
 #### 2.1. Step 1: Capture a Trace:
 
+Có nhiều cách để máy tính của bạn gửi và nhận tin nhắn UDP vì UDP được sử dụng rộng rãi như một giao thức truyền tải. Các lựa chọn dễ nhất là:
+- Đừng làm gì ngoài chờ đợi một lúc. UDP được sử dụng cho nhiều *"system protocol"* thường chạy ở chế độ nền và tạo ra một lượng nhỏ lưu lượng truy cập, 
+ví dụ: DHCP dành cấp địa chỉ IP động  được chỉ định cho đồng bộ hóa NTPime td.
+- Sử dụng trình duyệt của bạn để truy cập trang web. UDP được sử dụng bởi DNS sẽ giải quyết các tên miền cho địa chỉ IP, do đó, ghé thăm các trang web mới 
+sẽ tạo ra lưu lượng truy cập DNS được gửi đi. Cẩn thận đừng đến các trang web không an toàn; Chọn các trang web hoặc trang web được đề xuất mà bạn biết nhưng 
+chưa truy cập gần đây. Đơn giản chỉ cần duyệt web có thể tạo ra sự lưu thông ổn định của DNS.
+- Bắt đầu cuộc gọi thoại qua IP với khách hàng yêu thích của bạn. UDP được sử dụng bởi RTP, là giao thức thường được sử dụng để truyền các mẫu phương tiện 
+trong cuộc gọi thoại hoặc video qua Internet.
+
+Tiến hành như sau để nắm bắt gói tin của giao thông UDP; Cách khác, bạn có thể sử dụng các thông tin được cung cấp:
+- a. *Khởi động Wireshark và bắt đầu bắt gói với một bộ lọc là **udp***.
+- b. *Khi bắt đầu bắt gói, thực hiện một số hoạt động sẽ tạo ra lưu lượng UDP*. Chúng tôi đã mô tả một số tùy chọn ở trên, 
+ví dụ: duyệt web hoặc bắt đầu cuộc gọi VoIP ngắn.
+- c. *Chờ khoảng 60 giây sau đó bạn hãy dừng hoạt động của mình để quan sát lưu lượng UDP*. Rất có thể bạn sẽ quan sát một luồng 
+lưu lượng UDP bởi vì hoạt động của hệ thống thường sử dụng UDP để giao tiếp.
+- d. Dừng bắt gói lại. Bây giờ bạn sẽ có một lưu lượng với nhiều gói UDP. Ví dụ được hiển thị bên dưới. Chúng ta đã chọn một gói tin và mở rộng chi tiết của tiêu đề UDP.
+ <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Lab/Image/12.png"></p>
 
 <a name="2.2"></a>
 #### 2.2. Step 2: Inspect the Trace:
 
+Các máy tính khác nhau có khả năng nắm bắt các loại lưu lượng UDP khác nhau tùy thuộc vào thiết lập mạng và hoạt động cục bộ. Lưu ý rằng cột của giao thức 
+có khả năng hiển thị nhiều giao thức,hoặc không có UDP nào. Điều này là do giao thức được liệt kê là một giao thức thuộc lớp ứng dụng được đặt trên đầu của UDP. 
+Wireshark cho biết tên của giao thứclớp  ứng dụng chứ không phải giao thức truyền tải(transport) UDP, trừ khi Wireshark không thể xác định được giao thức lớp ứng dụng. 
+Tuy nhiên, ngay cả khi các gói được liệt kê như là một giao thức ứng dụng, chúng sẽ có một tiêu đề giao thức UDP cho chúng ta nghiên cứu, sau các tiêu đề 
+giao thức IP và lớp dưới.
 
+*Chọn các gói khác nhau trong lưu lượng gói bắt được (trong bảng điều khiển trên cùng) và duyệt phần mở rộng UDP header (trong bảng điều khiển giữa)*. 
+Bạn sẽ thấy nó chứa các trường sau
+- a. **Source port**, port mà thông điệp UDP được gửi đi. Nó được đưa ra là 1 số và có thể là một tên văn bản; Tên được gán cho các giá trị cổng được đăng ký 
+để sử dụng với một ứng dụng cụ thể.
+- b. **Destination port**. Đây là số cổng và có thể là tên của thông điệp UDP . port là hình thức duy nhất của địa chỉ trong UDP. Có máy tính được xác định bằng cách 
+sử dụng địa chỉ IP trong lớp IP thấp hơn.
+- c. **Length**. Chiều dài của gói UDP
+- d. **Checksum**. Tổng kiểm tra messenger được sử dụng để xác nhận nội dung của nó.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Lab/Image/13.png"></p>
+
+UDP header có các giá trị khác nhau cho các tin nhắn khác nhau, nhưng như bạn thấy, nó ngắn và gọn. Phần còn lại của thông báo là tải trọng UDP 
+thường được xác định là giao thức lớp cao hơn nó mang, ví dụ: DNS hoặc RTP.
 <a name="2.3"></a>
 #### 2.3. Step 3: UDP Message Structure:
 
+Để kiểm tra sự hiểu biết của bạn về UDP, bạn có thể phác hoạ một cấu trúc gói UDP như bạn đã quan sát. Nó sẽ hiển thị vị trí của tiêu đề IP, phần đầu UDP 
+và tải trọng UDP. Trong tiêu đề UDP, hiển thị vị trí và kích thước của từng trường UDP mà bạn có thể quan sát bằng Wireshark. Con số của bạn chỉ đơn giản 
+có thể hiển thị thông báo dưới dạng một hình chữ nhật dài, mỏng.
+
+Bằng cách nhìn vào các chi tiết của các tin nhắn UDP trong lưu lượng gói tin mà bạn đã bắt được, hãy trả lời những câu hỏi sau:
+- 1. Trường Lenght bao gồm những gì? payload UDP, UDP payload và UDP header, hoặcd UDP payloa, UDP header và header lớp thấp hơn?
+- 2. Số bits chiếm trong UDP checksum ?
+- 3. Số  byte chiếm trong toàn bộ UDP header?
+
+**Solutions – Step 3 UDP Message Structure**:
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Lab/Image/14.png"></p>
+
+Sơ đồ này cho thấy các trường UDP header giống như trong sách nhưng có định dạng hơi khác và với độ dài cho bằng byte chứ không phải các bit. 
+Nó cũng cho thấy mối quan hệ của  IP header và UDP payload đến UDP header.
+ 
+Câu trả lời cho các câu hỏi là:
+- 1. Trường Lenght cung cấp chiều dài của UDP payload cộng với UDP header.
+- 2. Checksum là 16 bit.
+- 3. UDP header dài 8 byte.
 
 <a name="2.4"></a>
 #### 2.4. Step 4: UDP Usage:
 
+Để hoàn thành sự hiểu biết của chúng ta về UDP, chúng ta sẽ xem UDP được sử dụng trong thực tế như thế nào khi vận chuyển bằng các ứng dụng. 
+Bắt đầu với IP, lớp giao thức tiếp theo thấp hơn, có một số vấn đề chúng ta có thể xem xét. vấn đề đầu tiên là làm thế nào IP biết rằng lớp giao thức 
+cao hơn kế tiếp là UDP. Câu trả lời là có một trường Giao thức trong tiêu đề IP có chứa thông tin này.
+- 1. *Cung cấp giá trị của trường IP protocol xác định giao thức lớp trên là UDP*.
+
+Một vấn đề thứ hai là làm thế nào thông điệp UDP thường được giải quyết tại lớp IP. Bạn có thể ngạc nhiên khi tìm thấy các tin nhắn UDP trong lưu lượng các gói
+mà bạn bắt được mà không phải từ máy tính của bạn hoặc chỉ được gửi đến máy tính của bạn. Bạn có thể thấy điều này bằng cách sắp xếp trên các cột Nguồn và đích đến. 
+Nguồn và đích đến sẽ là tên miền, nếu độ phân giải tên lớp mạng được bật, và nếu không địa chỉ IP. (Bạn có thể chuyển đổi cài đặt này bằng cách sử dụng 
+*menu View* và chọn *Resolution name*) Bạn có thể tìm ra địa chỉ IP của máy tính của bạn bằng cách sử dụng lệnh **ipconfig** (Windows).
+
+Lý do bạn có thể tìm thấy thư UDP mà không có địa chỉ IP của máy tính như là địa chỉ IP nguồn hoặc đích là UDP được sử dụng rộng rãi như là một phần của các 
+giao thức hệ thống. Các giao thức này thường gửi tin nhắn đến tất cả các máy tính địa phương quan tâm đến chúng bằng cách sử dụng địa chỉ broadcast và multicast. 
+Tong lưu lượng các gói chúng ta bắt được, DNS (domain name system), MDNS (multicast domain name system), NTP (để đồng bộ hóa thời gian), 
+NBNS (lưu lượng NetBIOS), DHCP (cấp IP động), SSDP (phát hiện dịch vụ ), STUN (một giao thức đi qua NAT), RTP (để tải các mẫu âm thanh và video), 
+và nhiều hơn nữa. Lưu lượng  của bạn có thể có các giao thức khác mà bạn chưa nghe ; Nó là chính xác, vì có rất nhiều giao thức trên mạng. Bạn có thể xem chúng trên web 
+để biết nhiều hơn.
+
+- 2. *Kiểm tra các tin nhắn UDP và cung cấp địa chỉ IP đích  được sử dụng khi máy tính của bạn không phải là địa chỉ IP nguồn hay địa chỉ IP đích*. (Nếu bạn chỉ có 
+	máy tính của bạn là địa chỉ IP nguồn hoặc đích, sau đó bạn có thể sử dụng thông tin được cung cấp.)
+
+Cuối cùng, chúng ta hãy nhìn vào độ dài của các gói UDP điển hình. Chúng ta biết rằng thông điệp UDP có thể lớn đến 64K bytes. Nhưng khi bạn duyệt, 
+bạn sẽ thấy rằng hầu hết các tin nhắn UDP ngắn hơn nhiều so với tối đa này, do 
+- 3. Kích thước điển hình của các tin nhắn UDP trong lưu lượng của bạn là gì?
+
+**Solutions to Step 4: UDP Usage**:
+
+Câu trả lời cho các câu hỏi là:
+- 1. Giá trị trường IP protocol là 17 cho biết UDP.
+- 2. Có thể tìm thấy nhiều địa chỉ broadcast và multicast. Chúng bao gồm địa chỉ broadcast Internet 255.255.255.255, địa chỉ broadcast subnet như 
+192.168.255.255 (nơi phần 192.168 là số subnet và phần .255.255 nghĩa là broadcast), và các địa chỉ IP multicast như 224.0.xx.xx 
+(như vậy Như là 224.0.0.251 cho DNS multicast).
+- 3. Câu trả lời này sẽ thay đổi lưu lương theo dõi của bạn. Thường thì chúng là một vài trăm byte hoặc ít hơn, và thường có thể khoảng 100 byte. 
+Đó là, nhiều tin nhắn là những gói tin tương đối ngắn.
 
 <a name="3"></a>
 ### 3. Routing:
 
+Ở đây, bạn sử dụng lệnh route để xem và thay đổi bảng định tuyến nội bộ máy tính của bạn. Mặc dù máy tính của bạn không phải là bộ định tuyến, 
+nó vẫn duy trì một bảng định tuyến internet với các mục cho mạng giao diện mạng, mạng loopback, và các chi tiết của các mạng nội bộ khác.
+- 1. Mở command prompt bằng cách gõ lệnh `cmd` trong hộp run.
+- 2. Để xem bảng định tuyến của bạn, gõ `route print | more` và nhấn `Enter`. The | more sau khi lệnh *the route print* in kết quả đầu ra sẽ được 
+hiển thị một màn hình cùng một lúc.
+- 3. Tiếp theo, kiểm tra đầu ra  của *the route print *. Giao diện mạng máy tính của bạn được liệt kê ở trên cùng, và Bảng Tuyến đường IPv4 
+liệt kê các mục trong bảng định tuyến, trong đó có năm cột:
+
+	- **Network Destination** - Network Destination máy tính của bạn so sánh với địa chỉ IP đích của các gói tin gửi đi để xác định nơi gửi chúng.
+	- **Netmask** - The subnet mask của đích mạng. Giá trị 255.255.255.255 chỉ ra rằng địa chỉ trong cột network destination là một địa chỉ IP cụ thể thay 
+	vì địa chỉ mạng; Nó được gọi là *host route*. Một giá trị 0.0.0.0 được sử dụng khi network destination là 0.0.0.0, cho biết tuyến đường mặc định hoặc gateway.
+	- **Gateway** - Địa chỉ hop kế tiếp hoặc liên kết trực tiếp, có nghĩa là mạng được kết nối trực tiếp tới một giao diện. Ghi lại giá trị trong 
+	network destination 0.0.0.0.
+	- **Interface** - Địa chỉ giao diện Windows sử dụng để gửi gói tin đến network destination.
+	- **Metric** - the metric được gán cho route. Nếu có hai mục cho network destination, số liệu nào *thấp hơn* là tuyến được chọn.
+
+Nhấn phím cách một hoặc nhiều lần để hiển thị phần còn lại của đầu ra. Bạn sẽ thấy một hàng đầu ra có gắn nhãn Persistent Routes. Nếu bạn tạo ra một 
+tuyến đường thủ công và nó là để ở lại trong bảng giữa khởi động lại, nó được liệt kê ở đây. Bạn cũng sẽ thấy tuyến đường mặc định được liệt kê dưới 
+Persistent Routes trong phần IPv4 của đầu ra.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Lab/Image/15.png"></p>
+
+- 4. Để xác minh rằng bạn có thể giao tiếp với Internet, gõ `ping scisweb.ulster.ac.uk` nhấn `Enter`. Nếu ping thành công, mạng mặc định của bạn đang 
+hoạt động đúng. Bạn sẽ thấy kết quả sau cho lệnh ping của bạn.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Lab/Image/16.png"></p>
+
+- 5. Nhập `route delete 0.0.0.0` và nhấn `Enter` để xóa tuyến đường mặc định của bạn. Cố gắng `ping scisweb.ulster.ac.uk` một lần nữa. 
+Ping sẽ không thành công (hoặc sẽ sử dụng địa chỉ IP khác với địa chỉ IP scisweb.ulster.ac.uk địa phương)
+Để xem các tuyến đường đã hết, hãy vào trình duyệt của bạn và bạn sẽ thấy rằng bạn đã bị `hỏng` Kết nối Internet của bạn. Tiếp theo, trở lại *Command Prompt* 
+và Type `route print | more` và nhấn `Enter` Bạn sẽ thấy rằng các điểm đến mạng 0.0.0.0 không còn trong bảng. Nhấn *spacebar* nhiều lần để hiển thị phần 
+còn lại của Đầu ra.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Lab/Image/17.png"></p>
+
+- 6. Để tạo mục nhập tuyến đường mặc định và khôi phục lại bảng định tuyến của bạn, gõ `route add -p 0.0.0.0 mask 0.0.0.0 default gateway` và nhấn `enter` 
+(thay thế gateway mặc định bằng địa chỉ bạn đã lưu ý trong Bước 3). ví dụ. `Route add -p 0.0.0.0 mask 0.0.0.0 193.61.191.201` (như được hiển thị bên dưới):
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week05/Lab/Image/18.png"></p>
+
 <a name="4"></a>
 ### 4. Tài liệu dịch:
 
-[1] Lab Week05 TCP, UDP, Routing: http://scisweb.ulster.ac.uk/~kevin/com320/labs.htm
+[1] Lab Week05 TCP, UDP, Routing: http://scisweb.ulster.ac.uk/~kevin/com320/labs.htm 
+ 
+
+
