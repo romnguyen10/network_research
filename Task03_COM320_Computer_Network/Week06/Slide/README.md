@@ -4,7 +4,7 @@
 >
 > Thực hiện: **Nguyễn Tấn Phát**
 > 
-> Cập nhật lần cuối: **19/05/2017**
+> Cập nhật lần cuối: **22/05/2017**
 
 --------------------------
 ### Mục lục
@@ -33,7 +33,19 @@
 
 [4.Internet Protocols – UDP](#4)
 
+- [4.1 Introduction to UDP](#4.1)
+- [4.2 Remote Procedure Call](#4.2)
+- [4.3 Real-Time Transport](#4.3)
+
 [5.Internet Protocols – TCP](#5)
+
+- [4.3 The TCP service model](#5.1)
+- [4.3 The TCP segment header](#5.2)
+- [4.3 TCP connection establishment](#5.3)
+- [4.3 TCP connection state modeling](#5.4)
+- [4.3 TCP sliding window](#5.5)
+- [4.3 TCP timer management](#5.6)
+- [4.3 TCP congestion control](#5.7)
 
 [6.Performance Issues](#6)
 
@@ -48,8 +60,10 @@ Tầng hịu trách nhiệm phân phối dữ liệu qua các mạng với độ
 #### 1.1 Services Provided to the Upper Layer
 
 Transport layer thêm độ tin cậy vào lớp mạng:
+
 - Cung cấp các dịch vụ không kết nối (ví dụ như UDP) và dịch vụ định hướng kết nối (ví dụ: TCP)
  <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/2.png"></p>
+ 
 - Transport layer gửi các *segments* trong các gói tin (frames)
  <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/3.png"></p>
 
@@ -70,6 +84,7 @@ Primitive mà các ứng dụng có thể gọi đến dữ liệu truyền tả
 
 Sơ đồ trạng thái cho một dịch vụ định hướng kết nối đơn giản
  <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/4.png"></p>
+ 
 - Các đường thẳng (bên phải) hiển thị dãy trạng thái máy khách 
 - Đường nét đứt (trái) hiển thị trình tự trạng thái máy chủ
 - Các chuyển tiếp bằng chữ nghiêng là do phân đoạn đến.
@@ -150,6 +165,7 @@ Tiếp cận:
 	- DR = Disconnect Request
 	- Cả hai DR được ACKed bởi phía bên kia
  <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/14.png"></p>
+ 
 - Các trường hợp lỗi được xử lý bằng timer và retransmission:
  <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/15.png"></p>
 
@@ -194,16 +210,204 @@ Hai lớp chịu trách nhiệm kiểm soát tắc nghẽn:
 <a name="3.1"></a>
 #### 3.1 Desirable bandwidth allocation
 
+Hiệu quả sử dụng băng thông cho phép tốt,độ chậm trễ thấp.
+ <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/20.png"></p>
+
+Sử dụng hợp lý cho phép băng thông đủ tất cả các dòng chảy (không thiếu)
+- Sự công bằng tối đa cho các cổ phiếu có cổ phần bằng nhau
+ <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/21.png"></p>
+
+Chúng tôi muốn mức băng thông hội tụ một cách nhanh chóng khi các mẫu lưu lượng truy cập thay đổi
+ <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/22.png"></p>
 
 <a name="3.2"></a>
 #### 3.2 Regulating the sending rate
 
+Người gửi có thể cần tải chậm lại vì nhiều lý do khác nhau:
+- Điều khiển luồng(Flow control), khi người nhận không đủ nhanh [phải]
+- Tập trung(Congestion), khi mạng không đủ nhanh [trên]
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/23.png"></p>
+
+Trọng tâm của chúng tôi là đối phó với vấn đề này - tắc nghẽn
+ <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/24.png"></p>
+
+Các tín hiệu tắc nghẽn khác nhau cho thấy mạng lưới có thể sử dụng để cho điểm kết nối cuối làm chậm (hoặc tăng tốc)
+
+| Protocol    | Signal | explicit?  | Pricise |
+| :------: | :---: | :---: | :---: |
+| XCP | Tỉ lệ để sử dụng | YES   | YES |
+| TCP with ECN   | Xung đột tắt ngẽn  |  YES  | NO  |
+| FAST TCP  | Độ trễ đầu cuối    | NO  | YES |
+| CUBIC TCP | Mất gói    |  NO  | NO  |
+| TCP    |  Mất gói    |  NO  | NO  |
+
+Nếu hai luồng tăng / giảm băng thông của chúng theo cùng một cách khi các tín hiệu mạng rảnh / bận, chúng sẽ không hội tụ đến phân bổ hợp lý
+ <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/25.png"></p>
+
+Đạo luật kiểm soát AIMD (Additive Increase Multiplicative Decrease) hội tụ đến một điểm công bằng và hiệu quả!
+- TCP sử dụng AIMD vì lý do này
+ <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/26.png"></p>
+
 <a name="3.3"></a>
 #### 3.3 Wireless issues
 
+Các liên kết không dây bị mất các gói vì các lỗi truyền dẫn
+- Không muốn nhầm lẫn sự mất mát này với tắc nghẽn
+- Hoặc kết nối sẽ chạy chậm trên các liên kết không dây!
+Chiến lược:
+- Các liên kết không dây sử dụng ARQ, có mặt nạ lỗi
+ <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/27.png"></p>
 
-------------------------
+<a name="4"></a>
+### 4.Internet Protocols – UDP
+
+<a name="4.1"></a>
+#### 4.1 Introduction to UDP
+
+UDP (User Datagram Protocol) là một shim over IP
+- Tiêu đề có cổng (TSAPs), chiều dài và tổng kiểm tra
+ <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/28.png"></p>
+
+<a name="4.2"></a>
+#### 4.2 Remote Procedure Call
+
+
+RPC kết nối các ứng dụng qua mạng với các thủ tục trừu tượng quen thuộc của các cuộc gọi thủ tục
+- Các gói / gói kết quả / thông báo vào một tin nhắn
+- UDP với retransmissions là một vận chuyển trễ thấp
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/29.png"></p>
+
+
+<a name="4.3"></a>
+#### 4.3 Real-Time Transport
+
+RTP (Real-time Transport Protocol) cung cấp hỗ trợ truyền phương tiện thời gian thực qua UDP
+- Thường được thực hiện như là một phần của ứng dụng
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/30.png"></p>
+
+RTP header chứa các trường để mô tả loại phương tiện và đồng bộ hóa nó giữa nhiều luồng
+- Giao thức của RTCP giúp với các nhiệm vụ quản lý
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/31.png"></p>
+
+Bộ đệm tại máy thu được sử dụng để trì hoãn các gói dữ liệu và hấp thụ jitter để các phương tiện truyền thông được phát ra trơn tru
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/32.png"></p>
+
+Jitter cao, hoặc nhiều biến thể trong sự chậm trễ, đòi hỏi một bộ đệm playout lớn hơn để tránh playout misses
+- Sự chậm trễ lan truyền không ảnh hưởng đến kích thước bộ đệm
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/33.png"></p>
+
+<a name="5"></a>
+### 5.Internet Protocols – TCP
+
+<a name="5.1"></a>
+#### 5.1 The TCP service model
+
+TCP cung cấp các ứng dụng với luồng byte tin cậy giữa các tiến trình; Nó là máy nghiền của Internet
+- Các máy chủ phổ biến chạy trên các cổng nổi tiếng
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/34.png"></p>
+
+Các ứng dụng sử dụng TCP chỉ thấy dòng byte [phải] chứ không phải các phân đoạn [trái] được gửi dưới dạng các gói tin IP riêng biệt
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/35.png"></p>
+
+<a name="5.2"></a>
+#### 5.2 The TCP segment header
+
+TCP header bao gồm địa chỉ (port), cửa sổ trượt (seq./ack. number), điều khiển luồng (window), kiểm soát lỗi (checksum) và nhiều hơn nữa.
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/36.png"></p>
+
+<a name="5.3"></a>
+#### 5.3 TCP connection establishment
+
+TCP thiết lập kết nối với bắt tay ba cách
+- Phát hành là đối xứng, cũng như mô tả trước
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/37.png"></p>
+
+<a name="5.4"></a>
+#### 5.4 TCP connection state modeling
+
+Máy trạng thái kết nối TCP có nhiều trạng thái hơn
+
+| state   | Miêu tả |
+| :------:| :---: | 
+| LISTEN  | Máy chủ sẽ chờ cuộc gọi đến  |
+| SYN RCVD |  1 yêu cầu kết nối đến; đợi ACK   |
+| SYN SENT   | Ứng dụng đã bắt đầu mở kết nối   |
+| ESTABLISHED  | Trạng thái truyền dữ liệu bình thường |
+| FIN WAIT 1  | Ứng dụng nói là đã kết thúc   |
+| FIN WAIT 2 | Mặt khác đồng ý giải phóng  |
+| TIME WAIT   |  Đợi tất cả gói tin die off  |
+| CLOSING |  Cả 2 đã cố gắng đóng cùng lúc |
+| CLOSE WAIT  |  Mặt khác bắt đầu giải phóng|
+| LAST ACK  |  Đợi tất cả gói tin die off  |
+
+- Đường nét đậm là đường dẫn bình thường cho khách hàng.
+- Đường net đứt là đường dẫn bình thường cho một máy chủ.
+- Đường nét mờ là những sự kiện bất thường.
+- Chuyển tiếp được dán nhãn theo nguyên nhân và hành động, được tách bằng dấu gạch chéo.
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/38.png"></p>
+
+<a name="5.5"></a>
+#### 5.5 TCP sliding window
+
+TCP thêm điều khiển luồng vào cửa sổ trượt như trước
+- ACK + WIN là giới hạn của người gửi
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/39.png"></p>
+
+Cần thêm các trường hợp đặc biệt để tránh hành vi không mong muốn
+- Ví dụ: Hội chứng ngớ ngẩn cửa sổ [bên dưới]
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/40.png"></p>
+
+<a name="5.6"></a>
+#### 5.6 TCP timer management
+
+TCP ước tính retransmit hẹn giờ từ đoạn RTTs 
+- Theo dõi trung bình và phương sai (đối với trường hợp Internet)
+- Thời gian chờ được đặt thành trung bình cộng với độ lệch 4 x
+
+<a name="5.7"></a>
+#### 5.7 TCP congestion control
+
+TCP sử dụng AIMD với tín hiệu mất mát để kiểm soát tắc nghẽn
+- Thực hiện như một **congestion window (cwnd)**  cho số phân đoạn có thể có trong mạng
+- Sử dụng một số cơ chế làm việc cùng nhau
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/41.png"></p>
+
+| Name   | Cơ chế | Mục đích |
+| :------:| :---: | :---: |
+| ACK clock | Congestion window (cwnd)  | Xóa gói tin bị hư |
+| Slow-start | Double cwnd each RTT  |Tốc độ gửi tăng nhanh để đạt đến mức cao hơn  |
+| Additive Increase  | Tăng thêm 1 gói mỗi RTT | Tăng tốc độ gửi đi chậm lại ở mức đúng  |
+| Fast retransmit / recovery  | Gửi lại gói bị mất sau 3 lần trùng lặp ACK; Gửi gói mới cho mỗi ACK mới | Khôi phục từ một gói bị mất mà không dừng đồng hồ ACK |
+
+Congestion windown kiểm soát tốc độ gửi
+- Giá cước/RTT; Cửa sổ có thể dừng người gửi nhanh chóng
+- **ACK clock** (thường xuyên nhận ACK) sẽ chuyển hướng lưu lượng truy cập và sender bursts
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/42.png"></p>
+
+Bắt đầu làm chậm phát triển congestion windown theo cấp số nhân
+- Tăng gấp đôi mỗi RTT trong khi vẫn giữ đồng hồ ACK
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/43.png"></p>
+
+Sự gia tăng Additive increase  tăng chậm dần dần
+- Thêm 1 RTT
+- Giữ ACK clock
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/44.png"></p>
+
+Bắt đầu chậm  sau đó tăng thêm (TCP Tahoe)
+- Ngưỡng là một nửa của tổn thất trước
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/45.png"></p>
+
+Với phục hồi nhanh chóng, chúng tôi có được răng cưa cổ điển (TCP Reno)
+- Retransmit gói bị mất sau khi 3 ACK trùng lặp
+- Gói mới cho mỗi dup. ACK cho đến khi mất mát được sửa chữa
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/46.png"></p>
+
+SACK (Selective ACKs) mở rộng ACK với một vector để mô tả các phân đoạn nhận được và do đó mất mát
+- Cho phép tái truyền / phục hồi chính xác hơn
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/47.png"></p>
 
 ### Tài liệu dịch
 
 [1] Lecture 6: Transport Layer. http://scisweb.ulster.ac.uk/~kevin/com320/notes.htm
+
