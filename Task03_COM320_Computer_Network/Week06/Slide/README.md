@@ -39,13 +39,13 @@
 
 [5.Internet Protocols – TCP](#5)
 
-- [4.3 The TCP service model](#5.1)
-- [4.3 The TCP segment header](#5.2)
-- [4.3 TCP connection establishment](#5.3)
-- [4.3 TCP connection state modeling](#5.4)
-- [4.3 TCP sliding window](#5.5)
-- [4.3 TCP timer management](#5.6)
-- [4.3 TCP congestion control](#5.7)
+- [5.1 The TCP service model](#5.1)
+- [5.2 The TCP segment header](#5.2)
+- [5.3 TCP connection establishment](#5.3)
+- [5.4 TCP connection state modeling](#5.4)
+- [5.5 TCP sliding window](#5.5)
+- [5.6 TCP timer management](#5.6)
+- [5.7 TCP congestion control](#5.7)
 
 [6.Performance Issues](#6)
 
