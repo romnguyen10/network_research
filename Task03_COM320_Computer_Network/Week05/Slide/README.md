@@ -1,4 +1,4 @@
-## COM320 Computer Network
+﻿## COM320 Computer Network
 
 > Tài liệu: COM320 Computer Networks and Operating Systems
 >
@@ -240,7 +240,3 @@ Nếu hai luồng tăng / giảm băng thông của chúng theo cùng một các
 ### Tài liệu dịch
 
 [1] Lecture 6: Transport Layer. http://scisweb.ulster.ac.uk/~kevin/com320/notes.htm
-
-
-Dòng 1 chậm một cách nhanh chóng khi Flow 2 bắt đầu
-Dòng 1 tăng tốc nhanh khi Flow 2 dừng lại
