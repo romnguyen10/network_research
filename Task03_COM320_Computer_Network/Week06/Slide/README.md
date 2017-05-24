@@ -4,7 +4,7 @@
 >
 > Thực hiện: **Nguyễn Tấn Phát**
 > 
-> Cập nhật lần cuối: **22/05/2017**
+> Cập nhật lần cuối: **24/05/2017**
 
 --------------------------
 ### Mục lục
@@ -48,6 +48,13 @@
 - [5.7 TCP congestion control](#5.7)
 
 [6.Performance Issues](#6)
+
+- [6.1 Performance problems](#6.1)
+- [6.2 Measuring network performance](#6.1)
+- [6.3 Host design for fast networks](#6.1)
+- [6.4 Fast segment processing](#6.1)
+- [6.5 Header compression](#6.1)
+- [6.6 Protocols for “long fat” networks](#6.1)
 
 --------------------------------
 <a name="1"></a>
@@ -406,6 +413,78 @@ Với phục hồi nhanh chóng, chúng tôi có được răng cưa cổ điể
 SACK (Selective ACKs) mở rộng ACK với một vector để mô tả các phân đoạn nhận được và do đó mất mát
 - Cho phép tái truyền / phục hồi chính xác hơn
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/47.png"></p>
+
+<a name="6"></a>
+### 6.Performance Issues
+
+Nhiều chiến lược để đạt được hiệu suất tốt đã được học hỏi qua thời gian:
+
+<a name="6.1"></a>
+#### 6.1 Performance problems
+
+Các tải không mong muốn thường tương tác với các giao thức để gây ra sự cố về hiệu suất
+- Cần tìm ra tình huống và cải tiến các giao thức
+Ví dụ:
+- Bão broadcast: một chương trình broadcasst gây nên sự cố.
+- Đồng bộ hóa: một tòa nhà của tất cả các máy tính liên lạc với máy chủ DHCP sau khi mất điện
+- Các gói tin nhỏ: Một số tình huống có thể gây ra TCP để gửi nhiều gói tin nhỏ thay vì một vài gói lớn
+
+<a name="6.2"></a>
+#### 6.2 Measuring network performance
+
+Measurement(đo lường) là chìa khóa để biết được hiệu suất - nhưng có những cạm bẫy của nó.
+Ví dụ về những cạm bẫy:
+  - Bộ nhớ đệm: lấy các trang Web sẽ cho kết quả đáng ngạc nhiên nhanh chóng nếu chúng được lưu trữ không mong muốn
+- Thời gian: đồng hồ có thể vượt quá / đánh giá thấp các sự kiện nhanh
+- Sự can thiệp: có thể có khối lượng công việc cạnh tranh nhau
+
+<a name="6.3"></a>
+#### 6.3 Host design for fast networks
+
+Phần mềm máy chủ nghèo có thể làm chậm rất nhiều mạng.
+Quy tắc chung cho phần mềm máy chủ lưu trữ nhanh:
+- Tốc độ máy chủ quan trọng hơn tốc độ mạng
+- Giảm số gói tin để giảm chi phí
+- Tối ưu hoá dữ liệu vào
+- Giảm thiểu chuyển đổi ngữ cảnh
+- Tránh tắc nghẽn hơn là hồi phục
+- Tránh hết thời gian chờ
+
+<a name="6.4"></a>
+#### 6.4 Fast segment processing
+
+Đẩy nhanh trường hợp thông thường với một con đường nhanh [màu hồng]
+- Xử lý các gói với tiêu đề dự kiến; đồng ý để người khác chạy chậm
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/48.png"></p>
+
+Trường tiêu đề thường giống nhau từ một gói tin đến gói kế tiếp cho luồng; copy/check để tăng tốc xử lý
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/49.png"></p>
+
+<a name="6.5"></a>
+#### 6.5 Header compression
+
+Chi phí đầu vào có thể rất lớn cho các gói nhỏ
+- 40 byte tiêu đề cho gói RTP/UDP/IP VoIP
+- Có vấn đề với các liên kết chậm, đặc biệt là không dây
+
+Tiêu đề nén làm giảm vấn đề này
+- Chạy giữa các lớp Link và Network
+- bỏ sót các lĩnh vực không thay đổi hoặc thay đổi có thể dự đoán
+	- 40 byte tiêu đề TCP/IP --> 3 byte thông tin
+- Cung cấp tiêu đề lớp đơn giản và liên kết hiệu quả
+
+<a name="6.6"></a>
+#### 6.6 Protocols for “long fat” networks
+
+Mạng có băng thông cao ("Fat") và độ trễ cao ("Long") có thể lưu trữ nhiều thông tin bên trong mạng
+- Yêu cầu các giao thức với bộ đệm phong phú và RTT ít, thay vì giảm các bit trên dây
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/50.png"></p>
+
+Bạn có thể mua thêm băng thông nhưng không có độ trễ
+- Cần phải thay đổi vị trí kết thúc (ví dụ như vào đám mây) để hạ thấp hơn nữa
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Slide/Image/51.png"></p>
+
+---------------------------------------------------------------
 
 ### Tài liệu dịch
 
