@@ -4,7 +4,7 @@
 >
 > Thực hiện: **Nguyễn Tấn Phát**
 > 
-> Cập nhật lần cuối: **24/05/2017**
+> Cập nhật lần cuối: **29/05/2017**
 
 ---------------------------------------------
 
@@ -19,6 +19,12 @@
 - [1.5 Homework - Explore Your Network](#1.5)
 
 [2. Examining the HTTP protocol request in detail](#2)
+
+- [2.1. Hướng dẫn](#2.1)
+- [2.2. Những gì bạn sẽ thấy](#2.2)
+- [2.3. Sử dụng](#2.3)
+- [2.4. Mã nguồn](#2.4)
+- [2.5. Các công cụ khác](#2.5)
 
 ---------------------------------------------
 <a name="1"></a>
@@ -38,6 +44,8 @@
 	- b. *Chờ 10 giây và lấy lại URL hình ảnh tĩnh. Thực hiện theo cách tương tự và không sử dụng nút "Tải lại" của trình duyệt để kích hoạt các hành vi khác.*
 	- c. *Chờ thêm 10 giây và tìm nạp trang chủ của trang thứ hai.*
 - 1.1.5. *Dừng chụp sau khi tìm nạp xong*. Bạn nên có một cửa sổ đầy các gói, trong đó giao thức của một số gói được liệt kê là HTTP - nếu bạn không có bất kỳ gói tin HTTP nào, có vấn đề với thiết lập như trình duyệt của bạn bằng cách sử dụng SPDY thay vì HTTP để tìm nạp các trang web.
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/1"></p>
 
 <a name="1.2"></a>
 #### 1.2 Step 2: Inspect the Trace
@@ -62,20 +70,116 @@
 - b. Tiêu đề nào được sử dụng để chỉ ra loại và chiều dài của nội dung được trả lại trong một phản ứng?
 	- *Trả lời:* Loại nội dung được cung cấp bởi Content-Type header và độ dài của nó thường được cung cấp bởi tiêu đề Content-Length. (Có thể nhưng không chắc rằng các tiêu đề này không có mặt).
 
-
 <a name="1.3"></a>
 #### 1.3 Step 3: Content Caching
+
+Việc tìm nạp lần thứ hai trong dấu vết nên tìm nạp lại URL đầu tiên. Việc tìm nạp này cho thấy cơ hội để chúng ta xem xét bộ nhớ đệm đang hoạt động, vì rất có khả năng lưu hình ảnh hoặc tài liệu không thay đổi và do đó không cần tải xuống lại.
+Bây giờ chúng ta sẽ thấy cách chúng hoạt động.
+
+*Chọn GET là tìm nạp lại GET đầu tiên và mở rộng khối HTTP của nó*. Có khả năng, đây sẽ là GET thứ hai trong các lư lượng bắt được .Tuy nhiên, xem xét cẩn thận vì trình duyệt của bạn có thể yêu cầu HTTP khác cho lý do riêng. Ví dụ, bạn có thể thấy một GET cho /favicon.ico trong dấu vết. Đây là trình duyệt yêu cầu biểu tượng cho trang web sử dụng như là một phần của trình duyệt hiển thị. Tương tự, nếu bạn nhập vào thanh URL trình duyệt của bạn có thể đã ban hành GETs như một phần của thủ tục tự động hoàn thành. Chúng tôi không quan tâm đến hoạt động trình duyệt này tại thời điểm hiện tại.
+
+*Bây giờ việc tìm kiếm tiêu đề sẽ cho phép máy chủ tìm ra nếu nó cần phải gửi nội dung mới*. Chúng tôi sẽ hỏi bạn về tiêu đề này ngay lập tức. Máy chủ sẽ chỉ cần gửi nội dung mới nếu nội dung có sẵn Thay đổi kể từ khi trình duyệt cuối cùng tải xuống. Để thực hiện điều này, trình duyệt bao gồm việc thực hiện timestamp từ lần tải xuống trước cho nội dung mà nó đã lưu trữ. Tiêu đề này không có trong GET đầu tiên kể từ khi chúng tôi xóa bộ nhớ cache của trình duyệt, vì vậy trình duyệt đã không tải nội dung trước đó nó có thể sử dụng được. Trong hầu hết các khía cạnh khác, yêu cầu này sẽ giống như yêu cầu đầu tiên.
+
+*Cuối cùng, chọn phản hồi để tìm nạp lại, và mở rộng khối HTTP của nó*. Giả sử bộ nhớ đệm hoạt động như mong đợi, phản hồi này sẽ không chứa nội dung. Thay vào đó, mã trạng thái của phản hồi sẽ là *"304 Not Modified"*. Điều này nói với trình duyệt rằng nội dung không thay đổi từ bản sao trước của nó và nội dung đã lưu vào bộ nhớ cache có thể được hiển thị.
+
+*Trả lời các câu hỏi sau (trả lời ở trang sau).*
+
+- a. Tên của tiêu đề trình duyệt gửi đến để cho máy chủ biết xem có nên gửi nội dung mới?
+	- *trả lời:* Tiêu đề được gọi là *"If-Modified-Since"*, tức là nó yêu cầu máy chủ gửi nội dung nếu nó đã được sửa đổi từ một thời điểm nhất định.
+- b. Trường hợp chính xác giá trị timestamp được mang bởi tiêu đề đến từ đâu?
+	- *trả lời:* Timestamp đến từ tiêu đề *“Last-Modified”* của nội dung tải xuống gần đây nhất. Đó là Timestamp của máy chủ khi nội dung thay đổi lần cuối - không phải là Timestamp theo đồng hồ của trình duyệt và không phải là Timestamp của thời gian tải xuống
 
 <a name="1.4"></a>
 #### 1.4 Step 4: Complex Pages
 
+Bây giờ chúng ta hãy kiểm tra lấy lần thứ ba vào cuối lưu lượng. Việc tìm nạp này là dành cho một trang web phức tạp hơn có khả năng đã nhúng các tài nguyên. Vì vậy, trình duyệt sẽ tải xuống HTML ban đầu cộng với tất cả các tài nguyên được nhúng cần thiết để hiển thị trang, cộng với các tài nguyên khác được yêu cầu trong quá trình thực hiện các tập lệnh trang. Như chúng ta sẽ thấy, một trang đơn lẻ có thể liên quan đến nhiều GET!
+
+*Để tóm tắt các GET cho trang thứ ba, đưa lên bảng Phân phối HTTP* . Bạn sẽ tìm thấy bảng này dưới *"Statistics"* và *"HTTP"*. Bạn có thể lọc cho các gói tin là một phần của lần tìm nạp thứ ba bằng cách loại bỏ các gói tin từ phần trước đó của dấu vết theo thời gian hoặc số. Ví dụ: sử dụng *"frame.number> 27"* hoặc *"frame.time_relative> 24"* để theo dõi của chúng tôi.
+
+Để tóm tắt các GET cho trang thứ ba, đưa lên bảng Phân phối Tải HTTP. Bạn sẽ tìm thấy bảng này dưới * "Thống kê" và "HTTP" *. Bạn có thể lọc cho các gói tin là một phần của lần tìm nạp thứ ba bằng cách loại bỏ các gói tin từ phần trước đó của dấu vết theo thời gian hoặc số. Ví dụ: sử dụng *"frame.number> 27"* hoặc *"frame.time_relative> 24"* để theo dõi của chúng tôi....
+
+Nhìn vào bảng điều khiển này sẽ cho bạn biết có bao nhiêu yêu cầu đã được thực hiện cho các máy chủ nào. Có khả năng là tìm kiếm của bạn sẽ yêu cầu nội dung từ các máy chủ khác mà bạn có thể không nghi ngờ xây dựng trang. Các máy chủ khác có thể bao gồm các bên thứ ba như mạng phân phối nội dung, mạng quảng cáo và mạng phân tích. Bảng điều khiển của chúng tôi được hiển thị bên dưới - trang tìm nạp đã yêu cầu 95 yêu cầu đến 4 máy chủ khác nhau!
+ <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/2"></p>
+
+*Đối với một loại tóm tắt khác của GETs, đưa lên một bảng truy cập HTTP Packet Counter*. Bạn cũng sẽ tìm thấy bảng này trong *"Statistics"* và *"HTTP"*, và bạn nên lọc cho các gói tin là một phần của lần tải thứ ba như trước. Bảng điều khiển này sẽ cho bạn biết các loại yêu cầu và phản hồi. Bảng điều khiển của chúng tôi được thể hiện trong hình phía dưới. Bạn có thể thấy rằng nó bao gồm hoàn toàn các yêu cầu GET được kết hợp bởi 200 OK phản ứng.
+Tuy nhiên, có nhiều mã phản hồi khác mà bạn có thể quan sát thấy trong dấu vết của bạn, chẳng hạn như khi tài nguyên đã được lưu trữ....
+ <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/3"></p>
+
+Bạn có thể tò mò muốn biết nội dung nào đang được tải xuống bởi tất cả các yêu cầu này. Ngoài việc nhìn thấy các URL trong cột Thông tin, bạn có thể nhận được bản tóm tắt các URL trong bảng Yêu cầu HTTP dưới *"Statistics"* và *"HTTP"*. Mỗi yêu cầu riêng biệt và phản hồi có cùng một hình thức chúng ta đã thấy trong một bước trước đó. Nói chung, chúng được thực hiện trong quá trình tìm nạp một trang hoàn chỉnh với một URL nhất định.
+
+Để có cái nhìn chi tiết hơn về quy trình tải trang tổng thể, hãy sử dụng một trang web như *PageSpeed hoặc webpagetest.org* của Google. Các trang web này sẽ kiểm tra URL bạn chọn và tạo báo cáo về hoạt động tải trang, nói yêu cầu được tìm nạp vào thời điểm nào và đưa ra các mẹo để giảm thời gian tải trang tổng thể. Chúng tôi đã cho thấy sự khởi đầu của sơ đồ *"waterfall"* cho tải trang tương ứng với dấu vết của chúng tôi trong hình bên dưới. Sau khi lấy nguồn tài nguyên HTML ban đầu, có rất nhiều lần tìm nạp nhanh sau đó cho các tài nguyên nhúng như các tập lệnh JavaScript, bảng định kiểu CSS, hình ảnh và hơn thế nữa.
+
 <a name="1.5"></a>
 #### 1.5 Homework - Explore Your Network
 
+Khám phá HTTP một mình khi bạn hoàn thành lab này. Một số gợi ý:
+- Nghiên cứu cách trang web dẫn đến mẫu yêu cầu HTTP. Nhiều trang web phổ biến có các trang tương đối phức tạp đòi hỏi nhiều yêu cầu HTTP để xây dựng. Hơn nữa, các trang này có thể tiếp tục phát hành các yêu cầu HTTP "không đồng bộ" khi chúng đã tải, tải các hiển thị tương tác hoặc chuẩn bị cho trang tiếp theo, vv Bạn sẽ thấy hoạt động này khi bạn tìm thấy các yêu cầu HTTP tiếp tục sau khi trang được tải .
+- Xem lưu lượng truy cập HTTP của luồng video trực tuyến. Chúng tôi đã xem xét lưu lượng web HTTP, nhưng các ứng dụng khác cũng yêu cầu HTTP. Việc phổ biến các trình khách video được nhúng trong các trình duyệt như Netflix để tải nội dung bằng cách sử dụng HTTP sẽ tìm nạp nhiều đoạn "nhỏ" video. Nếu bạn nhìn vào các ứng dụng khác, bạn có thể thấy rằng nhiều người trong số họ sử dụng HTTP để thay đổi về nội dung, mặc dù thường xuyên trên một cổng khác với cổng 80.
+
 <a name="2"></a>
-### 2. Examining the HTTP protocol request in detail
+### 2. Examining the HTTP protocol request in detail:
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/4"></p>
+
+<a name="2.1"></a>
+#### 2.1. Hướng dẫn
+
+Về cơ bản, chỉ cần nhập URL và sau đó nhấp vào nút **Submit** 
+
+- *URL*: Phải bắt đầu bằng *http://* ; Chúng tôi không làm các máy chủ an toàn.
+- *Request Type*:
+	- *GET*  mặc định, hiển thị cả tiêu đề và nội dung.
+	- *HEAD* chỉ hiển thị tiêu đề - một lựa chọn tốt nếu đó là tất cả những gì bạn quan tâm, hoặc nếu bạn dự đoán một lượng nội dung rất lớn.
+	- *TRACE* được quan tâm hạn chế - nó chỉ nhắc lại yêu cầu.
+- *Version*: Phiên bản HTTP có thể ảnh hưởng đến phản hồi của máy chủ. *HTTP/1.1* là phiên bản hiện đại hơn. Lưu ý rằng khi bạn sử dụng HTTP/1.1, máy chủ có thể phản ứng với dữ liệu "chunked" (được chỉ ra bởi Transfer-Encoding: chunked trong tiêu đề), nơi đáp ứng hoàn toàn được chia thành nhiều phần nhỏ hơn.
+- *Display Format*:
+	- *Auto-Detect* mặc định, nhìn vào dòng *Content-Type* trong tiêu đề và lựa chọn những gì nó nghĩ là loại hiển thị thích hợp.
+	- *Text*  hiển thị văn bản, phù hợp với các tệp HTML.
+	- *Hex* hexadecimal hiển thị, đó sẽ là thích hợp hơn cho các tập tin hình ảnh.
+- *User-Agent*: Đây là tùy chọn. Đôi khi một máy chủ từ xa có thể trả về một phản ứng khác nhau tùy thuộc vào trình duyệt hoặc trình duyệt đã khởi tạo yêu cầu. Nếu bạn không chỉ định chuỗi xác định người sử dụng đại lý, chúng tôi sẽ sao chép một chuỗi mà trình duyệt hiện tại của bạn sử dụng.
+- *Referer*: (Vâng, đây là lỗi chính tả - nên là *"referrer"*. Xem nguồn gốc *origin of the term referer*. ) Cũng tùy chọn. Cho máy chủ biết địa chỉ URL đã yêu cầu. Máy chủ có thể phản hồi khác với yêu cầu tùy thuộc vào tài nguyên giới thiệu. Nó cũng cho phép một máy chủ tạo ra các danh sách các liên kết ngược đến các tài nguyên, khai thác gỗ, tối ưu hóa bộ nhớ đệm, vv Nó cũng cho phép tải các liên kết quá cũ hoặc sai sót để được truy tìm để bảo trì. Trường giới thiệu không nên được gửi nếu URL yêu cầu được lấy từ một nguồn không có URL riêng của nó, chẳng hạn như đầu vào từ bàn phím người dùng.
+- *Accept-Encoding*: Cũng tùy chọn. Tiêu đề này đôi khi được sử dụng để xác định rằng trình duyệt sẵn sàng chấp nhận các định dạng nhất định trong phản ứng của máy chủ. Một ví dụ sẽ được nén, gzip .
+- *Auto-Follow Location*: Nếu máy chủ trả về một Địa điểm: dòng trong tiêu đề HTTP, nó sẽ hướng dẫn trình duyệt của bạn *"forward"* or *"redirect"* đến vị trí mới đó. Nếu lựa chọn này được chọn, **HttpView** sẽ tự động tiếp tục truy vấn các vị trí mới như vậy (tối đa 4 lần).
+
+<a name="2.2"></a>
+#### 2.2. Những gì bạn sẽ thấy
+
+Phần **Header** hiển thị nội dung mà trình duyệt của bạn sẽ nhận được nhưng không hiển thị. Ví dụ:
+- *Last-Modified*: cho biết khi nào tệp được sửa đổi gần đây nhất
+- *Set-Cookie*: yêu cầu trình duyệt của bạn tạo một cookie
+- *Location*: yêu cầu trình duyệt của bạn chuyển sang một URL khác
+
+Phần **Nội dung** hiển thị dữ liệu mà trình duyệt của bạn sẽ hiển thị cho bạn - hơi giống như sử dụng tính năng *Nguồn Xem* của trình duyệt .
+
+Trong một hiển thị văn bản, các ký tự không phải là văn bản được hiển thị như sau:
+- *(LF)* = Linefeed, aka Newline (hex 0A)
+- *(CR)* = Vận chuyển trở lại (hex 0D)
+- *(HT)* = Tab ngang (hex 09)
+- *(00)* = Hexadecimal 00
+
+<a name="2.3"></a>
+#### 2.3. Sử dụng
+
+- Hãy thử nhập *http://www.amazon.com* dưới dạng URL trong biểu mẫu ở trên và chọn tùy chọn tự động theo dõi vị trí. Bạn sẽ thấy rằng Amazon chuyển hướng bạn hai lần trong khi thiết lập các cookie khác nhau.
+
+Lưu ý rằng nếu bạn nhằm mục đích trình duyệt của bạn tại *http://www.amazon.com*, việc trao đổi có thể hơi khác nhau. Nếu bất kỳ giá trị cookie nào của *amazon.com* đã được đặt trên hệ thống của bạn, trình duyệt của bạn sẽ gửi chúng lại, và Amazon sẽ trả lời tương ứng (ví dụ như chào mừng bạn theo tên).
+
+- *HttpView* có thể hữu ích nếu bạn muốn xem văn bản nguồn của các tệp JavaScript (.js) và Cascading Style Sheet (.css).
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/5"></p>
+
+<a name="2.4"></a>
+#### 2.4. Mã nguồn
+
+Trình xem HTTP của tôi rất hữu ích và hiển thị chất lượng công việc mà khách hàng có thể mong đợi từ tôi. Xin lỗi, nhưng mã nguồn không có sẵn - Tôi cho đi rất nhiều tài liệu trên trang web của tôi, nhưng không phải tất cả mọi thứ!
+
+<a name="2.5"></a>
+#### 2.5. Các công cụ khác
+
+Xem *http://www.rexswain.com/index.html* cho các tóm tắt và trình diễn khác: APL, REXX, XEDIT, KEDIT, Perl, HTML, Màu RGB, Cookie HTTP, Mẫu Email, Các biến môi trường CGI, Bao gồm Bên Máy chủ, v.v ...
 
 ----------------------------------------------
+
 ### Tài liệu dịch
 
 [1] Lab Week 6: HTTP/Examining the HTTP protocol request in detail.
