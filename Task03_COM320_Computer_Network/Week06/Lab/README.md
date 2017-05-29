@@ -45,7 +45,7 @@
 	- c. *Chờ thêm 10 giây và tìm nạp trang chủ của trang thứ hai.*
 - 1.1.5. *Dừng chụp sau khi tìm nạp xong*. Bạn nên có một cửa sổ đầy các gói, trong đó giao thức của một số gói được liệt kê là HTTP - nếu bạn không có bất kỳ gói tin HTTP nào, có vấn đề với thiết lập như trình duyệt của bạn bằng cách sử dụng SPDY thay vì HTTP để tìm nạp các trang web.
 
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/1"></p>
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/1.png"></p>
 
 <a name="1.2"></a>
 #### 1.2 Step 2: Inspect the Trace
@@ -99,11 +99,11 @@ Bây giờ chúng ta hãy kiểm tra lấy lần thứ ba vào cuối lưu lư�
 Để tóm tắt các GET cho trang thứ ba, đưa lên bảng Phân phối Tải HTTP. Bạn sẽ tìm thấy bảng này dưới * "Thống kê" và "HTTP" *. Bạn có thể lọc cho các gói tin là một phần của lần tìm nạp thứ ba bằng cách loại bỏ các gói tin từ phần trước đó của dấu vết theo thời gian hoặc số. Ví dụ: sử dụng *"frame.number> 27"* hoặc *"frame.time_relative> 24"* để theo dõi của chúng tôi....
 
 Nhìn vào bảng điều khiển này sẽ cho bạn biết có bao nhiêu yêu cầu đã được thực hiện cho các máy chủ nào. Có khả năng là tìm kiếm của bạn sẽ yêu cầu nội dung từ các máy chủ khác mà bạn có thể không nghi ngờ xây dựng trang. Các máy chủ khác có thể bao gồm các bên thứ ba như mạng phân phối nội dung, mạng quảng cáo và mạng phân tích. Bảng điều khiển của chúng tôi được hiển thị bên dưới - trang tìm nạp đã yêu cầu 95 yêu cầu đến 4 máy chủ khác nhau!
- <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/2"></p>
+ <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/2.png"></p>
 
 *Đối với một loại tóm tắt khác của GETs, đưa lên một bảng truy cập HTTP Packet Counter*. Bạn cũng sẽ tìm thấy bảng này trong *"Statistics"* và *"HTTP"*, và bạn nên lọc cho các gói tin là một phần của lần tải thứ ba như trước. Bảng điều khiển này sẽ cho bạn biết các loại yêu cầu và phản hồi. Bảng điều khiển của chúng tôi được thể hiện trong hình phía dưới. Bạn có thể thấy rằng nó bao gồm hoàn toàn các yêu cầu GET được kết hợp bởi 200 OK phản ứng.
 Tuy nhiên, có nhiều mã phản hồi khác mà bạn có thể quan sát thấy trong dấu vết của bạn, chẳng hạn như khi tài nguyên đã được lưu trữ....
- <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/3"></p>
+ <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/3.png"></p>
 
 Bạn có thể tò mò muốn biết nội dung nào đang được tải xuống bởi tất cả các yêu cầu này. Ngoài việc nhìn thấy các URL trong cột Thông tin, bạn có thể nhận được bản tóm tắt các URL trong bảng Yêu cầu HTTP dưới *"Statistics"* và *"HTTP"*. Mỗi yêu cầu riêng biệt và phản hồi có cùng một hình thức chúng ta đã thấy trong một bước trước đó. Nói chung, chúng được thực hiện trong quá trình tìm nạp một trang hoàn chỉnh với một URL nhất định.
 
@@ -119,7 +119,7 @@ Khám phá HTTP một mình khi bạn hoàn thành lab này. Một số gợi ý
 <a name="2"></a>
 ### 2. Examining the HTTP protocol request in detail:
 
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/4"></p>
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/4.png"></p>
 
 <a name="2.1"></a>
 #### 2.1. Hướng dẫn
@@ -166,7 +166,7 @@ Lưu ý rằng nếu bạn nhằm mục đích trình duyệt của bạn tại 
 
 - *HttpView* có thể hữu ích nếu bạn muốn xem văn bản nguồn của các tệp JavaScript (.js) và Cascading Style Sheet (.css).
 
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/5"></p>
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/5.png"></p>
 
 <a name="2.4"></a>
 #### 2.4. Mã nguồn
