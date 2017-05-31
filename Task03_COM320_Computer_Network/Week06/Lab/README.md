@@ -1,10 +1,10 @@
-﻿## COM320 Computer Network
+## COM320 Computer Network
 
 > Tài liệu: COM320 Computer Networks and Operating Systems
 >
 > Thực hiện: **Nguyễn Tấn Phát**
 > 
-> Cập nhật lần cuối: **29/05/2017**
+> Cập nhật lần cuối: **31/05/2017**
 
 ---------------------------------------------
 
@@ -45,7 +45,7 @@
 	- c. *Chờ thêm 10 giây và tìm nạp trang chủ của trang thứ hai.*
 - 1.1.5. *Dừng chụp sau khi tìm nạp xong*. Bạn nên có một cửa sổ đầy các gói, trong đó giao thức của một số gói được liệt kê là HTTP - nếu bạn không có bất kỳ gói tin HTTP nào, có vấn đề với thiết lập như trình duyệt của bạn bằng cách sử dụng SPDY thay vì HTTP để tìm nạp các trang web.
 
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/1"></p>
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/1.png"></p>
 
 <a name="1.2"></a>
 #### 1.2 Step 2: Inspect the Trace
@@ -99,11 +99,11 @@ Bây giờ chúng ta hãy kiểm tra lấy lần thứ ba vào cuối lưu lư�
 Để tóm tắt các GET cho trang thứ ba, đưa lên bảng Phân phối Tải HTTP. Bạn sẽ tìm thấy bảng này dưới * "Thống kê" và "HTTP" *. Bạn có thể lọc cho các gói tin là một phần của lần tìm nạp thứ ba bằng cách loại bỏ các gói tin từ phần trước đó của dấu vết theo thời gian hoặc số. Ví dụ: sử dụng *"frame.number> 27"* hoặc *"frame.time_relative> 24"* để theo dõi của chúng tôi....
 
 Nhìn vào bảng điều khiển này sẽ cho bạn biết có bao nhiêu yêu cầu đã được thực hiện cho các máy chủ nào. Có khả năng là tìm kiếm của bạn sẽ yêu cầu nội dung từ các máy chủ khác mà bạn có thể không nghi ngờ xây dựng trang. Các máy chủ khác có thể bao gồm các bên thứ ba như mạng phân phối nội dung, mạng quảng cáo và mạng phân tích. Bảng điều khiển của chúng tôi được hiển thị bên dưới - trang tìm nạp đã yêu cầu 95 yêu cầu đến 4 máy chủ khác nhau!
- <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/2"></p>
+ <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/2.png"></p>
 
 *Đối với một loại tóm tắt khác của GETs, đưa lên một bảng truy cập HTTP Packet Counter*. Bạn cũng sẽ tìm thấy bảng này trong *"Statistics"* và *"HTTP"*, và bạn nên lọc cho các gói tin là một phần của lần tải thứ ba như trước. Bảng điều khiển này sẽ cho bạn biết các loại yêu cầu và phản hồi. Bảng điều khiển của chúng tôi được thể hiện trong hình phía dưới. Bạn có thể thấy rằng nó bao gồm hoàn toàn các yêu cầu GET được kết hợp bởi 200 OK phản ứng.
 Tuy nhiên, có nhiều mã phản hồi khác mà bạn có thể quan sát thấy trong dấu vết của bạn, chẳng hạn như khi tài nguyên đã được lưu trữ....
- <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/3"></p>
+ <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/3.png"></p>
 
 Bạn có thể tò mò muốn biết nội dung nào đang được tải xuống bởi tất cả các yêu cầu này. Ngoài việc nhìn thấy các URL trong cột Thông tin, bạn có thể nhận được bản tóm tắt các URL trong bảng Yêu cầu HTTP dưới *"Statistics"* và *"HTTP"*. Mỗi yêu cầu riêng biệt và phản hồi có cùng một hình thức chúng ta đã thấy trong một bước trước đó. Nói chung, chúng được thực hiện trong quá trình tìm nạp một trang hoàn chỉnh với một URL nhất định.
 
@@ -116,10 +116,33 @@ Khám phá HTTP một mình khi bạn hoàn thành lab này. Một số gợi ý
 - Nghiên cứu cách trang web dẫn đến mẫu yêu cầu HTTP. Nhiều trang web phổ biến có các trang tương đối phức tạp đòi hỏi nhiều yêu cầu HTTP để xây dựng. Hơn nữa, các trang này có thể tiếp tục phát hành các yêu cầu HTTP "không đồng bộ" khi chúng đã tải, tải các hiển thị tương tác hoặc chuẩn bị cho trang tiếp theo, vv Bạn sẽ thấy hoạt động này khi bạn tìm thấy các yêu cầu HTTP tiếp tục sau khi trang được tải .
 - Xem lưu lượng truy cập HTTP của luồng video trực tuyến. Chúng tôi đã xem xét lưu lượng web HTTP, nhưng các ứng dụng khác cũng yêu cầu HTTP. Việc phổ biến các trình khách video được nhúng trong các trình duyệt như Netflix để tải nội dung bằng cách sử dụng HTTP sẽ tìm nạp nhiều đoạn "nhỏ" video. Nếu bạn nhìn vào các ứng dụng khác, bạn có thể thấy rằng nhiều người trong số họ sử dụng HTTP để thay đổi về nội dung, mặc dù thường xuyên trên một cổng khác với cổng 80.
 
+**Tiến hành:**
+
+- Đầu tiên mở wireshark với bộ lọc là http, sau đó thử mở URL là ola.vn trên trình duyệt của bạn, kết quả ta có 1 danh sách gói Http như hình bên dưới:
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/6.png"></p>
+
+- Bây giờ chúng ta sẽ tiến hành phân tích các gói tin bắt được.
+	- Khi chúng ta truy cập ola.vn thì http request được gửi đến máy server để yêu cầu về nội dung cần:
+		- Http request bắt đầu với một Request-Line, Request-Line chứa ba mục phân biệt, đó là method, uri, và phiên bản HTTP, mỗi mục được phân tách bởi một hay nhiều khoảng trống. Request-Line mà ta capture được là GET, POST,.. URI là */*, version *HTTP/1.1*. chúng ta có thể tim thấy name và pass đăng nhập vào ola.vn khi mở gói POST
+		- Http Response trả lời Http request từ web client, trong bài lab chúng ta bắt được nhiều gói khác nhau như 200-OK, 204-No Content,....
+		
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/7.png"></p>
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/8.png"></p>
+
+
+- Http Response gồm:
+	- 1xx - Informational
+	- 2xx - Success (200 - OK, 202 - Accepted, 204 - No Content)
+	- 3xx - Redirection (301 Moved Permanently: tài nguyên đã được chuyển hoàn toàn tới địa chỉ Location trong HTTP response. 303 See other: tài nguyên đã được chuyển tạm thời tới địa chỉ Location trong HTTP response. 304 Not Modified: tài nguyên không thay đổi từ lần cuối client request, nên client có thể sử dụng đã lưu trong cache.)
+	- 4xx - Client Error (400 - Bad Request, 401 - Unauthorized, 403 - Forbidden, 404 - Not Found, 405 - Method Not Allowed, 408 - Request Timeout, 429 - Too many requests)
+	- 5xx - Server Error (500 - Internal Server Error, 503 - Service Unavailable, 504 - Gateway Timeout, 509 - Bandwidth Limit Exceed)
+
 <a name="2"></a>
 ### 2. Examining the HTTP protocol request in detail:
 
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/4"></p>
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/4.png"></p>
 
 <a name="2.1"></a>
 #### 2.1. Hướng dẫn
@@ -166,7 +189,7 @@ Lưu ý rằng nếu bạn nhằm mục đích trình duyệt của bạn tại 
 
 - *HttpView* có thể hữu ích nếu bạn muốn xem văn bản nguồn của các tệp JavaScript (.js) và Cascading Style Sheet (.css).
 
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/5"></p>
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week06/Lab/Image/5.png"></p>
 
 <a name="2.4"></a>
 #### 2.4. Mã nguồn
