@@ -4,7 +4,7 @@
 >
 > Thực hiện: **Nguyễn Tấn Phát**
 > 
-> Cập nhật lần cuối: **02/06/2017**
+> Cập nhật lần cuối: **05/06/2017**
 
 ---------------------------------------------
 
@@ -24,7 +24,22 @@
 - [2.4. Message Transfer](#2.4)
 - [2.5. Final Delivery](#2.5)
 
-[3. WWW Architectural Overview](#2) 
+[3. WWW Architectural Overview](#3) 
+
+- [3.1. Architectural Overview](#3.1) 
+- [3.2. Static Web Pages](#3.2) 
+- [3.3. Dynamic Pages & Web Applications](#3.3) 
+- [3.4. HTTP](#3.4) 
+
+[4. The Mobile Web](#4) 
+
+- [4.1. Digital Audio](#4.1) 
+- [4.2. Digital Video](#4.2) 
+- [4.3. Streaming Stored Media](#4.3) 
+- [4.4. Real-Time Conferencing-SIP](#4.4) 
+- [4.5. Server Farms and Web Proxies](#4.5) 
+- [4.6. CDNs – Content Delivery Networks](#4.6) 
+- [4.7. Peer-to-Peer Networks](#4.7) 
 
 
 ---------------------------------------------
@@ -130,10 +145,12 @@ Những gì người dùng nhìn thấy - giao diện các yếu tố của mộ
 | Content-Type:    | Loại và định dạng của nội dung | 
 
 - Các loại nội dung MIME phổ biến và các phân nhóm phụ
- <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/9.png"></p>
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/9.png"></p>
  
 - Đặt tất cả lại với nhau: một Message nhiều phần có chứa các lựa chọn HTML và audio.
- <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/10.png"></p>
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/10.png"></p>
 
 <a name="2.4"></a>
 #### 2.4. Message Transfer
@@ -146,7 +163,9 @@ Những gì người dùng nhìn thấy - giao diện các yếu tố của mộ
 - Gửi tin nhắn:
 	- Từ Alice đến Bob
 	- Các lệnh SMTP được đánh dấu [màu hồng]
-	 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/11.png"></p>
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/11.png"></p>
+
 - Các mở rộng SMTP thông thường (không phải trong ví dụ đơn giản)
 
 | Keyword   | Description 	   | 
@@ -167,6 +186,234 @@ Những gì người dùng nhìn thấy - giao diện các yếu tố của mộ
 
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/12.png"></p>
 
+<a name="3"></a>
+### 3. WWW Architectural Overview
+
+<a name="3.1"></a>
+#### 3.1. Architectural Overview
+
+- HTTP chuyển các trang từ máy chủ sang trình duyệt
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/13.png"></p>
+
+- Các trang được đặt tên với URL (Uniform Resource Locators)
+	- Ví dụ: http://www.phdcomics.com/comics.php
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/14.png"></p>
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/15.png"></p>
+
+- Các bước mà client (trình duyệt) phải thực hiện theo một liên kết:
+	- Xác định giao thức (HTTP) -
+	- Hỏi DNS cho địa chỉ IP của máy chủ
+	- Thực hiện kết nối TCP với máy chủ
+	- Gửi yêu cầu trang; Máy chủ gửi nó trở lại
+	- Lấy các URL khác nếu cần để hiển thị trang
+	- Đóng các kết nối TCP nhàn rỗi
+- Các bước mà máy chủ cần để phục vụ các trang:
+	- Chấp nhận kết nối TCP từ máy khách
+	- Nhận yêu cầu trang và ánh xạ nó vào một tài nguyên (ví dụ: tên tệp)
+	- Nhận tài nguyên (ví dụ: tệp từ đĩa)
+	- Gửi nội dung của tài nguyên cho khách hàng.
+	- Phát hành các kết nối TCP nhàn rỗi
+
+- Loại nội dung được xác định bởi các loại MIME
+	- Trình duyệt có hành động phù hợp để hiển thị
+	- Các Plug-ins / helper  mở rộng trình duyệt cho các loại mới
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/16.png"></p>
+
+- Để nâng cao hiệu suất, các áy chủ Web có thể sử dụng:
+	- Bộ nhớ đệm, nhiều luồng và đầu giao diện người dùng
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/17.png"></p>
+
+-Các bước của máy chủ, được xem xét lại:
+	- Giải quyết các yêu cầu của trang Web
+	- Thực hiện kiểm soát truy cập trên trang Web
+	- Kiểm tra bộ nhớ cache
+	- Tìm trang yêu cầu từ đĩa hoặc chạy chương trình
+	- Xác định phần còn lại của phản hồi
+	- Trả lời phản hồi cho khách hàng
+	- Tạo mục nhập trong nhật ký máy chủ
+
+- Cookie hỗ trợ tương tác máy khách / máy chủ
+	- Máy chủ gửi cookie (trạng thái) với phản hồi trang
+	- Khách hàng lưu trữ các cookie trên trang tìm nạp
+	- Khách hàng gửi cookie trở lại máy chủ với yêu cầu
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/18.png"></p>
+
+<a name="3.2"></a>
+#### 3.2. Static Web Pages
+
+- Các trang web tĩnh chỉ đơn giản là các tệp
+	- Có cùng nội dung cho mỗi lần xem
+- Có thể trực quan phong phú và tương tác:
+	- HTML kết hợp văn bản và image-form thu thập dữ liệu người dùng nhập
+	- Các tờ kiểu dáng phù hợp với trình bày và đồ họa Vector, video. . .
+ <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/19.png"></p>
+
+<a name="3.3"></a>
+#### 3.3. Dynamic Pages & Web Applications 
+
+- Các trang động được tạo ra bởi các chương trình chạy trên máy chủ (với cơ sở dữ liệu) và máy khách
+	- Ví dụ, PHP ở máy chủ, JavaScript tại khách hàng
+	- Trang thay đổi mỗi lần như sử dụng một ứng dụng
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/20.png"></p>
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/21.png"></p>
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/22.png"></p>
+
+- Sự khác biệt giữa máy chủ và chương trình khách hàng
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/23.png"></p>
+
+- Các ứng dụng web sử dụng một bộ công nghệ làm việc cùng nhau, ví dụ: AJAX:
+	- *HTML*: trình bày thông tin dưới dạng các trang.
+	- *DOM*: thay đổi các phần của trang trong khi chúng được xem.
+	- *XML*: cho phép các chương trình trao đổi dữ liệu với máy chủ.
+	- Cách gửi và truy xuất dữ liệu XML không đồng bộ.
+	- JavaScript là một ngôn ngữ để ràng buộc tất cả những điều này với nhau.
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/24.png"></p>
+
+- XML nắm bắt cấu trúc tài liệu, không trình bày như HTML. Ví dụ:
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/25.png"></p>
+
+- Các ứng dụng Web sử dụng một bộ công nghệ, được xem xét lại:
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/26.png"></p>
+
+<a name="3.4"></a>
+#### 3.4. HTTP
+
+- HTTP (HyperText Transfer Protocol) là một giao thức request-response chạy trên TCP
+	- Tìm trang từ server đến client
+	- Máy chủ thường chạy trên port 80
+	- Header được đưa ra trong ASCII dễ đọc
+	- Nội dung được mô tả bằng các loại MIME
+	- Giao thức đã hỗ trợ cho các yêu cầu đặt hàng
+	- Giao thức có hỗ trợ bộ nhớ đệm
+- HTTP sử dụng kết nối liên tục để cải thiện hiệu suất
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/27.png"></p>
+
+- HTTP có 1 phương thức để yêu cầu
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/28.png"></p>
+
+- Máy khách yêu cầu sẽ nói Response codes 
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/29.png"></p>
+
+- nhiều header quan tâm đến key thông tin
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/30.png"></p>
+
+- HTTP kiểm tra bộ nhớ để xem trình duyệt có bản sao mới, và nếu server không cập nhật trang
+	- sử dụng tập hợp của header để kiểm tra
+	- có thể sử dụng bộ nhớ lưu trử cao hơn (proxy)
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/31.png"></p>
+
+<a name="4"></a>
+### 4. The Mobile Web
+
+- Điện thoại di động (điện thoại, máy tính bảng) rất khó khăn vì khách hàng:
+	- Tương đối nhỏ màn hình
+	- Khả năng đầu vào hạn chế, đầu vào dài.
+	- Băng thông mạng bị hạn chế
+	- Kết nối có thể bị gián đoạn.
+	- Công suất máy tính bị hạn chế
+- Các chiến lược để xử lý chúng:
+	- Nội dung: máy chủ cung cấp các phiên bản thân thiện với điện thoại di động; Chuyển mã cũng có thể được sử dụng
+	- Các giao thức: không cần thiết cho các giao thức chuyên biệt; HTTP với tiêu đề nén đầy đủ
+
+<a name="4.1"></a>
+#### 4.1 Digital Audio
+
+- ADC (Analog-to-Digital Converter) sản xuất âm thanh từ một micro
+	- Điện thoại: 8000 mẫu 8-bit / giây (64 Kbps); Âm thanh máy tính thường là chất lượng tốt hơn (ví dụ: 16 bit)
+- Âm thanh số thường được nén trước khi gửi
+	- Bộ mã hoá lossy (như AAC) khai thác nhận thức của con người
+	- Tỷ lệ nén lớn (có thể> 10X)
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/32.png"></p>
+
+<a name="4.2"></a>
+#### 4.2. Digital Video
+
+- Video được số hóa dưới dạng pixel (lấy mẫu, lượng tử)
+	- Chất lượng truyền hình: 640x480 pixel, màu 24-bit, 30 lần / giây
+- Video được gửi bị nén do băng thông lớn
+	- Lossy nén khai thác nhận thức của con người
+		- Ví dụ: JPEG cho ảnh tĩnh, MPEG, H.264 cho video
+	- Tỷ lệ nén lớn (thường là 50X cho video)
+	- Video thường> 1 Mbps, so với> 10 kbps cho phát âm và> 100 kbps cho âm nhạc
+
+- Dãy nén JPEG lossy cho một ảnh:
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/33.png"></p>
+
+- Pixel được ánh xạ tới không gian màu luminance/chrominance (YCbCr) và chrominance được lấy mẫu phụ. Mắt ít nhạy cảm với chrominance
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/34.png"></p>
+
+- MPEG nén trên một dãy khung hình, tiếp tục sử dụng theo dõi chuyển động để loại bỏ sự dư thừa thời gian
+	- I (Intra-coded) khung được khép kín
+	- P (Predictive) khung sử dụng các dự đoán chuyển động khối
+	- Các khung B (Hai chiều) có thể dự đoán cơ sở trên khung trong tương lai
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/35.png"></p>
+
+<a name="4.3"></a>
+#### 4.3. Streaming Stored Media
+
+- Một phương pháp đơn giản để truyền phương tiện lưu trữ, ví dụ: cho video theo yêu cầu, là tìm nạp video dưới dạng tệp tải xuống .... Nhưng có thời gian khởi động lớn, ngoại trừ tệp ngắn
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/36.png"></p>
+
+- Truyền trực tuyến hiệu quả bắt đầu playout trong quá trình vận chuyển
+	- Với RTSP(Real-Time Streaming Protocol) (Giao thức truyền thời gian thực)
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/37.png"></p>
+
+- Vấn đề chính: làm thế nào để xử lý lỗi truyền
+
+| Chiến lược | Lợi thế | Bất lợi |
+| :-----: | :----------:   | :------: |
+| Sử dụng tải tin cậy (TCP) | Sửa chữa tất cả lỗi | Tăng jitter đáng kể |
+| Thêm FEC (ví dụ, Parity) | Sửa chữa lỗi | Tăng overhead, giải mã phức tạp và jitter  |
+| Interleave phương tiện truyền thông | Masks hầu hết các lỗi | Tốc độ tăng độ phức tạp và sự phức tạp|
+
+- Gói chẵn lẻ(Parity) có thể sửa chữa một gói tin bị mất trong một nhóm N
+	- Giải mã được trì hoãn cho các gói tin N
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/38.png"></p>
+
+- Interleaving lây lan các mẫu phương tiện truyền thông gần đó qua các truyền khác nhau để giảm tác động của sự loss
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/39.png"></p>
+
+- Media có thể không đến đúng thời điểm phát sóng do băng thông thay đổi và truyền lại. Khách hàng đệm các phương tiện truyền thông để hấp thụ jitter; Chúng tôi vẫn cần phải chọn tốc độ truyền thông có thể đạt được
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/40.png"></p>
+
+<a name="4.4"></a>
+#### 4.4. Real-Time Conferencing-SIP
+
+<a name="4.5"></a>
+#### 4.5. Server Farms and Web Proxies
+
+<a name="4.6"></a>
+#### 4.6. CDNs – Content Delivery Networks
+
+<a name="4.7"></a>
+#### 4.7. Peer-to-Peer Networks
 
 ----------------------------------------------
 
@@ -174,4 +421,5 @@ Những gì người dùng nhìn thấy - giao diện các yếu tố của mộ
 
 [1] Slide Lecture 7: Application Layer 
  http://scisweb.ulster.ac.uk/~kevin/com320/notes.htm
+
 
