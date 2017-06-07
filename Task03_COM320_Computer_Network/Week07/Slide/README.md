@@ -4,7 +4,7 @@
 >
 > Thực hiện: **Nguyễn Tấn Phát**
 > 
-> Cập nhật lần cuối: **05/06/2017**
+> Cập nhật lần cuối: **07/06/2017**
 
 ---------------------------------------------
 
@@ -113,7 +113,7 @@ Những gì người dùng nhìn thấy - giao diện các yếu tố của mộ
 - Trường Header liên quan đến Transport message; Header có thể đọc được văn bản ASCII
 
 | Header   | Ý nghĩa 	   | 
-| :-----: | :----------:   |
+| -----: | :----------:   |
 | To:	  | Địa chỉ mail của người nhận chính  |   
 | Cc:  	  | Địa chỉ mail của người nhận phụ  | 
 | Bcc:    | Địa chỉ mail bản sao của người mù | 
@@ -403,17 +403,126 @@ Những gì người dùng nhìn thấy - giao diện các yếu tố của mộ
 
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/40.png"></p>
 
+**Streaming Live Media:**
+- Streaming media trực tiếp cũng tương tự như trường hợp được lưu trữ cộng với:
+	- Không thể phát trực tuyến nhanh hơn "tỷ lệ trực tuyến" để tiến lên phía trước
+		- Thông thường cần bộ đệm lớn hơn để hấp thụ jitter
+- Thường có nhiều người dùng đang xem cùng một lúc
+	- UDP với multicast cải thiện đáng kể hiệu quả. Nó hiếm khi có sẵn, do đó rất nhiều kết nối TCP được sử dụng.
+	- Đối với rất nhiều người dùng, việc phân phối nội dung được sử dụng [sau]
+
 <a name="4.4"></a>
 #### 4.4. Real-Time Conferencing-SIP
+
+- Hội thảo qua thời gian thực có hai hoặc nhiều luồng phương tiện trực tiếp được kết nối, ví dụ như thoại qua IP, cuộc gọi video Skype
+- Vấn đề chính trong luồng trực tuyến là độ trễ thấp (tương tác)
+	- Bạn muốn giảm sự chậm trễ để truyền gần
+	- Lợi ích từ hỗ trợ mạng, ví dụ: QoS
+	- Hoặc, lợi ích từ băng thông phong phú (không tắc nghẽn)
+
+-**H.323 architecture**(kiến trúc H.323) cho điện thoại Internet hỗ trợ các cuộc gọi giữa các máy tính Internet và điện thoại PSTN. Cuộc gọi là audio/video qua RTP/UDP/IP
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/41.png"></p>
+
+**SIP:**
+- SIP (Session Initiation Protocol) là một sự thay thế cho H.323 để thiết lập các cuộc gọi theo thời gian thực
+	- Giao thức đơn giản, dựa trên văn bản với URL dành cho địa chỉ
+	- Dữ liệu được thực hiện với RTP / RTCP như trước
+
+| Phương pháp  | Miêu tả 	   | 
+| :-----: | :----------:   |
+| INVITE  | Yêu cầu bắt đầu phiên làm việc |   
+| ACK 	  | Xác nhận phiên làm vệc được bắt đầu  | 
+| BYE    | Yêu cầu chấm dứt phiên làm việc  | 
+| OPTIONS | Truy vấn  khả năng cũa một máy chủ | 
+| CANCEL    | Hủy một yêu cầu đang chờ giải quyết  |  
+| REGISTER   |Thông báo cho máy chủ chuyển hướng về vị trí hiện tại của người dùng |  
+
+- Thiết lập một cuộc gọi bằng cách bắt tay SIP ba bước
+	- Máy chủ proxy cho phép kết nối từ xa
+	- Gọi dữ liệu trực tiếp giữa người gọi / người gọi
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/42.png"></p>
+
+| Item | H.323 | SIP |
+| :----- | :----------:   | :------: |
+| Thiết kế bởi  | ITU | IETF |
+| Tính tương thích với PSTN | Yes |Largely |
+| Tính tương thích với Internet | Yes, over time | Yes |
+| Kiến trúc | Monolithic | Mô-đun |
+| Thương lượng thông tin | Xếp các giao thức đầy đủ | SIP chỉ xử lí thiết lập |
+| Gọi tín hiệu | yes | yes |
+| Định dạng tin | Q.931 over TCP | SIP over TCP or UDP |
+| truyền thông | Binary | ASCII |
+| vận tải | RTP/RTCP | RTP/RTCP |
+| Cuộc gọi đa năng | Yes | Yes |
+| Hội thảo đa phương tiện | Yes | No |
+| Giải quyết | URL hoặc số điện thoại | URL |
+| Chấm dứt cuộc gọi |  Rõ ràng hoặc TCP phát hành | Rõ ràng hoặc TCP chờ |
+| Tin nhắn tức thời | No | Yes|
+| Mã hóa   | Yes | Yes |
+| kích thước các tiêu chuẩn | 1400 trang | 250 trang |
+| Thực hiện | Lớn và phức tạp | Trung bình nhưng có vấn đề |
+| Trang thái | Rộng rãi, vd: video | Thay thế, vd: tiếng nói |
 
 <a name="4.5"></a>
 #### 4.5. Server Farms and Web Proxies
 
+- Server Farms cho phép các máy chủ Web quy mô lớn:
+	- Yêu cầu cân bằng tải trên máy chủ
+	- Các máy chủ truy cập cùng một cơ sở dữ liệu phụ trợ
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/43.png"></p>
+
+- Lưu trữ Proxy giúp các tổ chức mở rộng nội dung-Máy chủ Cache trên máy khách cho hiệu suất và cũng thực hiện các chính sách của tổ chức (ví dụ: quyền truy cập)
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/44.png"></p>
+
 <a name="4.6"></a>
 #### 4.6. CDNs – Content Delivery Networks
 
+- CDNs quy mô máy chủ bởi khách hàng có được nội dung từ một nút gần đó CDN (bộ nhớ cache)
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/45.png"></p>
+
+- Chỉ đạo khách hàng đến các nút CDN ở gần với DNS:
+	- Truy vấn là máy khách phản hồi trả về nút CDN cục bộ 
+	- Nút cục bộ CDN lưu trữ nội dung cho các khách hàng gần đó và giảm tải trên máy chủ gốc
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/46.png"></p>
+
+- Máy chủ gốc khởi tạo lại các trang để phục vụ nội dung thông qua CDN
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/47.png"></p>
+
 <a name="4.7"></a>
-#### 4.7. Peer-to-Peer Networks
+#### 4.7. Peer-to-Peer Network
+
+- P2P (Peer-to-Peer) là một kiến trúc CDN thay thế mà không có cơ sở hạ tầng chuyên dụng (nghĩa là máy chủ)
+	- Khách hàng phục vụ nội dung với nhau như các đồng nghiệp
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/48.png"></p>
+
+- Thử thách khi máy chủ bị xóa:
+	- a. Làm thế nào để bạn bè tìm thấy nhau?
+	- b. Làm thế nào để đồng nghiệp hỗ trợ tải nội dung nhanh?
+	- c. Các bạn đồng trang khuyến khích nhau tải lên như thế nào?
+
+- *BitTorrent* cho phép peer download torrents
+	- Các đồng nghiệp tìm nhau thông qua Tracker trong tập tin torrent
+	- Trao đổi các bộ phận (các phần của nội dung) với các đối tác, thích những người gửi nhanh nhất
+	- Nhiều tốc độ tải về ngang hàng; giúp tải lên
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/49.png"></p>
+
+- Kademlia được sử dụng trong BitTorrent
+- Bảng Hash phân tán (Distributed Hash Tables - DHTs) được phân bổ đầy đủ chỉ số có quy mô cho nhiều khách hàng
+	- Cần theo đường dẫn O (log N) cho N mục
+	- Có thể sử dụng như Tracker để tìm các peers không có máy chủ
+	- Tìm torrent (định danh) trong DHT để tìm IP của các peer
+- Một Vòng Chord gồm 32 ký tự nhận dạng. Bàn tay [ở bên phải, và dưới dạng vòng cung] được sử dụng để điều hướng vòng tròn. Ví dụ: đường đi tìm kiếm 16 từ 1 là 1 --> 12 --> 15
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Slide/Image/50.png"></p>
 
 ----------------------------------------------
 
