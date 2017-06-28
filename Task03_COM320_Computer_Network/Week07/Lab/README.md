@@ -633,7 +633,7 @@ restaurant-quality vegetables and edible flowers.</p>`
 
 
 <a name="1.19"></a>
-#### #### 1.19. To add header and footer elements to the Central Valley Farmers’ Market home page (để thêm các phần tử header và footer vào trang chủ của Central Valley Farmers 'Market):
+#### 1.19. To add header and footer elements to the Central Valley Farmers’ Market home page (để thêm các phần tử header và footer vào trang chủ của Central Valley Farmers 'Market):
 
 - a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
 
@@ -671,7 +671,7 @@ restaurant-quality vegetables and edible flowers.</p>`
 - f. Đóng cửa sổ trình duyệt web của bạn.
 
 <a name="1.21"></a>
-#### 1.21. To add horizontal rules to the Central Valley Farmers’ Market home page (thêm các quy tắc ngang với Trang chủ của Farmers 'Market Central Valley):)
+#### 1.21. To add horizontal rules to the Central Valley Farmers’ Market home page (thêm các quy tắc ngang với Trang chủ của Farmers 'Market Central Valley):
 
 - a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
 
@@ -760,7 +760,7 @@ Tiếp theo, bạn thêm liên kết từ trang chủ của Farmers 'Market Cent
 - c. Lưu tệp tin **contact.html** và sau đó mở **index.html** tệp đó trong trình duyệt web. Nhấp vào liên kết **Contact Information**, sau đó nhấp vào liên kết mailto trên trang *contact.html* và thử gửi cho bạn một email.
 
 <a name="1.25"></a>
-#### [1.25. To add links to the *<h2>* elements on the Farmers’ Market Home page (để thêm liên kết đến các phần tử *<h2>* trên trang chủ của Farmers 'Market):
+#### 1.25. To add links to the *<h2>* elements on the Farmers’ Market Home page (để thêm liên kết đến các phần tử *<h2>* trên trang chủ của Farmers 'Market):
 
 
 - a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
