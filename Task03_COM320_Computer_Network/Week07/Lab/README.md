@@ -4,7 +4,7 @@
 >
 > Thực hiện: **Nguyễn Tấn Phát**
 > 
-> Cập nhật lần cuối: **26/06/2017**
+> Cập nhật lần cuối: **28/06/2017**
 
 ---------------------------------------------
 
@@ -26,6 +26,24 @@
 - [1.12. Exercise 12 -To start creating the home page for the Don’s Pizza Web Site (để bắt đầu tạo trang chủ cho trang web Don's Pizza)](#1.12)
 - [1.13. Exercise 13 -To add comments to the DonsPizza.html file (để thêm ý kiến vào tệp DonsPizza.html)](#1.13)
 - [1.14. Exercise 14 - To validate a file (để xác nhận hợp lệ một file)](#1.14)
+- [**Park B**](#)
+- [1.15. To start creating the home page for the Central Valley Farmers Market Web Site (để bắt đầu tạo trang chủ cho trang web Central Valley Farmers Market)](#1.15)
+- [1.16. To add standard attributes to the Central Valley Farmers’ Market home page (để thêm các thuộc tính chuẩn vào trang chủ của Farmers 'Market Central Valley)](#1.16)
+- [1.17. To add heading elements to the Central Valley Farmers’ Market home page (để thêm các phần tử tiêu đề vào trang chủ của Central Valley Farmers 'Market)](#1.17)
+- [1.18. To add section elements to the Central Valley Farmers’ Market home page (để thêm các yếu tố phần vào trang chủ của Central Valley Farmers 'Market)](#1.18)
+- [1.19. To add header and footer elements to the Central Valley Farmers’ Market home page (để thêm các phần tử header và footer vào trang chủ của Central Valley Farmers 'Market)](#1.19)
+- [1.20. To add an address to the footer element of the Central Valley Farmers’ Market home page (để thêm một địa chỉ vào phần tử chân trang của trang chủ của Farmers 'Market Central Valley)](#1.20)
+- [1.21. To add horizontal rules to the Central Valley Farmers’ Market home page (thêm các quy tắc ngang với Trang chủ của Farmers 'Market Central Valley)](#1.21)
+- [1.22. To add a contact information page to the Central Valley Farmers’ Market home page (để thêm trang thông tin liên lạc vào trang chủ của Farmers 'Market Central Valley)](#1.22)
+- [1.23. To add a link from the Central Valley Farmers’ home page to contact page (để thêm liên kết từ trang chủ của Central Valley Farmers để liên hệ trang)](#1.23)
+- [1.24. To add a mailto link from the Farmers’ contact page (để thêm liên kết mailto từ trang liên hệ của Farmers )](#1.24)
+- [1.25. To add links to the <h2> elements on the Farmers’ Market Home page (để thêm liên kết đến các phần tử <h2> trên trang chủ của Farmers 'Market)](#1.25)
+- [1.26. To add keywords and description meta elements on the Farmers’ Market Home page (để thêm các từ khóa và các yếu tố mô tả meta trên trang chủ của Farmers 'Market)](#1.26)
+- [1.27. To add a robots <meta> element to the Farmers’ Market Home page(để thêm một phần tử <meta> robot vào trang chủ của Farmers 'Market)](#1.27)
+- [1.28. To add the content-type <meta> element and then validate the documents(để thêm phần tử <meta> loại nội dung và sau đó xác nhận hợp lệ các tài liệu)](#1.28)
+
+
+
 
 ---------------------------------------------
 
@@ -481,9 +499,343 @@ http://validator.w3.org/#validate_by_upload
 
 - f. Nhấp vào nút **Validate This File**. Dịch vụ Xác nhận Đánh dấu của W3C xác nhận hợp lệ tài liệu và trả kết quả hiển thị bên dưới.
 
-<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Lab/Image/13.png"></p>
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Lab/Image/14.png"></p>
 
 - g. Đóng cửa sổ trình duyệt web của bạn.
+
+
+### PARK B
+
+<a name="1.15"></a>
+#### 1.15. To start creating the home page for the Central Valley Farmers Market Web Site (Để bắt đầu tạo trang chủ cho trang web Central Valley Farmers Market):
+
+- a. Tạo một tài liệu mới trong trình soạn thảo văn bản của bạn (chẳng hạn như notepad ++) và gõ khai báo `<!DOCTYPE>` đang mở sử dụng HTML DTD như sau:
+
+`<!DOCTYPE HTML>`
+
+- b. Gõ phần tử `<html>` như sau:
+
+`<html>`
+`</html>`
+
+- c. Trong phần tử `<html>`, thêm phần tử `<head>` và `<title>` vào tài liệu.
+
+`<head>`
+`<title>Central Valley Farmers’ Market Web</title>`
+`</head>`
+
+- d. Tiếp theo, thêm phần tử `<body>` của tài liệu dưới phần tử `<html>`:
+
+`<body>`
+`</body>`
+
+- e. Thêm các phần tử sau đây vào phần thân tài liệu (giữa các thẻ `<body> ... </body>`). Lưu ý rằng các phần tử văn bản và nội tuyến nằm trong một phần tử `<p>` khối.
+
+`<p> The <b>Central Valley Farmers’ Market</b> offers plenty of fresh picked fruits, vegetables, herbs and flowers. Local artisans bring wonderful hand made arts and crafts. You will also find lots of baked goods, jams, honey, cheeses, and other products. </p>`
+
+- f. Lưu tập tin dưới dạng **index.html** trong thư mục của bạn.
+- g. Mở tệp **index.html** trong trình duyệt của bạn. Hình dưới đây cho thấy tệp như xuất hiện trong trình duyệt.
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Lab/Image/15.png"></p>
+
+- h. Đóng cửa sổ trình duyệt web của bạn.
+
+<a name="1.16"></a>
+#### 1.16. To add standard attributes to the Central Valley Farmers’ Market home page (để thêm các thuộc tính chuẩn vào trang chủ của Farmers 'Market Central Valley):
+
+- a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
+
+`<!DOCTYPE HTML>`
+
+- b. Ngay phía trên thẻ đóng `</body>`, thêm phần tử `<p>` sau đây có chứa cụm từ tiếng Ý. Phần tử <p> cũng bao gồm thuộc tính lang, dir và title.
+
+`<p title=”What one puts into a dish, one finds!”`
+`Lang =”it” dir=”ltr”><i>Quello che ci mette, ci trova!</i></p>`
+
+- c.Lưu tệp **index.html** và sau đó mở tệp đó trong trình duyệt web của bạn. Hình dưới đây hiển thị tệp **index.html** như xuất hiện bên dưới.
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Lab/Image/16.png"></p>
+
+- h. Đóng cửa sổ trình duyệt web của bạn.
+
+<a name="1.17"></a>
+#### 1.17. To add heading elements to the Central Valley Farmers’ Market home page (để thêm các phần tử tiêu đề vào trang chủ của Central Valley Farmers 'Market):
+
+- a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
+
+- b. Thêm các phần tử `<h1>` và `<h2>` sau đây như các phần tử đầu tiên trong phần body, sau thẻ mở `<body>` nhưng trước thẻ đầu tiên `<p>`.
+
+`<h1>Central Valley Farmers’ Market</h1>`
+`<h2>About the Market</h2>`
+
+- c. Ở cuối phần thân, thêm phần tử <h2> sau đây liệt kê các giờ hoạt động:
+
+`<h2>Hours of Operation</h2>`
+`<p>The Central Valley Farmers' Market is held every Tuesday, Thursday, and Saturday from April through October, then Saturdays only in November until Thanksgiving. The Market is open from 7 a.m. - 1 p.m. <i>The vendors will be there rain or shine</i>!</p>`
+
+d. Ở cuối phần thân, thêm các phần tử `<h2>` và `<h3>` sau đây liệt kê các nhà cung cấp nổi bật :
+
+`<h2>Featured Vendor List</h2>`
+`<p>Be sure to visit this week's featured vendors.</p>`
+`<h3>Big Creek Produce</h3>`
+`<p>Offers a diverse selection of produce including
+restaurant-quality vegetables and edible flowers.</p>`
+`<h3>Blue Sky Gardens</h3>`
+`<p>Grows a variety of organic vegetables including French slenderette green beans, spinach, salad greens, squash, pumpkins, and cherry tomatoes, as well as a vast array of fresh-cut and dried flowers.</p>`
+`<h3>Maple Ridge Farms</h3>`
+`<p>Specializes in organically grown lettuces, arugula, red mustard, and other greens.</p>`
+`<h3>Manzi Produce</h3>`
+`<p>Hand picks, hand washes, and hand sorts all of their products, which include nuts, plants, herbs, perennials, flowers, wild-gathered items, meat, fruit, and vegetables.</p>`
+`<h3>Lee Family Farms</h3>`
+`<p>Produces organically grown traditional Asian vegetables such as bok choy, lemon grass, and hot chili peppers.</p>`
+
+- e.Lưu tệp **index.html** và sau đó mở tệp đó trong trình duyệt web của bạn. Hình dưới đây hiển thị tệp **index.html** như xuất hiện bên dưới.
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Lab/Image/17.png"></p>
+
+- f. Đóng cửa sổ trình duyệt web của bạn.
+
+<a name="1.18"></a>
+#### 1.18. To add section elements to the Central Valley Farmers’ Market home page (để thêm các yếu tố phần vào trang chủ của Central Valley Farmers 'Market):
+
+- a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
+
+- b. Kèm theo các giờ hoạt động và các phần tử tiêu đề Danh sách các nhà cung cấp tiêu đề `<h2>`
+
+`<section>`
+`<h2>Hours of Operation</h2>`
+`<p>The Central Valley Farmers' Market is held every Tuesday, Thursday, and Saturday from April through October, then Saturdays only in November until Thanksgiving. The Market is open from 7 a.m. - 1 p.m. <i>The vendors will be there rain or shine</i>!</p>`
+`<h2>Featured Vendor List</a>`
+`<p>Be sure to visit this week's featured vendors.</p>`
+`</section>`
+
+- c. Kèm theo các phần tử tiêu đề `<h3>` và các đoạn tiếp theo chúng với phần tử phần như sau:
+
+`<section>`
+`<h3>Big Creek Produce</h3>`
+`<p>Offers a diverse selection of produce including
+restaurant-quality vegetables and edible flowers.</p>`
+`<h3>Blue Sky Gardens</h3>`
+`<p>Grows a variety of organic vegetables including French slenderette green beans, spinach, salad greens, squash, pumpkins, and cherry tomatoes, as well as a vast array of fresh-cut and dried flowers.</p>`
+`<h3>Maple Ridge Farms</h3>`
+`<p>Specializes in organically grown lettuces, arugula, red mustard, and other greens.</p>`
+`<h3>Manzi Produce</h3>`
+`<p>Hand picks, hand washes, and hand sorts all of their products, which include nuts, plants, herbs, perennials, flowers, wild-gathered items, meat, fruit, and vegetables.</p>`
+`<h3>Lee Family Farms</h3>`
+`<p>Produces organically grown traditional Asian vegetables such as bok choy, lemon grass, and hot chili peppers.</p>`
+`</section>`
+
+4. Lưu tệp **index.html** và sau đó mở tệp trong trình duyệt web của bạn. Hình dưới đây hiển thị tệp **index.html** như xuất hiện bên dưới (Lưu ý nó nên giống như trước).
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Lab/Image/18.png"></p>
+
+- f. Đóng cửa sổ trình duyệt web của bạn.
+
+
+<a name="1.19"></a>
+#### #### 1.19. To add header and footer elements to the Central Valley Farmers’ Market home page (để thêm các phần tử header và footer vào trang chủ của Central Valley Farmers 'Market):
+
+- a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
+
+- b. Kèm theo các phần tử tiêu đề <h2> đầu tiên và hai đoạn văn theo sau chúng trong phần đầu tiêu đề như sau:
+
+`<header>`
+`<h2>About the Marke</h2>`
+`<p>The <b>Central Valley Farmers' Market</b> offers plenty of fresh picked fruits, vegetables, herbs, and flowers. Local artisans bring wonderful hand-made arts and crafts. You will also find lots of baked goods, jams, honey, cheeses, and other products.</p>`
+`<p title="What one puts into a dish, one finds!" lang="it" xml:lang="it" dir="ltr"><i>Quello che ci mette, ci trova!</i></p>`
+`</header>`
+
+3. Thêm các phần tử footer dưới đây vào cuối tài liệu.
+
+`<footer>Copyright 2011 Central Valley Farmers' Market. All rights reserved.`
+`</footer>`
+
+4. Lưu tệp **index.html**.
+
+
+<a name="1.20"></a>
+#### 1.20. To add an address to the footer element of the Central Valley Farmers’ Market home page (để thêm một địa chỉ vào phần tử chân trang của trang chủ của Farmers 'Market Central Valley):
+
+- a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
+
+- b. Kèm theo các phần tử tiêu đề <h2> đầu tiên và hai đoạn văn theo sau chúng trong phần đầu tiêu đề như sau:
+
+`<footer>Copyright 2011 Central Valley Farmers' Market. All rights reserved.`
+`<address>CVFM Inc. (650) 777-1234</address>`
+`</footer>`
+
+- c. Lưu tệp index.html và mở nó trong trình duyệt web của bạn. Nó trông giống như sơ đồ dưới đây:
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Lab/Image/19.png"></p>
+
+- f. Đóng cửa sổ trình duyệt web của bạn.
+
+<a name="1.21"></a>
+#### 1.21. To add horizontal rules to the Central Valley Farmers’ Market home page (thêm các quy tắc ngang với Trang chủ của Farmers 'Market Central Valley):)
+
+- a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
+
+- b. Thêm quy tắc ngang trên mỗi phần tử `<h2>`. Bạn nên thêm ba `<hr/>` các yếu tố trong tổng số.
+
+- c. Lưu tệp **index.html** và mở nó trong trình duyệt web của bạn. Nó giống như sơ đồ dưới đây với các quy tắc ngang ở trên Về tiêu đề Thị trường và Giờ hoạt động.
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Lab/Image/20.png"></p>
+
+- d. Đóng cửa sổ trình duyệt web của bạn.
+
+<a name="1.22"></a>
+#### 1.22. To add a contact information page to the Central Valley Farmers’ Market home page (để thêm trang thông tin liên lạc vào trang chủ của Farmers 'Market Central Valley):
+
+- a. Tạo một tài liệu mới trong trình soạn thảo văn bản của bạn.
+
+- b. Gõ `<!DOCTYPE>` khai báo, phần tử `<html>`, đầu tài liệu, và phần tử `<body>`. Sử dụng HTML DTD và "Contact Information for the Central Valley Farmers' Market" như nội dung của phần tử `<title>`. Tài liệu của bạn sẽ xuất hiện như sau:
+
+`<!DOCTYPE HTML>`
+`<html>`
+`<head>`
+`<title>Contact Information for the Central Valley Farmers' Market</title>`
+`</head>`
+`<body>`
+`</body>`
+`</html>`
+
+- c. Trong phần tài liệu, hãy thêm các tiêu đề và phần tử địa chỉ sau liệt kê thông tin liên lạc của *the Central Valley Farmers’ Market*.
+
+`<h1>Central Valley Farmers' Market</h1>`
+`<h2>Contact Information</h2>`
+`<address>`
+`<p>If you have any questions or concerns about the CentralValley Farmers' Market, please call (908) 626-3764.<br/>`
+`You can also send mail to the Central Valley Farmers' Market at the following address:</p>`
+`<p>P.O. Box 135<br/>`
+`Central Valley, CA 94359</p>`
+`<p>You can send an e-mail to`
+`<a href="mailto:your_email_address">`
+`Your e-mail address</a>.</p>`
+`</address>`
+
+- d. Ở phần cuối của phần thân, thêm câu sau đây tạo liên kết trở lại trang chủ của *the Central Valley Farmers’ Market*:
+
+`<p><a href=”index.html”>Home</a></p>`
+
+- e. Lưu tập tin dưới dạng **Contact.html**.
+
+Tiếp theo, bạn thêm liên kết từ trang chủ của Farmers 'Market Central Valley vào trang thông tin liên hệ.
+
+**kết quả**:
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Lab/Image/21.png"></p>
+
+
+<a name="1.23"></a>
+#### 1.23. To add a link from the Central Valley Farmers’ home page to contact page (để thêm liên kết từ trang chủ của Central Valley Farmers để liên hệ trang):
+
+
+- a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
+
+- b. Đặt điểm chèn sau thẻ đóng `</h1>`, nhấn Enter, sau đó gõ các phần tử sau tạo liên kết tới tài liệu *contact.html*:
+
+`<p><a href="contact.html">Contact Information</a></p>`
+
+- c. Lưu tệp **index.html** và sau đó mở tệp đó trong trình duyệt web và nhấp vào liên kết **Contact Information**. Tệp tin **contact.htm** phải mở trong cửa sổ trình duyệt của bạn.
+
+- d. Nhấp vào liên kết **home** để trở lại trang chủ của the Central Valley Farmers’ Market.
+
+**kết quả**:
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Lab/Image/22.png"></p>
+
+- e. Đóng cửa sổ trình duyệt Web của bạn.
+
+<a name="1.24"></a>
+#### 1.24. To add a mailto link from the Farmers’ contact page (để thêm liên kết mailto từ trang liên hệ của Farmers ):
+
+- a. Quay lại tệp tin **contact.html** trong trình soạn thảo văn bản của bạn.
+
+- b. Đặt điểm chèn sau thẻ đóng `</address>`, nhấn Enter, sau đó gõ phần tử sau tạo liên kết *mailto*. Đảm bảo nhập địa chỉ email của bạn.
+
+`<p>You can send an e-mail to`
+`<a href="mailto:romnguyen10@gmail.com">`
+`Your e-mail address</a>.</p>`
+
+- c. Lưu tệp tin **contact.html** và sau đó mở **index.html** tệp đó trong trình duyệt web. Nhấp vào liên kết **Contact Information**, sau đó nhấp vào liên kết mailto trên trang *contact.html* và thử gửi cho bạn một email.
+
+<a name="1.25"></a>
+#### [1.25. To add links to the *<h2>* elements on the Farmers’ Market Home page (để thêm liên kết đến các phần tử *<h2>* trên trang chủ của Farmers 'Market):
+
+
+- a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
+
+- b. Đặt điểm chèn sau thẻ đóng `</p>` trong câu lệnh tạo liên kết Contact Information , nhấn Enter, và sau đó thêm các liên kết bookmark sau đây vào các phần tử tiêu đề cấp 2. Cũng bao gồm cả bốn đoạn trong phần `<nav>`.
+
+
+`<nav>`
+`<p><a href="contact.html">Contact Information</a></p>`
+`<p><a href="#am1">About the Market</a></p>`
+`<p><a href="#ho1">Hours of Operation</a></p>`
+`<p><a href="#fvl1">Featured Vendor List</a></p>`
+`</nav>`
+
+ c. Sửa đổi phần tử *About the Market* để nó bao gồm một phần tử <a> có cùng thuộc tính id mà bạn đã thêm vào phần tử bookmark:
+
+`<h2><a id=”am1”>About the Market</a></h2>`
+
+- d. Sửa đổi phần tiêu đề *Hours of Operation* để nó bao gồm một phần tử `<a>` có cùng thuộc tính `id` mà bạn đã thêm vào phần tử bookmark:
+
+`<h2><a id=”ho1”>Hours of Operation</a></h2>`
+
+- e. Chỉnh sửa phần tiêu đề *Featured Vendors List* để nó nổi bật bao gồm một phần tử `<a>` có cùng thuộc tính `id` mà bạn đã thêm vào phần tử dấu trang:
+
+`<h2><a id=”fvl1”>Featured Vendors List</a></h2>`
+
+- f. Lưu tệp **index.html** và mở nó trong một trình duyệt web và kiểm tra các liên kết mới. Hình tiếp theo chỉ ra cách liên kết dấu trang mới xuất hiện.
+
+<p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Lab/Image/23.png"></p>
+
+- g. Đóng cửa sổ trình duyệt Web của bạn.
+
+<a name="1.26"></a>
+#### 1.26. To add keywords and description meta elements on the Farmers’ Market Home page (để thêm các từ khóa và các yếu tố mô tả meta trên trang chủ của Farmers 'Market):
+
+
+- a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
+
+- b. Trên thẻ đóng `</head>`, thêm phần tử `<meta>` sau đây tạo ra phần mô tả meta:
+
+`<meta name="description" content="The Central Valley Farmers' Market sells fresh produce, hand-made crafts, baked goods, and a variety of other products." />`
+
+- c. Sau phần mô tả `<meta>`, thêm từ khóa `<meta>` sau đây:
+
+`<meta name="keywords" content="market, farmers' market, organic produce, fresh produce, vegetables, fruit, herbs,crafts, baked goods" />`
+
+- d. Lưu tệp **index.html**.
+
+<a name="1.27"></a>
+#### 1.27. To add a robots <meta> element to the Farmers’ Market Home page(để thêm một phần tử <meta> robot vào trang chủ của Farmers 'Market):
+
+- a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
+
+- b. Trên thẻ đóng `</head>`, thêm phần tử `<meta>` sau đây tạo ra phần tử ``<meta>`` cho phép nhện lập chỉ mục trang nhưng không theo bất kỳ liên kết nào trên trang:
+
+`<meta name="robots" content="index, nofollow" />`
+
+- c. Lưu tệp **index.html**.
+
+<a name="1.28"></a>
+#### 1.28. To add the content-type <meta> element and then validate the documents(để thêm phần tử <meta> loại nội dung và sau đó xác nhận hợp lệ các tài liệu):
+
+- a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn. Bên trên thẻ đóng `</head>`, thêm phần tử ``<meta>` sau đây tạo thẻ meta loại nội dung xác định loại MIME của văn bản /html và một bộ ký tự của UTF-8.
+
+`<meta http-equiv="content-type"   content="text/html; charset=utf-8" />`
+
+- b. Lưu và đóng tệp **index.html**.
+
+- c. Trở lại tệp tin **contact.html** và thêm phần tử **<meta>** nằm phía trên thẻ đóng </head>.
+
+- d. Lưu và đóng tệp **contact.html**.
+
+- e. Khởi động trình duyệt web của bạn và nhập URL cho trang tải lên của W3C Markup Validation Service: http://validator.w3.org/#validate_by_upload.. Mở và xác thực các tệp **index.html** và **contact.html**. Nếu bạn nhận được bất kỳ cảnh báo hoặc lỗi, sửa chữa chúng và revalidate các tài liệu.
+
+- f. Đóng trình duyệt web của bạn.
 
 ----------------------------------------------
 
