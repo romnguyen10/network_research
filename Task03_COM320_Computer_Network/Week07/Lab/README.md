@@ -42,8 +42,17 @@
 - [1.27. To add a robots <meta> element to the Farmers’ Market Home page(để thêm một phần tử <meta> robot vào trang chủ của Farmers 'Market)](#1.27)
 - [1.28. To add the content-type <meta> element and then validate the documents(để thêm phần tử <meta> loại nội dung và sau đó xác nhận hợp lệ các tài liệu)](#1.28)
 
+[2. Javascript](#2)
 
-
+-[2.1. To create the home page for Don’s Cafe (tạo trang chủ cho Don's Cafe)](#2.1)
+-[2.3. To add a script section to the Menu page for Don’s Cafe (thêm phần kịch bản vào trang Trình đơn cho Don's Cafe)](#2.2)
+-[2.4. To add text and elements to the index.html file by using write methods of the Document object (thêm văn bản và các phần tử vào tệp index.html bằng cách sử dụng phương thức write của đối tượng Document)](#2.3)
+-[2.5. To add comments to the Menu page for Don’s Cafe (thêm ý kiến vào trang Menu của Don's Cafe)](#2.4)
+-[2.6. To add some variables to the script in index.htm (thêm một số biến vào kịch bản trong index.htm)](#2.5)
+-[2.7. To add a form to the index.html file (thêm một biểu mẫu vào tệp index.html)](#2.6)
+-[2.8. To move the variable declarations to a script section in the document head (di chuyển các khai báo biến đến một phần kịch bản trong đầu tài liệu)](#2.7)
+-[2.9. To move the variable declaration statements from the script section in the document head of the index.html file to a JavaScript source file (di chuyển các tuyên bố khai báo biến từ phần kịch bản trong phần đầu tài liệu của tệp index.html vào tệp nguồn JavaScript)](#2.8)
+-[2.10. To modify the script section in the index.html page so that it is hidden from incompatible browsers and well formed (sửa đổi phần kịch bản trong trang index.html để nó được ẩn trong các trình duyệt không tương thích và được hình thành tốt)](#2.9)
 
 ---------------------------------------------
 
@@ -836,6 +845,137 @@ Tiếp theo, bạn thêm liên kết từ trang chủ của Farmers 'Market Cent
 - e. Khởi động trình duyệt web của bạn và nhập URL cho trang tải lên của W3C Markup Validation Service: http://validator.w3.org/#validate_by_upload.. Mở và xác thực các tệp **index.html** và **contact.html**. Nếu bạn nhận được bất kỳ cảnh báo hoặc lỗi, sửa chữa chúng và revalidate các tài liệu.
 
 - f. Đóng trình duyệt web của bạn.
+
+<a name="2"></a>
+### 2. Javascript:
+
+<a name="2.1"></a>
+#### 2.1. To create the home page for Don’s Cafe (tạo trang chủ cho Don's Cafe)
+
+- a. Tạo một tài liệu mới trong một trình soạn thảo văn bản như Notepad ++ và đánh vào phần mở `<!DOCTYPE>` khai báo sử dụng HTML DTD, như sau:
+
+`<!DOCTYPE HTML>`
+
+- b. Gõ phần tử `<html>`, như sau.
+
+`<html>`
+
+`</html>`
+
+- c. Trong phần tử <html>, thêm các phần tử <head> và <body> sau đây:
+
+`<head>`
+`<meta http-equiv="content-type" content="text/htmI; charset=utf-8" />`
+`<title>Don’s Cafe</title>`
+`<link href=”style.css” rel="stylesheet" type="text/css" />`
+`</head>`
+`<body>`
+`</body>`
+
+- d. Thêm các phần tử sau đây vào phần body tài liệu. Trang Web này sử dụng thẻ `<div>` với các kiểu liên quan để đặt ra và định dạng tài liệu.
+
+`<div id="mainbody">`
+`<div id="header">`
+`<img src="images/header.gif" width="761" height="345" alt="" /></div>`
+`<div id="contentarea">`
+`<img src="images/about_service.gif" />`
+`<p>&nbsp;</p>`
+`<img src="images/special_service.gif" />`
+`<p>&nbsp;</p>`
+`<br class="clearcols" />`
+`</div>`
+`<div id="copyright">`
+`<p>Copyrighted &copy; by 2011 Don's Cafe</p>`
+`<p class="copy">All Rights Reserved</p>`
+`<br class="clearcols" />`
+`</div>`
+`</div>`
+
+- e. Lưu tệp dưới dạng **index.html** trong thư mục ví dụ: Thư mục **DonsCafe**.
+
+- f. Mở tệp **index.html** trong trình duyệt Web của bạn. 
+
+<a name="2.2"></a>
+#### 2.2. To add a script section to the Menu page for Don’s Cafe (thêm phần kịch bản vào trang Trình đơn cho Don's Cafe)
+
+- a. Quay lại tài liệu **index.html** trong trình soạn thảo văn bản của bạn.
+
+- b. Xác định vị trí đoạn đầu tiên và không phân chia không gian (& nbsp;) và thay thế bằng phần kịch bản sau:
+
+`<script type = "text/javascript">`
+`</script>`
+
+- c. Lưu tài liệu **index.html**.
+
+<a name="2.3"></a>
+#### 2.3. To add text and elements to the index.html file by using write() methods of the Document object (thêm văn bản và các phần tử vào tệp index.html bằng cách sử dụng phương thức write của đối tượng Document)
+
+- a. Quay trở lại tài liệu **index.html** trong văn bản `
+
+- b. Thêm các câu lệnh `write()` tài liệu sau vào phần seasion. Các báo cáo in văn bản và các phần tử hiển thị hàng ngày đặc biệt:
+
+`Document.write ("<p><strong>Buy two pounds</strong> ”);`
+`Document.write(" of any of our specialty coffees”);`
+`Document.write (" and receive a third pound free!</p>”);`
+
+- c. Lưu tài liệu **index.html** và mở nó trong trình duyệt của bạn.
+
+<a name="2.4"></a>
+#### 2.4. To add comments to the Menu page for Don’s Cafe (thêm ý kiến vào trang Menu của Don's Cafe)
+
+- a. Quay lại tài liệu **index.html** trong trình soạn thảo văn bản của bạn.
+
+- b. Thêm chú thích khối sau đây ngay sau thẻ mở `<script>`:
+
+`/*`
+`JavaScript code for Chapter 8.`
+`The purpose of this code is simply to demonstrate how to `
+`add a script section to a Web page.`
+`*/`
+
+- c. Tiếp theo, thêm dòng chú thích sau ngay sau chú thích khối, cẩn thận thay *"your name"* bằng họ và tên của bạn và *"today's date"* với ngày hiện tại:
+
+`// your name`
+`// today's date`
+
+- d. Lưu tài liệu **index.html**, và sau đó mở nó trong trình duyệt Web của bạn để xác nhận rằng các nhận xét không được hiển thị.
+
+- e. Đóng cửa sổ trình duyệt Web của bạn.
+
+<a name="2.5"></a>
+#### 2.5. To add some variables to the script in index.htm| (thêm một số biến vào kịch bản trong index.htm)
+
+1. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
+
+2. Thêm các biến sau vào cuối phần kịch bản:
+
+`var blueMountain = "This extraordinary coffee, famous for its exquisite flavour and strong body, is grown in the majestic Blue Mountain range in Jamaica."`
+`var blueGrove = "This delightful coffee has an aroma that is captivatingly rich and nutty with a faint hint of citrus."`
+`var sumatra = "One of the finest coffees in the world, medium roasted to accentuate its robust character."`
+`var kona = "Grown and processed using traditional Hawaiian methods, then roasted in small batches to maintain peak freshness and flavour."`
+`var antigua = "An outstanding coffee with a rich spicy, and smokey flavour."`
+
+
+3. Lưu tài liệu **index.html**. Sau đó trong phần này, bạn sẽ thêm mã hiển thị các giá trị được gán cho mỗi biến bạn đã thêm vào trong bước cuối cùng.
+
+<a name="2.6"></a>
+#### 2.6. To add a form to the index.html file (thêm một biểu mẫu vào tệp index.html)
+
+
+
+<a name="2.7"></a>
+#### 2.7. To move the variable declarations to a script section in the document head (di chuyển các khai báo biến đến một phần kịch bản trong đầu tài liệu)
+
+
+<a name="2.8"></a>
+#### 2.8. To move the variable declaration statements from the script section in the document head of the index.html file to a JavaScript source file (di chuyển các tuyên bố khai báo biến từ phần kịch bản trong phần đầu tài liệu của tệp index.html vào tệp nguồn JavaScript)
+
+
+
+<a name="2.9"></a>
+#### 2.9. To modify the script section in the index.html page so that it is hidden from incompatible browsers and well formed (sửa đổi phần kịch bản trong trang index.html để nó được ẩn trong các trình duyệt không tương thích và được hình thành tốt)
+
+
 
 ----------------------------------------------
 
