@@ -44,15 +44,15 @@
 
 [2. Javascript](#2)
 
--[2.1. To create the home page for Don’s Cafe (tạo trang chủ cho Don's Cafe)](#2.1)
--[2.2. To add a script section to the Menu page for Don’s Cafe (thêm phần kịch bản vào trang Trình đơn cho Don's Cafe)](#2.2)
--[2.3. To add text and elements to the index.html file by using write methods of the Document object (thêm văn bản và các phần tử vào tệp index.html bằng cách sử dụng phương thức write của đối tượng Document)](#2.3)
--[2.4. To add comments to the Menu page for Don’s Cafe (thêm ý kiến vào trang Menu của Don's Cafe)](#2.4)
--[2.5. To add some variables to the script in index.htm (thêm một số biến vào kịch bản trong index.htm)](#2.5)
--[2.6. To add a form to the index.html file (thêm một biểu mẫu vào tệp index.html)](#2.6)
--[2.7. To move the variable declarations to a script section in the document head (di chuyển các khai báo biến đến một phần kịch bản trong đầu tài liệu)](#2.7)
--[2.8. To move the variable declaration statements from the script section in the document head of the index.html file to a JavaScript source file (di chuyển các tuyên bố khai báo biến từ phần kịch bản trong phần đầu tài liệu của tệp index.html vào tệp nguồn JavaScript)](#2.8)
--[2.9. To modify the script section in the index.html page so that it is hidden from incompatible browsers and well formed (sửa đổi phần kịch bản trong trang index.html để nó được ẩn trong các trình duyệt không tương thích và được hình thành tốt)](#2.9)
+- [2.1. To create the home page for Don’s Cafe (tạo trang chủ cho Don's Cafe)](#2.1)
+- [2.2. To add a script section to the Menu page for Don’s Cafe (thêm phần kịch bản vào trang Trình đơn cho Don's Cafe)](#2.2)
+- [2.3. To add text and elements to the index.html file by using write methods of the Document object (thêm văn bản và các phần tử vào tệp index.html bằng cách sử dụng phương thức write của đối tượng Document)](#2.3)
+- [2.4. To add comments to the Menu page for Don’s Cafe (thêm ý kiến vào trang Menu của Don's Cafe)](#2.4)
+- [2.5. To add some variables to the script in index.htm (thêm một số biến vào kịch bản trong index.htm)](#2.5)
+- [2.6. To add a form to the index.html file (thêm một biểu mẫu vào tệp index.html)](#2.6)
+- [2.7. To move the variable declarations to a script section in the document head (di chuyển các khai báo biến đến một phần kịch bản trong đầu tài liệu)](#2.7)
+- [2.8. To move the variable declaration statements from the script section in the document head of the index.html file to a JavaScript source file (di chuyển các tuyên bố khai báo biến từ phần kịch bản trong phần đầu tài liệu của tệp index.html vào tệp nguồn JavaScript)](#2.8)
+- [2.9. To modify the script section in the index.html page so that it is hidden from incompatible browsers and well formed (sửa đổi phần kịch bản trong trang index.html để nó được ẩn trong các trình duyệt không tương thích và được hình thành tốt)](#2.9)
 
 ---------------------------------------------
 
@@ -211,7 +211,7 @@
 <a name="1.6"></a>
 #### 1.6. Exercise 6 - To add two `<book>` elements to the books.xml file (để thêm hai yếu tố <book> vào tệp books.xml):
 
-- a. Bắt đầu trình soạn thảo văn bản của bạn và mở lại sách.xml và sửa đổi tài liệu như sau để bao gồm hai phần tử <book>. Đảm bảo thêm các phần tử trong phần tử gốc <books>. Hiện tại, không bao gồm thẻ đóng </ book>.
+- a. Bắt đầu trình soạn thảo văn bản của bạn và mở lại sách.xml và sửa đổi tài liệu như sau để bao gồm hai phần tử `<book>``. Đảm bảo thêm các phần tử trong phần tử gốc `<books>`. Hiện tại, không bao gồm thẻ đóng `</book>`.
 
 `<? Xml version = "1.0" encoding = "ISO-8859-1" standalone = "có"?>`
 
@@ -354,7 +354,7 @@
 - a. Bắt đầu trình soạn thảo văn bản của bạn và tạo một tài liệu mới
 
 
-- b. Gõ khai báo mở <!DOCTYPE> sử dụng DTD chuyển tiếp, như sau:
+- b. Gõ khai báo mở `<!DOCTYPE>` sử dụng DTD chuyển tiếp, như sau:
 
 `<!DOCTYPE html PUBLIC "- // W3C // DTD XHTML 1.0 Transitional // EN"`
 
@@ -393,7 +393,7 @@
 <a name="1.11"></a>
 #### 1.11. Exercise 11 - To start creating the home page for the Don’s Pizza Web Site (để bắt đầu tạo trang chủ cho Trang web Don's Pizza)
 
-- a. Bắt đầu trình soạn thảo văn bản của bạn và tạo một tài liệu mới và gõ khai báo <! DOCTYPE> đang mở sử dụng DTD nghiêm ngặt như sau:
+- a. Bắt đầu trình soạn thảo văn bản của bạn và tạo một tài liệu mới và gõ khai báo `<!DOCTYPE>` đang mở sử dụng DTD nghiêm ngặt như sau:
 
 `<!DOCTYPE html
 PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -475,7 +475,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 - a. Bắt đầu trình soạn thảo văn bản của bạn và mở DonsPizza.html.
 
 
-- b. Trên đầu tập tin, phía trên tờ khai <! DOCTYPE>, hãy thêm các nhận xét sau. Hãy chắc chắn sử dụng tên của bạn và ngày hôm nay.
+- b. Trên đầu tập tin, phía trên tờ khai `<!DOCTYPE>`, hãy thêm các nhận xét sau. Hãy chắc chắn sử dụng tên của bạn và ngày hôm nay.
 
 `<!- -
 Home page for Don’s Pizza : Pizza Hut
@@ -577,7 +577,7 @@ http://validator.w3.org/#validate_by_upload
 `<h1>Central Valley Farmers’ Market</h1>`
 `<h2>About the Market</h2>`
 
-- c. Ở cuối phần thân, thêm phần tử <h2> sau đây liệt kê các giờ hoạt động:
+- c. Ở cuối phần thân, thêm phần tử `<h2>` sau đây liệt kê các giờ hoạt động:
 
 `<h2>Hours of Operation</h2>`
 `<p>The Central Valley Farmers' Market is held every Tuesday, Thursday, and Saturday from April through October, then Saturdays only in November until Thanksgiving. The Market is open from 7 a.m. - 1 p.m. <i>The vendors will be there rain or shine</i>!</p>`
@@ -646,7 +646,7 @@ restaurant-quality vegetables and edible flowers.</p>`
 
 - a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
 
-- b. Kèm theo các phần tử tiêu đề <h2> đầu tiên và hai đoạn văn theo sau chúng trong phần đầu tiêu đề như sau:
+- b. Kèm theo các phần tử tiêu đề `<h2>` đầu tiên và hai đoạn văn theo sau chúng trong phần đầu tiêu đề như sau:
 
 `<header>`
 `<h2>About the Marke</h2>`
@@ -667,7 +667,7 @@ restaurant-quality vegetables and edible flowers.</p>`
 
 - a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
 
-- b. Kèm theo các phần tử tiêu đề <h2> đầu tiên và hai đoạn văn theo sau chúng trong phần đầu tiêu đề như sau:
+- b. Kèm theo các phần tử tiêu đề `<h2>` đầu tiên và hai đoạn văn theo sau chúng trong phần đầu tiêu đề như sau:
 
 `<footer>Copyright 2011 Central Valley Farmers' Market. All rights reserved.`
 `<address>CVFM Inc. (650) 777-1234</address>`
