@@ -4,7 +4,7 @@
 >
 > Thực hiện: **Nguyễn Tấn Phát**
 > 
-> Cập nhật lần cuối: **28/06/2017**
+> Cập nhật lần cuối: **30/06/2017**
 
 ---------------------------------------------
 
@@ -37,22 +37,22 @@
 - [1.22. To add a contact information page to the Central Valley Farmers’ Market home page (để thêm trang thông tin liên lạc vào trang chủ của Farmers 'Market Central Valley)](#1.22)
 - [1.23. To add a link from the Central Valley Farmers’ home page to contact page (để thêm liên kết từ trang chủ của Central Valley Farmers để liên hệ trang)](#1.23)
 - [1.24. To add a mailto link from the Farmers’ contact page (để thêm liên kết mailto từ trang liên hệ của Farmers )](#1.24)
-- [1.25. To add links to the <h2> elements on the Farmers’ Market Home page (để thêm liên kết đến các phần tử <h2> trên trang chủ của Farmers 'Market)](#1.25)
+- [1.25. To add links to the `<h2>` elements on the Farmers’ Market Home page (để thêm liên kết đến các phần tử `<h2>` trên trang chủ của Farmers 'Market)](#1.25)
 - [1.26. To add keywords and description meta elements on the Farmers’ Market Home page (để thêm các từ khóa và các yếu tố mô tả meta trên trang chủ của Farmers 'Market)](#1.26)
-- [1.27. To add a robots <meta> element to the Farmers’ Market Home page(để thêm một phần tử <meta> robot vào trang chủ của Farmers 'Market)](#1.27)
-- [1.28. To add the content-type <meta> element and then validate the documents(để thêm phần tử <meta> loại nội dung và sau đó xác nhận hợp lệ các tài liệu)](#1.28)
+- [1.27. To add a robots `<meta>` element to the Farmers’ Market Home page (để thêm một phần tử <meta> robot vào trang chủ của Farmers 'Market)](#1.27)
+- [1.28. To add the content-type `<meta>` element and then validate the documents(để thêm phần tử `<meta>` loại nội dung và sau đó xác nhận hợp lệ các tài liệu)](#1.28)
 
 [2. Javascript](#2)
 
 -[2.1. To create the home page for Don’s Cafe (tạo trang chủ cho Don's Cafe)](#2.1)
--[2.3. To add a script section to the Menu page for Don’s Cafe (thêm phần kịch bản vào trang Trình đơn cho Don's Cafe)](#2.2)
--[2.4. To add text and elements to the index.html file by using write methods of the Document object (thêm văn bản và các phần tử vào tệp index.html bằng cách sử dụng phương thức write của đối tượng Document)](#2.3)
--[2.5. To add comments to the Menu page for Don’s Cafe (thêm ý kiến vào trang Menu của Don's Cafe)](#2.4)
--[2.6. To add some variables to the script in index.htm (thêm một số biến vào kịch bản trong index.htm)](#2.5)
--[2.7. To add a form to the index.html file (thêm một biểu mẫu vào tệp index.html)](#2.6)
--[2.8. To move the variable declarations to a script section in the document head (di chuyển các khai báo biến đến một phần kịch bản trong đầu tài liệu)](#2.7)
--[2.9. To move the variable declaration statements from the script section in the document head of the index.html file to a JavaScript source file (di chuyển các tuyên bố khai báo biến từ phần kịch bản trong phần đầu tài liệu của tệp index.html vào tệp nguồn JavaScript)](#2.8)
--[2.10. To modify the script section in the index.html page so that it is hidden from incompatible browsers and well formed (sửa đổi phần kịch bản trong trang index.html để nó được ẩn trong các trình duyệt không tương thích và được hình thành tốt)](#2.9)
+-[2.2. To add a script section to the Menu page for Don’s Cafe (thêm phần kịch bản vào trang Trình đơn cho Don's Cafe)](#2.2)
+-[2.3. To add text and elements to the index.html file by using write methods of the Document object (thêm văn bản và các phần tử vào tệp index.html bằng cách sử dụng phương thức write của đối tượng Document)](#2.3)
+-[2.4. To add comments to the Menu page for Don’s Cafe (thêm ý kiến vào trang Menu của Don's Cafe)](#2.4)
+-[2.5. To add some variables to the script in index.htm (thêm một số biến vào kịch bản trong index.htm)](#2.5)
+-[2.6. To add a form to the index.html file (thêm một biểu mẫu vào tệp index.html)](#2.6)
+-[2.7. To move the variable declarations to a script section in the document head (di chuyển các khai báo biến đến một phần kịch bản trong đầu tài liệu)](#2.7)
+-[2.8. To move the variable declaration statements from the script section in the document head of the index.html file to a JavaScript source file (di chuyển các tuyên bố khai báo biến từ phần kịch bản trong phần đầu tài liệu của tệp index.html vào tệp nguồn JavaScript)](#2.8)
+-[2.9. To modify the script section in the index.html page so that it is hidden from incompatible browsers and well formed (sửa đổi phần kịch bản trong trang index.html để nó được ẩn trong các trình duyệt không tương thích và được hình thành tốt)](#2.9)
 
 ---------------------------------------------
 
@@ -209,7 +209,7 @@
 - f. Đóng cửa sổ trình duyệt web của bạn.
 
 <a name="1.6"></a>
-#### 1.6. Exercise 6 - To add two <book> elements to the books.xml file (để thêm hai yếu tố <book> vào tệp books.xml):
+#### 1.6. Exercise 6 - To add two `<book>` elements to the books.xml file (để thêm hai yếu tố <book> vào tệp books.xml):
 
 - a. Bắt đầu trình soạn thảo văn bản của bạn và mở lại sách.xml và sửa đổi tài liệu như sau để bao gồm hai phần tử <book>. Đảm bảo thêm các phần tử trong phần tử gốc <books>. Hiện tại, không bao gồm thẻ đóng </ book>.
 
@@ -289,7 +289,7 @@
 <p align="center"><img src="https://github.com/romnguyen10/network_research/blob/master/Task03_COM320_Computer_Network/Week07/Lab/Image/10.png"></p>
 
 <a name="1.8"></a>
-#### 1.8. Exercise 8 - To add a publisher attribute to each of the <book> elements (để thêm thuộc tính publisher vào mỗi phần tử <book>):
+#### 1.8. Exercise 8 - To add a publisher attribute to each of the `<book>` elements (để thêm thuộc tính publisher vào mỗi phần tử <book>):
 
 - a. Bắt đầu trình soạn thảo văn bản của bạn và mở lại **Books.xml**
 
@@ -308,7 +308,7 @@
 - e. Đóng cửa sổ trình duyệt của bạn lại.
 
 <a name="1.9"></a>
-#### 1.9. Exercise 9 - To add a publisher attribute to each of the <book> elements (để thêm thuộc tính publisher vào mỗi phần tử <book>):
+#### 1.9. Exercise 9 - To add a publisher attribute to each of the `<book>` elements (để thêm thuộc tính publisher vào mỗi phần tử <book>):
 
 - a. Bắt đầu trình soạn thảo văn bản của bạn và mở lại **Books.xml**
 - b. Thêm một phần tử ấn phẩm rỗng lồng vào phần *A Farewell to Arms* `<book>` như sau:
@@ -769,7 +769,7 @@ Tiếp theo, bạn thêm liên kết từ trang chủ của Farmers 'Market Cent
 - c. Lưu tệp tin **contact.html** và sau đó mở **index.html** tệp đó trong trình duyệt web. Nhấp vào liên kết **Contact Information**, sau đó nhấp vào liên kết mailto trên trang *contact.html* và thử gửi cho bạn một email.
 
 <a name="1.25"></a>
-#### 1.25. To add links to the *<h2>* elements on the Farmers’ Market Home page (để thêm liên kết đến các phần tử *<h2>* trên trang chủ của Farmers 'Market):
+#### 1.25. To add links to the `<h2>` elements on the Farmers’ Market Home page (để thêm liên kết đến các phần tử `<h2>` trên trang chủ của Farmers 'Market):
 
 
 - a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
@@ -819,7 +819,7 @@ Tiếp theo, bạn thêm liên kết từ trang chủ của Farmers 'Market Cent
 - d. Lưu tệp **index.html**.
 
 <a name="1.27"></a>
-#### 1.27. To add a robots <meta> element to the Farmers’ Market Home page(để thêm một phần tử <meta> robot vào trang chủ của Farmers 'Market):
+#### 1.27. To add a robots `<meta>` element to the Farmers’ Market Home page(để thêm một phần tử <meta> robot vào trang chủ của Farmers 'Market):
 
 - a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn.
 
@@ -830,7 +830,7 @@ Tiếp theo, bạn thêm liên kết từ trang chủ của Farmers 'Market Cent
 - c. Lưu tệp **index.html**.
 
 <a name="1.28"></a>
-#### 1.28. To add the content-type <meta> element and then validate the documents(để thêm phần tử <meta> loại nội dung và sau đó xác nhận hợp lệ các tài liệu):
+#### 1.28. To add the content-type `<meta>` element and then validate the documents(để thêm phần tử `<meta>` loại nội dung và sau đó xác nhận hợp lệ các tài liệu):
 
 - a. Quay lại tệp **index.html** trong trình soạn thảo văn bản của bạn. Bên trên thẻ đóng `</head>`, thêm phần tử ``<meta>` sau đây tạo thẻ meta loại nội dung xác định loại MIME của văn bản /html và một bộ ký tự của UTF-8.
 
